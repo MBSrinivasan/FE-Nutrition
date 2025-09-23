@@ -55,6 +55,14 @@ export default function Header15({ scroll, isMobileMenu, handleMobileMenu }) {
                                 Service V2
                               </Link>
                             </li>
+                            <li>
+                              <Link
+                                href="/servicev2"
+                                className="font-ks font-16 weight-500 color"
+                              >
+                                Service V2
+                              </Link>
+                            </li>
                           </ul>
                         )}
                       </li>
