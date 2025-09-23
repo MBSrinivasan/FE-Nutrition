@@ -19,7 +19,7 @@ Location:
 input,
 textarea,
 select,
-option,
+option
 {
 max-width: 100%;
 }
@@ -65,12 +65,13 @@ h6 {
 p {
     margin: 0;
 }
-:root{
-  --kumbh-font-family: 'Kumbh Sans', sans-serif;
-  --lora-font-family: 'Lora', serif;
-  --nunito-font-family: 'Nunito', sans-serif;
-  --outfit-font-family: 'Outfit', sans-serif;
-}
+:root {
+    --kumbh-font-family: 'Montserrat', sans-serif;
+    --lora-font-family: 'Montserrat', sans-serif;
+    --nunito-font-family: 'Montserrat', sans-serif;
+    --outfit-font-family: 'Montserrat', sans-serif;
+  }
+  
 
 body {
     font-family: var(--kumbh-font-family);
