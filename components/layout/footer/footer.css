@@ -1,0 +1,19 @@
+.mainBorderFooter{
+    height: 410px;
+    color:rgb(18, 9, 9);
+    
+}
+.mainBorderFooterPadding{
+    padding-left: 130px;
+    padding-right: 130px;
+    padding-top: 80px;
+    color:rgb(18, 9, 9);
+    margin-bottom: 60px;
+}
+.custom-placeholder::placeholder {
+    color: #FAFAFA !important; /* your placeholder color */
+    opacity: 1; /* ensures color shows fully */
+  }
+  .addressWidth{
+    width:80%
+  }

@@ -9,6 +9,11 @@ Location:
 ============================
 */
 
+/* Tailwind CSS Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 /*
 
@@ -11850,11 +11855,10 @@ img.elementors81 {
 }
 .border2 {
   width: 100%;
-  margin-bottom: 60px;
 }
 .border2 {
-  border: 1px solid #fff;
-  opacity: 0.1;
+  border: 1px solid white;
+  /* opacity: 0.1; */
 }
 .social-links-area ul li {
   display: inline-block;
@@ -12145,6 +12149,20 @@ img.elementor-1 {
   height: 32px;
   width: 32px;
   background: #343E5C;
+  line-height: 32px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  transition: all .4s ease-in-out;
+}
+.icon-social-linksFooter ul li {
+  display: inline-block;
+  margin-right: 16px;
+}
+.icon-social-linksFooter ul li a {
+  display: inline-block;
+
   line-height: 32px;
   text-align: center;
   border-radius: 50%;

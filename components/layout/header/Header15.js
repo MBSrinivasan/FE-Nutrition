@@ -1,6 +1,8 @@
 import Button from "@/components/reusableComponents/button/page";
 import { CaretDownOutlined } from "@ant-design/icons";
 
+
+
 import Link from "next/link";
 import { useState } from "react";
 
@@ -13,7 +15,10 @@ export default function Header15({ scroll, isMobileMenu, handleMobileMenu }) {
           className={`headermain-area header ${scroll ? "sticky" : ""}`}
           id="header"
         >
-          <div className="container">
+          <div
+            className="container-fluid"
+            style={{ paddingLeft: "113px", paddingRight: "113px" }}
+          >
             <div className="row">
               <div className="col-12">
                 <div className="header-elements">
@@ -27,9 +32,7 @@ export default function Header15({ scroll, isMobileMenu, handleMobileMenu }) {
                       <li className="mega-dropdawn">
                         <Link href="#">Home</Link>
                       </li>
-                      <li
-                        onMouseEnter={() => setOpen(true)}
-                      >
+                      <li onMouseEnter={() => setOpen(true)}>
                         <Link
                           href="/#about"
                           className="font-ks font-16 weight-500 color-1"
