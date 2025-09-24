@@ -25,7 +25,8 @@ export default function Footer3() {
                     <Input
                       placeholder="Enter your Email"
                       style={{
-                        width: "217px",
+                        width: "100%",
+                        maxWidth: "300px",
                         backgroundColor: "transparent",
                         color: "#FAFAFA",
                       }}
