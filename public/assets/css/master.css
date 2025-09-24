@@ -9266,7 +9266,7 @@ img.elementors15 {
   padding: 0 364px;
 }
 .contact1-section-area{
-  background-image: url(../images/background/service-benefits-bacground.png);
+
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -9359,10 +9359,10 @@ img.elementors15 {
 
 }
 .contact-main-box {
-  border-radius: 4px;
+  border-radius: 13px;
   background: #FFF;
   box-shadow: 0px 4px 48px 0px rgba(0, 0, 0, 0.09);
-  padding: 42px 32px;
+  padding: 30px 30px;
 }
 .contact-main-box .nice-select span {
     color: #7f7f7f;

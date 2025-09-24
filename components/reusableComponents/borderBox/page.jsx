@@ -2,9 +2,9 @@ import React from "react";
 
 const IconBorder = ({
   icon,
-  width = "50px",
-  height = "50px",
-  backgroundColor = "green",
+  width = "37px",
+  height = "37px",
+  backgroundColor = "transparent",
   borderRadius = "10px",
 }) => {
   return (

@@ -1,5 +1,5 @@
 .mainBorderFooter{
-    height: 410px;
+    height: 419px;
     color:rgb(18, 9, 9);
     
 }
@@ -16,4 +16,8 @@
   }
   .addressWidth{
     width:80%
+  }
+  .copyRight{
+    color:#FAFAFA;
+    padding: 16px;
   }
