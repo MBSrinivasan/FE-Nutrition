@@ -19,7 +19,7 @@ Location:
 input,
 textarea,
 select,
-option,
+option
 {
 max-width: 100%;
 }
@@ -65,12 +65,13 @@ h6 {
 p {
     margin: 0;
 }
-:root{
-  --kumbh-font-family: 'Kumbh Sans', sans-serif;
-  --lora-font-family: 'Lora', serif;
-  --nunito-font-family: 'Nunito', sans-serif;
-  --outfit-font-family: 'Outfit', sans-serif;
-}
+:root {
+    --kumbh-font-family: 'Montserrat', sans-serif;
+    --lora-font-family: 'Montserrat', sans-serif;
+    --nunito-font-family: 'Montserrat', sans-serif;
+    --outfit-font-family: 'Montserrat', sans-serif;
+  }
+  
 
 body {
     font-family: var(--kumbh-font-family);
@@ -181,7 +182,7 @@ textarea::placeholder {}
 }
 
 .color-18 {
-    color: #002147;
+    color: #000;
 }
 
 .colorp {
@@ -249,7 +250,10 @@ textarea::placeholder {}
 }
 
 .color34 {
-    color: #002147;
+    color: #464646;
+}
+.color100{
+    color:#4B5577
 }
 
 .color35 {
@@ -768,6 +772,9 @@ textarea::placeholder {}
 .weight-900 {
     font-weight: 900 !important;
 }
+.marginb-10 {
+    margin-bottom: 10px;
+}
 
 .margin-b32 {
     margin-bottom: 32px;
@@ -776,9 +783,18 @@ textarea::placeholder {}
 .margin-b24 {
     margin-bottom: 24px;
 }
+.margin-b10 {
+    margin-bottom: 10px;
+}
 
 .margin-b {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
+}
+.margin-b1 {
+    margin-bottom: 10px;
+}
+.margin-b38 {
+    margin-bottom: 38px;
 }
 
 .margin-b48 {

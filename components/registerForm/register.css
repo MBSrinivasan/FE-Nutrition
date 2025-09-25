@@ -1,0 +1,69 @@
+.registerForm {
+  padding-right: 190px;
+  margin-top: 50px;
+  padding-left: 190px;
+}
+.firstBox {
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.05);
+  height: 163px;
+}
+.splitBoxMain {
+  width: "100%";
+  height: 43px;
+  border-radius: 15px;
+  border: 0.5px solid #bbb;
+  background: #f6f6f6;
+  padding: 7px;
+}
+.buttonSplit {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+.buttonOne {
+  width: 50%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 400px;
+}
+.buttonTwo {
+  width: 50%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 400px;
+}
+.borderMain {
+  margin-right: 12px;
+}
+.informationMain {
+  margin-top: 6px;
+  color: #464646;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.formHeaderText {
+  color: #374151;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.marginSpaceForBorder{
+    margin-bottom: 23px;
+}
+
