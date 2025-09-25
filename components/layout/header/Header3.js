@@ -1,6 +1,7 @@
 import Link from "next/link"
 
-export default function Header15({ scroll, isMobileMenu, handleMobileMenu }) {
+
+export default function Header3({ scroll, isMobileMenu, handleMobileMenu }) {
     return (
         <>
             <header className="header about-bg d-none d-lg-block">
@@ -203,20 +204,83 @@ export default function Header15({ scroll, isMobileMenu, handleMobileMenu }) {
                                                                             Page <span><i className="fa-solid fa-arrow-right" /></span></span></Link>
                                                                     </div>
                                                                 </div>
-                                                                <Link href="/index12" className="font-ks font-40 lineh-52 weight-500 colorhp3 colorpera">Visa
+                                                                <Link href="/index12" className="font-ks font-40 lineh-52 weight-500 colorhp3 colorpera">VIsa
                                                                     Consulting O2</Link>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </ul>
                                             </li>
-                                            <li><Link href="/#about" className="font-ks font-16 weight-500 color-1">About Us</Link></li>
-                                            <li><Link href="/#service" className="font-ks font-16 weight-500 color-1">Our Services</Link>
+                                            <li><Link href="/about" className="font-ks font-16 weight-500 color-1">About Us</Link>
                                             </li>
-                                            <li><Link href="/#testimonial" className="font-ks font-16 weight-500 color-1">Testimonials</Link></li>
-                                            <li><Link href="/#blog" className="font-ks font-16 weight-500 color-1">Our Blogs </Link></li>
-                                            <li><Link href="/#pricing" className="font-ks font-16 weight-500 color-1">Pricing</Link></li>
-                                            <li><Link href="/#contact" className="font-ks font-16 weight-500 color-1">Contact </Link></li>
+                                            <li><Link href="#" className="font-ks font-16 weight-500 color-1">Our Services <span><i className="fa-solid fa-angle-down" /></span></Link>
+                                                <ul className="dropdown-padding">
+                                                    <li><Link href="/about" className="font-ks font-16 weight-500 color"> Our
+                                                        Service <span><i className="fa-solid fa-angle-right" /></span></Link>
+                                                        <ul>
+                                                            <li><Link href="/servicev1" className="font-ks font-16 weight-500 color">Service V1</Link></li>
+                                                            <li><Link href="/servicev2" className="font-ks font-16 weight-500 color">Service V2</Link></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><Link href="/about" className="font-ks font-16 weight-500 color">Service
+                                                        Details <span><i className="fa-solid fa-angle-right" /></span></Link>
+                                                        <ul>
+                                                            <li><Link href="/serviceleft" className="font-ks font-16 weight-500 color">Service Details
+                                                                Left</Link></li>
+                                                            <li><Link href="/serviceright" className="font-ks font-16 weight-500 color">Service Details
+                                                                Right</Link></li>
+                                                            <li><Link href="/servicemiddle" className="font-ks font-16 weight-500 color">Single Service</Link>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><Link href="#" className="font-ks font-16 weight-500 color-1">Case Studies <span><i className="fa-solid fa-angle-down" /></span></Link>
+                                                <ul>
+                                                    <li><Link href="/casestudy1" className="font-ks font-16 weight-500 color">Case
+                                                        Study</Link></li>
+                                                    <li><Link href="/caseleft" className="font-ks font-16 weight-500 color">Case
+                                                        Details left</Link></li>
+                                                    <li><Link href="/caseright" className="font-ks font-16 weight-500 color">Case
+                                                        Details Right</Link></li>
+                                                    <li><Link href="/casemiddle" className="font-ks font-16 weight-500 color">Single Case</Link></li>
+                                                </ul>
+                                            </li>
+                                            <li><Link href="#" className="font-ks font-16 weight-500 color-1">Our Blogs <span><i className="fa-solid fa-angle-down" /></span></Link>
+                                                <ul>
+                                                    <li><Link href="/blog2" className="font-ks font-16 weight-500 color">Our Blog
+                                                        <span><i className="fa-solid fa-angle-right" /></span></Link>
+                                                        <ul>
+                                                            <li><Link href="/blog2" className="font-ks font-16 weight-500 color">Blog One</Link></li>
+                                                            <li><Link href="/blog3" className="font-ks font-16 weight-500 color">Blog Two</Link></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><Link href="/blogleft" className="font-ks font-16 weight-500 color">Blog
+                                                        Details <span><i className="fa-solid fa-angle-right" /></span></Link>
+                                                        <ul>
+                                                            <li><Link href="/blogleft" className="font-ks font-16 weight-500 color">Blog Details
+                                                                Left</Link></li>
+                                                            <li><Link href="/blogright" className="font-ks font-16 weight-500 color">BLog Details
+                                                                Right</Link></li>
+                                                            <li><Link href="/blogmiddle" className="font-ks font-16 weight-500 color">Single Blog</Link>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><Link href="#" className="font-ks font-16 weight-500 color-1">Pages <span><i className="fa-solid fa-angle-down" /></span></Link>
+                                                <ul>
+                                                    <li><Link href="#" className="font-ks font-16 weight-500 color-1">Testimonials</Link>
+                                                    </li>
+                                                    <li><Link href="/team" className="font-ks font-16 weight-500 color">Our
+                                                        Team</Link></li>
+                                                    <li><Link href="/team-details" className="font-ks font-16 weight-500 color">Single Team</Link></li>
+                                                    <li><Link href="/contact1" className="font-ks font-16 weight-500 color">Contact
+                                                        1</Link></li>
+                                                    <li><Link href="/contact2" className="font-ks font-16 weight-500 color">Contact
+                                                        2</Link></li>
+                                                </ul>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div className="contact-3 d-lg-block d-none">

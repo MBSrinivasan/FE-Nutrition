@@ -9,11 +9,6 @@ Location:
 ============================
 */
 
-/* Tailwind CSS Directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 
 /*
 
@@ -51,14 +46,7 @@ CLIENT AREA CSS
 FOOTER AREA CSS
 ===========================
 
-
-
 /*----===========PRELOADER AREA CSS----============*/
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
 #pre-load {
 	background: #1D2940;
 	bottom: 0;
@@ -673,9 +661,6 @@ ul.mega-dropdawn-ul.backgroudnone {
 }
 .header-area {
   padding: 30px 0;
-}
-.headermain-area {
-  padding: 18px 0;
 }
 header.about-bg {position: absolute;}
 img.white-line-img {
@@ -9266,7 +9251,7 @@ img.elementors15 {
   padding: 0 364px;
 }
 .contact1-section-area{
-
+  background-image: url(../images/background/service-benefits-bacground.png);
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -9359,10 +9344,10 @@ img.elementors15 {
 
 }
 .contact-main-box {
-  border-radius: 13px;
+  border-radius: 4px;
   background: #FFF;
   box-shadow: 0px 4px 48px 0px rgba(0, 0, 0, 0.09);
-  padding: 30px 30px;
+  padding: 42px 32px;
 }
 .contact-main-box .nice-select span {
     color: #7f7f7f;
@@ -11855,10 +11840,11 @@ img.elementors81 {
 }
 .border2 {
   width: 100%;
+  margin-bottom: 60px;
 }
 .border2 {
-  border: 1px solid white;
-  /* opacity: 0.1; */
+  border: 1px solid #fff;
+  opacity: 0.1;
 }
 .social-links-area ul li {
   display: inline-block;
@@ -12149,20 +12135,6 @@ img.elementor-1 {
   height: 32px;
   width: 32px;
   background: #343E5C;
-  line-height: 32px;
-  text-align: center;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 16px;
-  transition: all .4s ease-in-out;
-}
-.icon-social-linksFooter ul li {
-  display: inline-block;
-  margin-right: 16px;
-}
-.icon-social-linksFooter ul li a {
-  display: inline-block;
-
   line-height: 32px;
   text-align: center;
   border-radius: 50%;
