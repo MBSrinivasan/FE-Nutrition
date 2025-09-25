@@ -1,21 +1,32 @@
 import Link from "next/link";
 import "./register.css";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import IconBorder from "../reusableComponents/borderBox/page";
 import { Checkbox, Form, Input, Select, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { renderLabel } from "@/utils/constant";
 import Button from "../reusableComponents/button/page";
 import { CheckCircleOutlined } from "@ant-design/icons";
+import countryList from "react-select-country-list";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const { Option } = Select;
 
 export default function RegisterForm() {
   const [active, setActive] = useState("buyer");
+  const [phone, setPhone] = useState("");
+
+  const options = useMemo(() => countryList().getData(), []);
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log("Form Values:", values);
+  };
+  const handleValuesChange = (changedValues) => {
+    if (changedValues.email) {
+      form.setFieldsValue({ username: changedValues.email });
+    }
   };
   return (
     <>
@@ -100,6 +111,7 @@ export default function RegisterForm() {
                       layout="vertical"
                       onFinish={onFinish}
                       requiredMark={false}
+                      onValuesChange={handleValuesChange}
                     >
                       <Form.Item
                         name="companyName"
@@ -129,27 +141,23 @@ export default function RegisterForm() {
                           </Select>
                         </Form.Item>
 
-                        <Form.Item
-                          name="country"
-                          label="Country"
-                          
-                        >
+                        <Form.Item name="country" label="Country">
                           <Select
+                            showSearch
                             placeholder="Select Country"
-                            style={{ height: "48px" }}
-                          >
-                            <Option value="india">India</Option>
-                            <Option value="usa">USA</Option>
-                            <Option value="uk">UK</Option>
-                          </Select>
+                            style={{ width: "100%", height: "48px" }}
+                            options={options} // array of { label: "India", value: "IN" }, etc.
+                            optionFilterProp="label"
+                            filterOption={(input, option) =>
+                              (option?.label ?? "")
+                                .toLowerCase()
+                                .startsWith(input.toLowerCase())
+                            }
+                          />
                         </Form.Item>
                       </div>
 
-                      <Form.Item
-                        name="address"
-                        label="Business Address"
-                        
-                      >
+                      <Form.Item name="address" label="Business Address">
                         <Input.TextArea
                           rows={5}
                           placeholder="Enter your complete business address"
@@ -248,10 +256,17 @@ export default function RegisterForm() {
                           ]}
                           label={renderLabel("Phone Number", true)}
                         >
-                          <Input
-                          type="number" 
+                          {/* <Input
+                            type="number"
                             placeholder="+1 (555) 123-4567"
                             style={{ height: "48px" }}
+                          /> */}
+                          <PhoneInput
+                            country={"in"} // default country
+                            enableSearch={true} // ✅ search bar for country list
+                            disableSearchIcon={false}
+                            inputStyle={{ height: "48px", width: "100%" }}
+                            buttonStyle={{ border: "1px solid #d9d9d9" }} // match AntD style
                           />
                         </Form.Item>
                       </div>
@@ -528,28 +543,6 @@ export default function RegisterForm() {
                         </div>
                       </Form.Item>
                     </Form>
-
-                    {/* Sign in link - Outside the form
-                    <div style={{ 
-                      textAlign: "center", 
-                      padding: "20px 0",
-                      marginTop: "20px"
-                    }}>
-                      <span style={{ color: "#374151", fontSize: "14px" }}>
-                        Already have an account?{" "}
-                      </span>
-                      <Link 
-                        href="/login" 
-                        style={{ 
-                          color: "#7A1F3D", 
-                          textDecoration: "none",
-                          fontSize: "14px",
-                          fontWeight: "500"
-                        }}
-                      >
-                        Sign in here
-                      </Link>
-                    </div> */}
                   </div>
                 </div>
               </div>
