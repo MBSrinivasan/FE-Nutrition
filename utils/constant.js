@@ -5,7 +5,7 @@ export const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ7XCJpZFwiOlwiZGNjNTA3NDAtY
 
 export const renderLabel = (label, required)  => (
     <div className="flex justify-between w-full marginb-5]">
-      <span className="text-[13px] font-semibold text-[#374151]">{label}</span>
-      {required && <span style={{color:"red"}}>*</span>}
+      <span className="text-[13px] font-semibold text-[#374151]" style={{marginRight:"2px"}}>{label}</span>
+      {required && <span style={{color:"red"}}>{" "}*</span>}
     </div>
   );

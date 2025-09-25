@@ -6,7 +6,7 @@ import { Checkbox, Form, Input, Select, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { renderLabel } from "@/utils/constant";
 import Button from "../reusableComponents/button/page";
-import { CheckCircleOutlined } from "@ant-design/icons"
+import { CheckCircleOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
@@ -94,24 +94,35 @@ export default function RegisterForm() {
                       </div>
                       <div className="informationMain">Company Information</div>
                     </div>
-                    
 
-                    <Form form={form} layout="vertical" onFinish={onFinish} requiredMark={false}>
+                    <Form
+                      form={form}
+                      layout="vertical"
+                      onFinish={onFinish}
+                      requiredMark={false}
+                    >
                       <Form.Item
                         name="companyName"
-                        rules={[{ required: true, message: "Please enter company name" }]}
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please enter company name",
+                          },
+                        ]}
                         label={renderLabel("Legal Company Name", true)}
                       >
-                        <Input placeholder="Enter your legal company name" style={{ height: "48px",  }} />
+                        <Input
+                          placeholder="Enter your legal company name"
+                          style={{ height: "48px" }}
+                        />
                       </Form.Item>
 
                       <div className="grid grid-cols-2 gap-4">
-                        <Form.Item
-                          name="businessType"
-                          rules={[{ required: true, message: "Please enter company name" }]}
-                        label={renderLabel("Business Type", true)}
-                        >
-                          <Select placeholder="Select business type" style={{ height: "48px" }}>
+                        <Form.Item name="businessType" label="Business Type">
+                          <Select
+                            placeholder="Select business type"
+                            style={{ height: "48px" }}
+                          >
                             <Option value="manufacturer">Manufacturer</Option>
                             <Option value="trader">Trader</Option>
                             <Option value="brand">Brand</Option>
@@ -121,14 +132,12 @@ export default function RegisterForm() {
                         <Form.Item
                           name="country"
                           label="Country"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Please select country",
-                            },
-                          ]}
+                          
                         >
-                          <Select placeholder="Select Country" style={{ height: "48px" }}>
+                          <Select
+                            placeholder="Select Country"
+                            style={{ height: "48px" }}
+                          >
                             <Option value="india">India</Option>
                             <Option value="usa">USA</Option>
                             <Option value="uk">UK</Option>
@@ -139,9 +148,7 @@ export default function RegisterForm() {
                       <Form.Item
                         name="address"
                         label="Business Address"
-                        rules={[
-                          { required: true, message: "Please enter address" },
-                        ]}
+                        
                       >
                         <Input.TextArea
                           rows={5}
@@ -150,11 +157,19 @@ export default function RegisterForm() {
                       </Form.Item>
 
                       <Form.Item
-                        name="website"
-                        label="Website URL"
-                        rules={[{ type: "url", message: "Enter a valid URL" }]}
+                        name="websiteURL"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please enter Website URL",
+                          },
+                        ]}
+                        label={renderLabel("Website URL", true)}
                       >
-                        <Input placeholder="https://www.yourcompany.com" style={{ height: "48px" }} />
+                        <Input
+                          placeholder="https://www.yourcompany.com"
+                          style={{ height: "48px" }}
+                        />
                       </Form.Item>
 
                       {/* =================== Primary Contact =================== */}
@@ -173,58 +188,71 @@ export default function RegisterForm() {
                         </div>
                         <div className="informationMain">Primary Contact</div>
                       </div>
- 
+
                       <div className="grid grid-cols-2 gap-4">
                         <Form.Item
                           name="fullName"
-                          label="Full Name"
                           rules={[
                             {
                               required: true,
                               message: "Please enter full name",
                             },
                           ]}
+                          label={renderLabel("Full Name", true)}
                         >
-                          <Input placeholder="Enter your full name" style={{ height: "48px"}} />
+                          <Input
+                            placeholder="Enter your full name"
+                            style={{ height: "48px" }}
+                          />
                         </Form.Item>
 
                         <Form.Item
                           name="designation"
-                          label="Designation/Role"
                           rules={[
                             {
                               required: true,
                               message: "Please enter designation",
                             },
                           ]}
+                          label={renderLabel("Designation/Role", true)}
                         >
-                          <Input placeholder="e.g., QA Manager, Sales Representative" style={{ height: "48px" }} />
+                          <Input
+                            placeholder="e.g., QA Manager, Sales Representative"
+                            style={{ height: "48px" }}
+                          />
                         </Form.Item>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
                         <Form.Item
                           name="email"
-                          label="Email Address"
                           rules={[
                             { required: true, message: "Please enter email" },
                             { type: "email", message: "Enter a valid email" },
                           ]}
+                          label={renderLabel("Email Address", true)}
                         >
-                          <Input placeholder="your.email@company.com" style={{ height: "48px" }} />
+                          <Input
+                            placeholder="your.email@company.com"
+                            style={{ height: "48px" }}
+                          />
                         </Form.Item>
 
                         <Form.Item
                           name="phone"
-                          label="Phone Number"
                           rules={[
                             {
                               required: true,
                               message: "Please enter phone number",
                             },
                           ]}
+                          label={renderLabel("Phone Number", true)}
                         >
-                          <Input placeholder="+1 (555) 123-4567" style={{ height: "48px" }} />
+                          <Input
+                          type="number" 
+                            placeholder="+1 (555) 123-4567"
+                            style={{ height: "48px" }}
+                          />
                         </Form.Item>
                       </div>
 
@@ -242,16 +270,24 @@ export default function RegisterForm() {
                             }
                           />
                         </div>
-                        <div className="informationMain">Compliance & Legal</div>
+                        <div className="informationMain">
+                          Compliance & Legal
+                        </div>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
                         <Form.Item name="taxId" label="Local Tax ID">
-                          <Input placeholder="Example: PAN, VAT, ITN" style={{ height: "48px" }} />
+                          <Input
+                            placeholder="Example: PAN, VAT, ITN"
+                            style={{ height: "48px" }}
+                          />
                         </Form.Item>
 
                         <Form.Item name="duns" label="DUNS Number">
-                          <Input placeholder="Enter DUNS number (if applicable)" style={{ height: "48px" }} />
+                          <Input
+                            placeholder="Enter DUNS number (if applicable)"
+                            style={{ height: "48px" }}
+                          />
                         </Form.Item>
                       </div>
 
@@ -278,31 +314,46 @@ export default function RegisterForm() {
                             e.currentTarget.style.borderColor = "#d1d5db";
                           }}
                         >
-                          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
-                            <div style={{ 
-                              width: "48px", 
-                              height: "48px", 
-                              display: "flex", 
-                              alignItems: "center", 
-                              justifyContent: "center",
-                              backgroundColor: "#f3f4f6",
-                              borderRadius: "50%"
-                            }}>
-                              <UploadOutlined style={{ fontSize: "24px", color: "#6b7280" }} />
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              gap: "16px",
+                            }}
+                          >
+                            <div
+                              style={{
+                                width: "48px",
+                                height: "48px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                backgroundColor: "#f3f4f6",
+                                borderRadius: "50%",
+                              }}
+                            >
+                              <UploadOutlined
+                                style={{ fontSize: "24px", color: "#6b7280" }}
+                              />
                             </div>
                             <div>
-                              <div style={{ 
-                                fontSize: "16px", 
-                                fontWeight: "600", 
-                                color: "#374151", 
-                                marginBottom: "8px" 
-                              }}>
+                              <div
+                                style={{
+                                  fontSize: "16px",
+                                  fontWeight: "600",
+                                  color: "#374151",
+                                  marginBottom: "8px",
+                                }}
+                              >
                                 Upload NDA Document
                               </div>
-                              <div style={{ 
-                                fontSize: "14px", 
-                                color: "#6b7280" 
-                              }}>
+                              <div
+                                style={{
+                                  fontSize: "14px",
+                                  color: "#6b7280",
+                                }}
+                              >
                                 PDF, DOC, or DOCX up to 10MB
                               </div>
                             </div>
@@ -331,36 +382,48 @@ export default function RegisterForm() {
                             }
                           />
                         </div>
-                        <div className="informationMain">Portal Credentials</div>
+                        <div className="informationMain">
+                          Portal Credentials
+                        </div>
                       </div>
 
                       <Form.Item
                         name="username"
-                        label="Username"
                         rules={[
                           { required: true, message: "Please enter username" },
                         ]}
+                        label={renderLabel("Username", true)}
                       >
-                        <Input placeholder="Choose a username (usually your email)" style={{ height: "48px" }} />
+                        <Input
+                          placeholder="Choose a username (usually your email)"
+                          style={{ height: "48px" }}
+                        />
                       </Form.Item>
 
                       <div className="grid grid-cols-2 gap-4">
                         <Form.Item
                           name="password"
-                          label="Password"
+                          label={renderLabel("Password", true)}
                           rules={[
                             {
                               required: true,
                               message: "Please enter password",
                             },
+                            {
+                              min: 8,
+                              message: "Password must be at least 8 characters",
+                            },
                           ]}
                         >
-                          <Input.Password placeholder="Create a strong password" style={{ height: "48px" }} />
+                          <Input.Password
+                            placeholder="Create a strong password"
+                            style={{ height: "48px" }}
+                          />
                         </Form.Item>
 
                         <Form.Item
                           name="confirmPassword"
-                          label="Confirm Password"
+                          label={renderLabel("Confirm Password", true)}
                           dependencies={["password"]}
                           rules={[
                             {
@@ -382,14 +445,17 @@ export default function RegisterForm() {
                             }),
                           ]}
                         >
-                          <Input.Password placeholder="Confirm your password" style={{ height: "48px" }} />
+                          <Input.Password
+                            placeholder="Confirm your password"
+                            style={{ height: "48px" }}
+                          />
                         </Form.Item>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
                         <Form.Item
                           name="securityQuestion"
-                          label="Security Question"
+                          label={renderLabel("Security Question", true)}
                           rules={[
                             {
                               required: true,
@@ -397,7 +463,10 @@ export default function RegisterForm() {
                             },
                           ]}
                         >
-                          <Select placeholder="Select a security question" style={{ height: "48px" }}>
+                          <Select
+                            placeholder="Select a security question"
+                            style={{ height: "48px" }}
+                          >
                             <Option value="pet">
                               What is your pet's name?
                             </Option>
@@ -412,16 +481,32 @@ export default function RegisterForm() {
 
                         <Form.Item
                           name="securityAnswer"
-                          label="Security Answer"
+                          label={renderLabel("Security Answer", true)}
                           rules={[
                             { required: true, message: "Please enter answer" },
                           ]}
                         >
-                          <Input placeholder="Enter your answer" style={{ height: "48px" }} />
+                          <Input
+                            placeholder="Enter your answer"
+                            style={{ height: "48px" }}
+                          />
                         </Form.Item>
                       </div>
 
-                      <Form.Item name="mfa" valuePropName="checked">
+                      <Form.Item
+                        name="mfa"
+                        valuePropName="checked"
+                        rules={[
+                          {
+                            validator: (_, value) =>
+                              value
+                                ? Promise.resolve()
+                                : Promise.reject(
+                                    new Error("Please enable MFA to continue")
+                                  ),
+                          },
+                        ]}
+                      >
                         <Checkbox>
                           Enable Multi-Factor Authentication (MFA) for enhanced
                           security
@@ -430,25 +515,20 @@ export default function RegisterForm() {
 
                       {/* =================== Submit =================== */}
                       <Form.Item>
-
                         <div className="flex justify-center w-100">
-
-                        <Button icon={<CheckCircleOutlined />} width="267px" height="60px" borderRadius="10px" >Complete Registration</Button>
-                        {/* <Button
-                          type="primary"
-                          htmlType="submit"
-                          style={{
-                            backgroundColor: "#7A1F3D",
-                            borderRadius: "8px",
-                            padding: "0 24px",
-                          }}
-                        >
-                          Complete Registration
-                        </Button> */}
+                          <Button
+                            icon={<CheckCircleOutlined />}
+                            width="267px"
+                            height="60px"
+                            borderRadius="10px"
+                            htmlType="submit"
+                          >
+                            Complete Registration
+                          </Button>
                         </div>
                       </Form.Item>
                     </Form>
-                    
+
                     {/* Sign in link - Outside the form
                     <div style={{ 
                       textAlign: "center", 
@@ -477,28 +557,30 @@ export default function RegisterForm() {
           </div>
         </div>
         {/* Sign in link - Outside the form */}
-        <div style={{ 
-                      textAlign: "center", 
-                      padding: "20px 0",
-                      height: "20px"
-                    }}>
-                      <span style={{ color: "#374151", fontSize: "16px",
-                        fontWeight: "600px"
-                       }}>
-                        Already have an account?{" "}
-                      </span>
-                      <Link 
-                        href="/login" 
-                        style={{ 
-                          color: "#7A1F3D", 
-                          textDecoration: "none",
-                          fontSize: "16px",
-                          fontWeight: "600"
-                        }}
-                      >
-                        Sign in here
-                      </Link>
-                    </div>
+        <div
+          style={{
+            textAlign: "center",
+            padding: "20px 0",
+            height: "20px",
+          }}
+        >
+          <span
+            style={{ color: "#374151", fontSize: "16px", fontWeight: "600px" }}
+          >
+            Already have an account?{" "}
+          </span>
+          <Link
+            href="/login"
+            style={{
+              color: "#7A1F3D",
+              textDecoration: "none",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
+            Sign in here
+          </Link>
+        </div>
       </div>
     </>
   );
