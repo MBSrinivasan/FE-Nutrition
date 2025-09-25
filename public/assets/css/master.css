@@ -12699,4 +12699,55 @@ a.solutions2 span i {
 
 
 
+:where(.css-dev-only-do-not-override-1odpy5d).ant-input-outlined:focus, :where(.css-dev-only-do-not-override-1odpy5d).ant-input-outlined:focus-within {
+  border-color: #7A1F3D !important;
+
+}
+.ant-input:hover,
+.ant-input:focus {
+  border-color: #7A1F3D !important;   /* your custom color */
+   box-shadow: none !important; /* same color with 20% opacity */
+}
+
+/* Applies to all AntD input, textarea, password, and select */
+.ant-input:hover,
+.ant-input:focus,
+.ant-input-affix-wrapper:hover,
+.ant-input-affix-wrapper-focused,
+.ant-select-selector:hover,
+.ant-select-focused,
+.ant-input-textarea:focus,
+.ant-input-textarea:hover {
+  border-color: #7A1F3D !important;
+  box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important;
+}
+
+/* For react-phone-input-2 */
+.react-tel-input .form-control:focus,
+.react-tel-input .form-control:hover {
+  border-color: #7A1F3D !important;
+  box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important;
+}
+/* When the phone input field is hovered */
+.react-tel-input .form-control:hover + .flag-dropdown .selected-flag,
+.react-tel-input .form-control:focus + .flag-dropdown .selected-flag {
+  border-top: 1px solid #7A1F3D !important;
+  border-bottom: 1px solid #7A1F3D !important;
+  border-left: 1px solid #7A1F3D !important;
+  border-right: none !important; /* keep dropdown side clean */
+}
+
+.react-tel-input .selected-flag:hover{
+  border-top: 1px solid #7A1F3D !important;
+  border-bottom: 1px solid #7A1F3D !important;
+  border-left: 1px solid #7A1F3D !important;
+  border-right: none !important; 
+}
+
+
+
+
+
+
+
 
