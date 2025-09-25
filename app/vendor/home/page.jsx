@@ -125,16 +125,16 @@ export default function MiniDrawer() {
   };
 
   const menuItems = [
-    { text: 'Dashboard', icon: <img src="/assets/images/emojis/dashboard.svg" alt="Dashboard" style={{ width: '20px', height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />, index: 0 },
-    { text: 'Profile', icon: <img src="/assets/images/emojis/profile.svg" alt="Profile" style={{ width: '20px', height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />, index: 1 },
-    { text: 'My Products & Services', icon: <img src="/assets/images/emojis/my products.svg" alt="Products" style={{ width: '20px', height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />, index: 2 },
-    { text: 'Messages', icon: <img src="/assets/images/emojis/messages.svg" alt="Messages" style={{ width: '20px', height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />, index: 3 },
-    { text: 'My Projects', icon: <img src="/assets/images/emojis/my projects.svg" alt="Projects" style={{ width: '20px', height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />, index: 4 },
+    { text: 'Dashboard', iconSrc: '/assets/images/allimages/dashboard.svg', iconAlt: 'Dashboard', index: 0 },
+    { text: 'Profile', iconSrc: '/assets/images/allimages/profile.svg', iconAlt: 'Profile', index: 1 },
+    { text: 'My Products & Services', iconSrc: '/assets/images/allimages/my products.svg', iconAlt: 'Products', index: 2 },
+    { text: 'Messages', iconSrc: '/assets/images/allimages/messages.svg', iconAlt: 'Messages', index: 3 },
+    { text: 'My Projects', iconSrc: '/assets/images/allimages/my projects.svg', iconAlt: 'Projects', index: 4 },
   ];
 
   const bottomMenuItems = [
-    { text: 'Calendar', icon: <img src="/assets/images/emojis/calender.svg" alt="Calendar" style={{ width: '20px', height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />, index: 5 },
-    { text: 'Sourcing', icon: <img src="/assets/images/emojis/sourcing.svg" alt="Sourcing" style={{ width: '20px', height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />, index: 6 },
+    { text: 'Calendar', iconSrc: '/assets/images/allimages/calender.svg', iconAlt: 'Calendar', index: 5 },
+    { text: 'Sourcing', iconSrc: '/assets/images/allimages/sourcing.svg', iconAlt: 'Sourcing', index: 6 },
   ];
 
   const handleListItemClick = useCallback((index) => {
@@ -252,7 +252,7 @@ export default function MiniDrawer() {
               size="small"
             >
               <img 
-                src="/assets/images/emojis/logout icon.svg"
+                src="/assets/images/allimages/logout icon.svg"
                 alt="Logout"
                 style={{
                   width: '16px',
@@ -306,7 +306,7 @@ export default function MiniDrawer() {
                   backgroundColor: selectedIndex === item.index && open ? 'white' : 'transparent',
                   marginLeft: selectedIndex === item.index && open ? '4px' : '0px',
                   borderLeft: selectedIndex === item.index && open ? '10px solid white' : 'none',
-                  boxShadow: selectedIndex === item.index && open ? 'inset 12px 0 0 0 #7A1F3D' : 'none',
+                  // boxShadow: selectedIndex === item.index && open ? 'inset 12px 0 0 0 #7A1F3D' : 'none',
                   transition: 'background-color 0.2s, margin-left 0.2s, border-left 0.2s, box-shadow 0.2s',
                   overflow: 'visible',
                   position: 'relative',
@@ -329,18 +329,6 @@ export default function MiniDrawer() {
                   '&.Mui-selected': {
                     backgroundColor: open ? 'white' : 'transparent',
                   },
-                  '&::before': selectedIndex === item.index && open ? {
-                    content: '""',
-                    position: 'absolute',
-                    left: '-12px',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    width: 0,
-                    height: 0,
-                    borderTop: '6px solid transparent',
-                    borderBottom: '12px solid transparent',
-                    borderRight: '12px solid white',
-                  } : {},
                   ...(open
                     ? {
                         justifyContent: 'initial',
@@ -364,7 +352,16 @@ export default function MiniDrawer() {
                         }),
                   }}
                 >
-                  {item.icon}
+                  <img 
+                    src={item.iconSrc} 
+                    alt={item.iconAlt} 
+                    style={{ 
+                      width: '20px', 
+                      height: '20px', 
+                      objectFit: 'contain', 
+                      filter: selectedIndex === item.index && open ? 'brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(3656%) hue-rotate(329deg) brightness(89%) contrast(89%)' : 'brightness(0) invert(1)'
+                    }} 
+                  />
                 </ListItemIcon>
                 <ListItemText
                   primary={item.text}
@@ -468,7 +465,7 @@ export default function MiniDrawer() {
                   backgroundColor: selectedIndex === item.index && open ? 'white' : 'transparent',
                   marginLeft: selectedIndex === item.index && open ? '4px' : '0px',
                   borderLeft: selectedIndex === item.index && open ? '10px solid white' : 'none',
-                  boxShadow: selectedIndex === item.index && open ? 'inset 12px 0 0 0 #7A1F3D' : 'none',
+                  // boxShadow: selectedIndex === item.index && open ? 'inset 12px 0 0 0 #7A1F3D' : 'none',
                   transition: 'background-color 0.2s, margin-left 0.2s, border-left 0.2s, box-shadow 0.2s',
                   overflow: 'visible',
                   position: 'relative',
@@ -490,18 +487,6 @@ export default function MiniDrawer() {
                   '&.Mui-selected': {
                     backgroundColor: open ? 'white' : 'transparent',
                   },
-                  '&::before': selectedIndex === item.index && open ? {
-                    content: '""',
-                    position: 'absolute',
-                    left: '-12px',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    width: 0,
-                    height: 0,
-                    borderTop: '6px solid transparent',
-                    borderBottom: '12px solid transparent',
-                    borderRight: '12px solid white',
-                  } : {},
                   ...(open
                     ? {
                         justifyContent: 'initial',
@@ -525,7 +510,16 @@ export default function MiniDrawer() {
                         }),
                   }}
                 >
-                  {item.icon}
+                  <img 
+                    src={item.iconSrc} 
+                    alt={item.iconAlt} 
+                    style={{ 
+                      width: '20px', 
+                      height: '20px', 
+                      objectFit: 'contain', 
+                      filter: selectedIndex === item.index && open ? 'brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(3656%) hue-rotate(329deg) brightness(89%) contrast(89%)' : 'brightness(0) invert(1)'
+                    }} 
+                  />
                 </ListItemIcon>
                 <ListItemText
                   primary={
@@ -537,7 +531,7 @@ export default function MiniDrawer() {
                       }}>{item.text}</span>
                       {item.text === 'Sourcing' && (
                         <img 
-                          src="/assets/images/emojis/lock.svg"
+                          src="/assets/images/allimages/lock.svg"
                           alt="Lock"
                           style={{
                             width: '12px',
@@ -618,7 +612,7 @@ export default function MiniDrawer() {
                 }}
                 endIcon={
                   <img 
-                    src="/assets/images/emojis/arrow.svg"
+                    src="/assets/images/allimages/arrow.svg"
                     alt="Arrow"
                     style={{
                       width: '16px',
