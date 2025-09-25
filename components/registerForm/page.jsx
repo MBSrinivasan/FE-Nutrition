@@ -2,9 +2,12 @@ import Link from "next/link";
 import "./register.css";
 import { useState } from "react";
 import IconBorder from "../reusableComponents/borderBox/page";
-import { Button, Checkbox, Form, Input, Select, Upload } from "antd";
+import { Checkbox, Form, Input, Select, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { renderLabel } from "@/utils/constant";
+import Button from "../reusableComponents/button/page";
+import { CheckCircleOutlined } from "@ant-design/icons"
+
 const { Option } = Select;
 
 export default function RegisterForm() {
@@ -108,7 +111,7 @@ export default function RegisterForm() {
                           rules={[{ required: true, message: "Please enter company name" }]}
                         label={renderLabel("Business Type", true)}
                         >
-                          <Select placeholder="Select business type">
+                          <Select placeholder="Select business type" style={{ height: "48px" }}>
                             <Option value="manufacturer">Manufacturer</Option>
                             <Option value="trader">Trader</Option>
                             <Option value="brand">Brand</Option>
@@ -125,7 +128,7 @@ export default function RegisterForm() {
                             },
                           ]}
                         >
-                          <Select placeholder="Select Country">
+                          <Select placeholder="Select Country" style={{ height: "48px" }}>
                             <Option value="india">India</Option>
                             <Option value="usa">USA</Option>
                             <Option value="uk">UK</Option>
@@ -141,7 +144,7 @@ export default function RegisterForm() {
                         ]}
                       >
                         <Input.TextArea
-                          rows={2}
+                          rows={5}
                           placeholder="Enter your complete business address"
                         />
                       </Form.Item>
@@ -151,27 +154,25 @@ export default function RegisterForm() {
                         label="Website URL"
                         rules={[{ type: "url", message: "Enter a valid URL" }]}
                       >
-                        <Input placeholder="https://www.yourcompany.com" />
+                        <Input placeholder="https://www.yourcompany.com" style={{ height: "48px" }} />
                       </Form.Item>
 
                       {/* =================== Primary Contact =================== */}
-                  
-                      <div className="d-flex">
-                      <div className="borderMain">
-                        {" "}
-                        <IconBorder
-                          icon={
-                            <img
-                              src="assets/images/icons-images/Company-Information.svg"
-                              alt="icon"
-                              width={100}
-                              height={100}
-                            />
-                          }
-                        />
+                      <div className="d-flex marginSpaceForBorder">
+                        <div className="borderMain">
+                          <IconBorder
+                            icon={
+                              <img
+                                src="assets/images/icons-images/Primary-Contact.svg"
+                                alt="icon"
+                                width={100}
+                                height={100}
+                              />
+                            }
+                          />
+                        </div>
+                        <div className="informationMain">Primary Contact</div>
                       </div>
-                      <div className="informationMain">Primary Contact</div>
-                    </div>
  
                       <div className="grid grid-cols-2 gap-4">
                         <Form.Item
@@ -184,7 +185,7 @@ export default function RegisterForm() {
                             },
                           ]}
                         >
-                          <Input placeholder="Enter your full name" />
+                          <Input placeholder="Enter your full name" style={{ height: "48px"}} />
                         </Form.Item>
 
                         <Form.Item
@@ -197,7 +198,7 @@ export default function RegisterForm() {
                             },
                           ]}
                         >
-                          <Input placeholder="e.g., QA Manager, Sales Representative" />
+                          <Input placeholder="e.g., QA Manager, Sales Representative" style={{ height: "48px" }} />
                         </Form.Item>
                       </div>
 
@@ -210,7 +211,7 @@ export default function RegisterForm() {
                             { type: "email", message: "Enter a valid email" },
                           ]}
                         >
-                          <Input placeholder="your.email@company.com" />
+                          <Input placeholder="your.email@company.com" style={{ height: "48px" }} />
                         </Form.Item>
 
                         <Form.Item
@@ -223,31 +224,90 @@ export default function RegisterForm() {
                             },
                           ]}
                         >
-                          <Input placeholder="+1 (555) 123-4567" />
+                          <Input placeholder="+1 (555) 123-4567" style={{ height: "48px" }} />
                         </Form.Item>
                       </div>
 
                       {/* =================== Compliance & Legal =================== */}
-                      <h2 className="text-xl font-semibold mt-8 mb-6">
-                        Compliance & Legal
-                      </h2>
+                      <div className="d-flex marginSpaceForBorder">
+                        <div className="borderMain">
+                          <IconBorder
+                            icon={
+                              <img
+                                src="assets/images/icons-images/Compliance-Legal.svg"
+                                alt="icon"
+                                width={100}
+                                height={100}
+                              />
+                            }
+                          />
+                        </div>
+                        <div className="informationMain">Compliance & Legal</div>
+                      </div>
 
                       <div className="grid grid-cols-2 gap-4">
                         <Form.Item name="taxId" label="Local Tax ID">
-                          <Input placeholder="Example: PAN, VAT, ITN" />
+                          <Input placeholder="Example: PAN, VAT, ITN" style={{ height: "48px" }} />
                         </Form.Item>
 
                         <Form.Item name="duns" label="DUNS Number">
-                          <Input placeholder="Enter DUNS number (if applicable)" />
+                          <Input placeholder="Enter DUNS number (if applicable)" style={{ height: "48px" }} />
                         </Form.Item>
                       </div>
 
                       <Form.Item name="nda" label="Upload NDA Document">
-                        <Upload>
-                          <Button icon={<UploadOutlined />}>
-                            Click to Upload
-                          </Button>
-                        </Upload>
+                        <Upload.Dragger
+                          name="nda"
+                          multiple={false}
+                          accept=".pdf,.doc,.docx"
+                          beforeUpload={() => false}
+                          showUploadList={false}
+                          style={{
+                            border: "2px dashed #d1d5db",
+                            borderRadius: "8px",
+                            backgroundColor: "#ffffff",
+                            padding: "40px 20px",
+                            textAlign: "center",
+                            cursor: "pointer",
+                            transition: "border-color 0.3s ease",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.borderColor = "#7A1F3D";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.borderColor = "#d1d5db";
+                          }}
+                        >
+                          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
+                            <div style={{ 
+                              width: "48px", 
+                              height: "48px", 
+                              display: "flex", 
+                              alignItems: "center", 
+                              justifyContent: "center",
+                              backgroundColor: "#f3f4f6",
+                              borderRadius: "50%"
+                            }}>
+                              <UploadOutlined style={{ fontSize: "24px", color: "#6b7280" }} />
+                            </div>
+                            <div>
+                              <div style={{ 
+                                fontSize: "16px", 
+                                fontWeight: "600", 
+                                color: "#374151", 
+                                marginBottom: "8px" 
+                              }}>
+                                Upload NDA Document
+                              </div>
+                              <div style={{ 
+                                fontSize: "14px", 
+                                color: "#6b7280" 
+                              }}>
+                                PDF, DOC, or DOCX up to 10MB
+                              </div>
+                            </div>
+                          </div>
+                        </Upload.Dragger>
                       </Form.Item>
 
                       <Form.Item name="agreement" valuePropName="checked">
@@ -258,9 +318,21 @@ export default function RegisterForm() {
                       </Form.Item>
 
                       {/* =================== Portal Credentials =================== */}
-                      <h2 className="text-xl font-semibold mt-8 mb-6">
-                        Portal Credentials
-                      </h2>
+                      <div className="d-flex marginSpaceForBorder">
+                        <div className="borderMain">
+                          <IconBorder
+                            icon={
+                              <img
+                                src="assets/images/icons-images/Portal-Credentials.svg"
+                                alt="icon"
+                                width={100}
+                                height={100}
+                              />
+                            }
+                          />
+                        </div>
+                        <div className="informationMain">Portal Credentials</div>
+                      </div>
 
                       <Form.Item
                         name="username"
@@ -269,7 +341,7 @@ export default function RegisterForm() {
                           { required: true, message: "Please enter username" },
                         ]}
                       >
-                        <Input placeholder="Choose a username (usually your email)" />
+                        <Input placeholder="Choose a username (usually your email)" style={{ height: "48px" }} />
                       </Form.Item>
 
                       <div className="grid grid-cols-2 gap-4">
@@ -283,7 +355,7 @@ export default function RegisterForm() {
                             },
                           ]}
                         >
-                          <Input.Password placeholder="Create a strong password" />
+                          <Input.Password placeholder="Create a strong password" style={{ height: "48px" }} />
                         </Form.Item>
 
                         <Form.Item
@@ -310,7 +382,7 @@ export default function RegisterForm() {
                             }),
                           ]}
                         >
-                          <Input.Password placeholder="Confirm your password" />
+                          <Input.Password placeholder="Confirm your password" style={{ height: "48px" }} />
                         </Form.Item>
                       </div>
 
@@ -325,7 +397,7 @@ export default function RegisterForm() {
                             },
                           ]}
                         >
-                          <Select placeholder="Select a security question">
+                          <Select placeholder="Select a security question" style={{ height: "48px" }}>
                             <Option value="pet">
                               What is your pet's name?
                             </Option>
@@ -345,7 +417,7 @@ export default function RegisterForm() {
                             { required: true, message: "Please enter answer" },
                           ]}
                         >
-                          <Input placeholder="Enter your answer" />
+                          <Input placeholder="Enter your answer" style={{ height: "48px" }} />
                         </Form.Item>
                       </div>
 
@@ -358,7 +430,11 @@ export default function RegisterForm() {
 
                       {/* =================== Submit =================== */}
                       <Form.Item>
-                        <Button
+
+                        <div className="flex justify-center w-100">
+
+                        <Button icon={<CheckCircleOutlined />} width="267px" height="60px" borderRadius="10px" >Complete Registration</Button>
+                        {/* <Button
                           type="primary"
                           htmlType="submit"
                           style={{
@@ -368,15 +444,61 @@ export default function RegisterForm() {
                           }}
                         >
                           Complete Registration
-                        </Button>
+                        </Button> */}
+                        </div>
                       </Form.Item>
                     </Form>
+                    
+                    {/* Sign in link - Outside the form
+                    <div style={{ 
+                      textAlign: "center", 
+                      padding: "20px 0",
+                      marginTop: "20px"
+                    }}>
+                      <span style={{ color: "#374151", fontSize: "14px" }}>
+                        Already have an account?{" "}
+                      </span>
+                      <Link 
+                        href="/login" 
+                        style={{ 
+                          color: "#7A1F3D", 
+                          textDecoration: "none",
+                          fontSize: "14px",
+                          fontWeight: "500"
+                        }}
+                      >
+                        Sign in here
+                      </Link>
+                    </div> */}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        {/* Sign in link - Outside the form */}
+        <div style={{ 
+                      textAlign: "center", 
+                      padding: "20px 0",
+                      height: "20px"
+                    }}>
+                      <span style={{ color: "#374151", fontSize: "16px",
+                        fontWeight: "600px"
+                       }}>
+                        Already have an account?{" "}
+                      </span>
+                      <Link 
+                        href="/login" 
+                        style={{ 
+                          color: "#7A1F3D", 
+                          textDecoration: "none",
+                          fontSize: "16px",
+                          fontWeight: "600"
+                        }}
+                      >
+                        Sign in here
+                      </Link>
+                    </div>
       </div>
     </>
   );
