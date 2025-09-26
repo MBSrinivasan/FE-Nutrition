@@ -8,6 +8,8 @@ const Button = ({
   textColor = "#fff",
   icon,
   marginLeft = "0",
+  fontSize="10px",
+  fontWeight="500",
   children,
   ...rest
 }) => {
@@ -22,7 +24,9 @@ const Button = ({
         color: textColor,
         border: "none",
         gap: icon ? "8px" : "0",
-        marginLeft: marginLeft
+        marginLeft: marginLeft,
+        fontSize,
+        fontWeight
       }}
       {...rest}
     >

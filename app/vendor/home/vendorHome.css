@@ -1,0 +1,51 @@
+.vendorPro {
+  font-weight: 600;
+  font-size: 20px;
+  color: #7a1f3d;
+}
+.ratingStar {
+  font-weight: 600;
+  color: #000;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.overViewText {
+  color: #4f4f4f;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 9px;
+}
+.mainVendor {
+  margin-bottom: 6px;
+}
+.verifiedSpace {
+  margin-right: 13px;
+}
+.totalProducts {
+  color: #4f4f4f;
+  font-size: 14px;
+  font-weight: 600;
+}
+.profileCompletion {
+  color: #4f4f4f;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+.uploadText{
+    color: #4F4F4F;
+font-size: 12px;
+font-weight: 400;
+}
+.iconTextCheck{
+  color: #4F4F4F;
+font-size: 14px;
+font-weight: 500;
+
+}
+.totalVerification {
+  color: #4f4f4f;
+  font-size: 14px;
+  font-weight: 500;
+}
