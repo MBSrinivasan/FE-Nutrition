@@ -518,7 +518,7 @@ export default function VendorHomePage() {
                       <Card
                         sx={{
                           height: "100%",
-                          borderRadius: 18,
+                          borderRadius: 5,
                           border: "1px solid #e0e0e0",
                           marginTop: "10px",
                           backgroundColor: "#FFF",
@@ -526,7 +526,7 @@ export default function VendorHomePage() {
                         }}
                       >
                         {" "}
-                        first second
+                        sanjay
                       </Card>
                     </div>
                   </div>
@@ -560,15 +560,14 @@ export default function VendorHomePage() {
                       <Card
                         sx={{
                           height: "100%",
-                          borderRadius: 18,
+                          borderRadius: 5,
                           border: "1px solid #e0e0e0",
                           marginTop: "10px",
                           backgroundColor: "#FFF",
                           padding: "20px 17px",
                         }}
                       >
-                        {" "}
-                        first second
+                       Sarvesh
                       </Card>
                     </div>
                     <div class="col-6"></div>
