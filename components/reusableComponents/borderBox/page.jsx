@@ -6,6 +6,8 @@ const IconBorder = ({
   height = "37px",
   backgroundColor = "transparent",
   borderRadius = "10px",
+  color="#FAFAFA",
+  text
 }) => {
   return (
     <div
@@ -15,9 +17,10 @@ const IconBorder = ({
         height,
         backgroundColor,
         borderRadius,
+        color
       }}
     >
-      {icon}
+      {icon?icon :text} 
     </div>
   );
 };
