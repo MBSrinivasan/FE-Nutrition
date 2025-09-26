@@ -144,16 +144,65 @@ export default function VendorHomePage() {
               <div class="col-3">
                 <Card
                   sx={{
+                    
                     height: "100%",
-                    borderRadius: 18,
-                    border: "1px solid #e0e0e0",
+                    borderRadius: "18px",
+                    border: "1px solid #E5E5E5",
                     marginTop: "10px",
                     backgroundColor: "#FFF",
-                    padding: "20px 17px",
+                    padding: "20px",
                   }}
                 >
-                  {" "}
-                  first second
+                  <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
+                    <img 
+                      src="/assets/images/icons-images/alertIcon.svg" 
+                      alt="Alert Icon" 
+                      style={{ width: "20px", height: "20px", marginRight: "8px" }}
+                    />
+                    <h3 style={{ 
+                      margin: 0, 
+                      fontSize: "16px", 
+                      fontWeight: "600", 
+                      color: "#4F454F",
+                    }}>
+                      Quick Alerts
+                    </h3>
+                  </div>
+                  
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <div style={{
+                        width: "8px",
+                        height: "8px",
+                        borderRadius: "50%",
+                        backgroundColor: "#FB2C36",
+                        marginRight: "8px"
+                      }}></div>
+                      <span style={{ fontSize: "14px", color: "#000" }}>2 Pending Quotes</span>
+                    </div>
+                    
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <div style={{
+                        width: "8px",
+                        height: "8px",
+                        borderRadius: "50%",
+                        backgroundColor: "#FE9A00",
+                        marginRight: "8px"
+                      }}></div>
+                      <span style={{ fontSize: "14px", color: "#000" }}>1 Payment Due</span>
+                    </div>
+                    
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <div style={{
+                        width: "8px",
+                        height: "8px",
+                        borderRadius: "50%",
+                        backgroundColor: "#FE9A00",
+                        marginRight: "8px"
+                      }}></div>
+                      <span style={{ fontSize: "14px", color: "#000" }}>Certificate Renewal</span>
+                    </div>
+                  </div>
                 </Card>
               </div>
             </div>
