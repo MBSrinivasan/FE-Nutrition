@@ -8,10 +8,9 @@ import "./vendorHome.css";
 import StarIcon from "@mui/icons-material/Star";
 import Button from "@/components/reusableComponents/button/page";
 import { MessageOutlined, UploadOutlined } from "@ant-design/icons";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
 import IconBorder from "@/components/reusableComponents/borderBox/page";
-import Funnel from "highcharts/modules/funnel";
+import HighchartsWrapper from "@/components/Charts/HighchartsWrapper";
+import EChartsWrapper from "@/components/Charts/EChartsWrapper";
 
 export default function VendorHomePage() {
   // Donut chart configuration for Compliance Tracker
@@ -51,65 +50,66 @@ export default function VendorHomePage() {
     },
   };
 
-  // if (typeof Highcharts === 'object') {
-  //   Funnel(Highcharts);
-  // }
 
-  const options = {
-    chart: {
-      type: "funnel",
-    },
+  // ECharts funnel configuration
+  const funnelOptions = {
     title: {
-      text: "Sales funnel",
-    },
-    plotOptions: {
-      series: {
-        dataLabels: {
-          enabled: true,
-          format: "<b>{point.name}</b> ({point.y:,.0f})",
-          softConnector: true,
-        },
-        center: ["40%", "50%"],
-        neckWidth: "30%",
-        neckHeight: "25%",
-        width: "80%",
+      text: "Sales Funnel",
+      left: "center",
+      textStyle: {
+        fontSize: 16,
+        fontWeight: "bold",
       },
     },
-    legend: {
-      enabled: false,
+    tooltip: {
+      trigger: "item",
+      formatter: "{a} <br/>{b}: {c} ({d}%)",
     },
     series: [
       {
-        name: "Unique users",
+        name: "Sales Funnel",
+        type: "funnel",
+        left: "10%",
+        top: 60,
+        bottom: 60,
+        width: "80%",
+        min: 0,
+        max: 100,
+        minSize: "0%",
+        maxSize: "100%",
+        sort: "descending",
+        gap: 2,
+        label: {
+          show: true,
+          position: "inside",
+          formatter: "{b}: {c}",
+          fontSize: 12,
+        },
+        labelLine: {
+          length: 10,
+          lineStyle: {
+            width: 1,
+            type: "solid",
+          },
+        },
+        itemStyle: {
+          borderColor: "#fff",
+          borderWidth: 1,
+        },
+        emphasis: {
+          label: {
+            fontSize: 14,
+          },
+        },
         data: [
-          ["Website visits", 15654],
-          ["Downloads", 4064],
-          ["Requested price list", 1987],
-          ["Invoice sent", 976],
-          ["Finalized", 846],
+          { value: 100, name: "Website visits" },
+          { value: 80, name: "Downloads" },
+          { value: 60, name: "Requested price list" },
+          { value: 40, name: "Invoice sent" },
+          { value: 20, name: "Finalized" },
         ],
       },
     ],
-    responsive: {
-      rules: [
-        {
-          condition: {
-            maxWidth: 500,
-          },
-          chartOptions: {
-            plotOptions: {
-              series: {
-                dataLabels: {
-                  inside: true,
-                },
-                center: ["50%", "50%"],
-                width: "100%",
-              },
-            },
-          },
-        },
-      ],
-    },
   };
 
   return (
@@ -397,9 +397,9 @@ export default function VendorHomePage() {
                             className="relative flex items-center justify-center"
                             style={{ height: "100%" }}
                           >
-                            <HighchartsReact
-                              highcharts={Highcharts}
+                            <HighchartsWrapper
                               options={donutChartOptions}
+                              type="pie"
                             />
                             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg font-semibold text-[#4F454F]">
                               78%
@@ -561,9 +561,9 @@ export default function VendorHomePage() {
                           </h1>
                         </div>
                         <div className="border-b border-[#ADADAD] pb-3 mb-[5px]">
-                          <HighchartsReact
-                            highcharts={Highcharts}
-                            options={options}
+                          <EChartsWrapper
+                            options={funnelOptions}
+                            type="funnel"
                           />
                         </div>
                         <div className="mb-[10px]">
