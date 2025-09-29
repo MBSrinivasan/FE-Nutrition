@@ -11,6 +11,7 @@ import "/public/assets/css/plugins/aos.css"
 import "/public/assets/css/typography.css"
 import "/public/assets/css/master.css"
 import "/public/assets/css/plugins/responsive.css"
+import { Providers } from './providers'
 
 const nunito = Nunito({
     weight: ['300', '400', '500', '600', '700'],
@@ -45,7 +46,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={`${nunito.variable} ${outfit.variable} ${kumbh.variable} ${lora.variable}`}>{children}</body>
+            <body className={`${nunito.variable} ${outfit.variable} ${kumbh.variable} ${lora.variable}`}>
+                <Providers>{children}</Providers>
+                
+                </body>
         </html>
     )
 }

@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { token } from "../utils/constant.js";
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://test.platosoftware.com/api",
+  // baseUrl: "https://test.platosoftware.com/api",
+  baseUrl: "http://192.168.1.13:8080/api",
   prepareHeaders: (headers) => {
     headers.set("Connection", "keep-alive");
     return headers;
@@ -76,7 +77,20 @@ export const api = createApi({
         },
       }),
     }),
+    registerUser: builder.mutation({
+      query: (body) => ({
+        url: "/users/register",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
+
+    
   }),
 });
 
-export const { useGetDashboardDetailsQuery } = api;
+export const { useGetDashboardDetailsQuery, useRegisterUserMutation } = api;

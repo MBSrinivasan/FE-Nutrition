@@ -10,18 +10,35 @@ import { CheckCircleOutlined } from "@ant-design/icons";
 import countryList from "react-select-country-list";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { useRegisterUserMutation } from "@/api";
 
 const { Option } = Select;
 
 export default function RegisterForm() {
   const [active, setActive] = useState("buyer");
   const [phone, setPhone] = useState("");
-
+  const [registerUser, { isLoading }] = useRegisterUserMutation();
   const options = useMemo(() => countryList().getData(), []);
   const [form] = Form.useForm();
 
-  const onFinish = (values) => {
-    console.log("Form Values:", values);
+  const onFinish = async (values) => {
+    // map websiteURL → website
+    console.log(values, "valuesvalues")
+    const payload = {
+      ...values,
+      // website: values?.websiteURL,
+    };
+     console.log(payload, "sdfghj")
+const body = payload
+    try {
+      const res = await registerUser(body).unwrap(); // ✅ unwrap gets success/error
+      message.success("Registration successful!");
+      console.log("✅ API Response:", res);
+      form.resetFields();
+    } catch (err) {
+      console.error("❌ API Error:", err);
+      message.error(err?.data?.message || "Registration failed");
+    }
   };
   const handleValuesChange = (changedValues) => {
     if (changedValues.email) {
@@ -77,9 +94,9 @@ export default function RegisterForm() {
               <span className="font-34 font-ks lineh26 weight-600 color34 margin-b10  d-inline-block">
                 Vendor Registration
               </span>
-              <h1 className="font-lora font-14  weight-400 margin-b28 color100">
+              <div className="font-lora font-14  weight-400 margin-b28 color100">
                 Feel free to contuct us for any{" "}
-              </h1>
+              </div>
             </div>
           </div>
         </div>
@@ -537,6 +554,7 @@ export default function RegisterForm() {
                             height="60px"
                             borderRadius="10px"
                             htmlType="submit"
+                            onClick={()=>onFinish()}
                           >
                             Complete Registration
                           </Button>
