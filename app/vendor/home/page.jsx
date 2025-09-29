@@ -330,7 +330,10 @@ export default function VendorHomePage() {
                               </h3>
                             </div>
                           </div>
-                          <div className="relative flex items-center justify-center">
+                          <div
+                            className="relative flex items-center justify-center"
+                            style={{ height: "100%" }}
+                          >
                             <HighchartsReact
                               highcharts={Highcharts}
                               options={donutChartOptions}
@@ -567,7 +570,7 @@ export default function VendorHomePage() {
                           padding: "20px 17px",
                         }}
                       >
-                       Sarvesh
+                        Sarvesh
                       </Card>
                     </div>
                     <div class="col-6"></div>
