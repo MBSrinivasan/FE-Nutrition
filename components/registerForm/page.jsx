@@ -17,6 +17,7 @@ const { Option } = Select;
 export default function RegisterForm() {
   const [active, setActive] = useState("buyer");
   const [phone, setPhone] = useState("");
+  const [fileList, setFileList] = useState([]);
   const [registerUser, { isLoading }] = useRegisterUserMutation();
   const options = useMemo(() => countryList().getData(), []);
   const [form] = Form.useForm();
@@ -323,11 +324,13 @@ const body = payload
                         </Form.Item>
                       </div>
 
-                      <Form.Item name="nda" label="Upload NDA Document">
+                      <Form.Item label="Upload NDA Document">
                         <Upload.Dragger
                           name="nda"
                           multiple={false}
                           accept=".pdf,.doc,.docx"
+                          fileList={fileList}
+                          onChange={({ fileList: newFileList }) => setFileList(newFileList)}
                           beforeUpload={() => false}
                           showUploadList={false}
                           style={{

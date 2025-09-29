@@ -8,6 +8,7 @@ const Button = ({
   textColor = "#fff",
   icon,
   marginLeft = "0",
+  htmlType,
   children,
   ...rest
 }) => {
@@ -24,6 +25,7 @@ const Button = ({
         gap: icon ? "8px" : "0",
         marginLeft: marginLeft
       }}
+      type={htmlType}
       {...rest}
     >
       {icon && icon}
