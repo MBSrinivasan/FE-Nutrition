@@ -19,10 +19,7 @@ const EChartsWrapper = ({ options, type = "pie" }) => {
   }
 
   return (
-    <ReactECharts
-      option={options}
-      style={{ height: "300px", width: "100%" }}
-    />
+    <ReactECharts option={options} style={{ height: "333px", width: "100%" }} />
   );
 };
 

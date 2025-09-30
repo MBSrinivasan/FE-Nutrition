@@ -51,65 +51,79 @@ export default function VendorHomePage() {
   };
 
 
-  // ECharts funnel configuration
-  const funnelOptions = {
-    title: {
-      text: "Sales Funnel",
-      left: "center",
-      textStyle: {
-        fontSize: 16,
-        fontWeight: "bold",
-      },
-    },
+  const funnelOptions =  {
+    // title: {
+    //   text: 'Funnel'
+    // },
     tooltip: {
-      trigger: "item",
-      formatter: "{a} <br/>{b}: {c} ({d}%)",
+      trigger: 'item',
+      formatter: '{a} <br/>{b} : {c}%'
+    },
+    legend: {
+      data: ['Show', 'Click', 'Visit', 'Inquiry', 'Order']
     },
     series: [
       {
-        name: "Sales Funnel",
-        type: "funnel",
-        left: "10%",
-        top: 60,
-        bottom: 60,
-        width: "80%",
-        min: 0,
-        max: 100,
-        minSize: "0%",
-        maxSize: "100%",
-        sort: "descending",
-        gap: 2,
+        name: 'Expected',
+        type: 'funnel',
+        left: '10%',
+        width: '80%',
         label: {
-          show: true,
-          position: "inside",
-          formatter: "{b}: {c}",
-          fontSize: 12,
+          formatter: '{b}'
         },
         labelLine: {
-          length: 10,
-          lineStyle: {
-            width: 1,
-            type: "solid",
-          },
+          show: false
         },
         itemStyle: {
-          borderColor: "#fff",
-          borderWidth: 1,
+          opacity: 0.7
         },
         emphasis: {
           label: {
-            fontSize: 14,
-          },
+            position: 'inside',
+            formatter: '{b}Expected: {c}%'
+          }
         },
         data: [
-          { value: 100, name: "Website visits" },
-          { value: 80, name: "Downloads" },
-          { value: 60, name: "Requested price list" },
-          { value: 40, name: "Invoice sent" },
-          { value: 20, name: "Finalized" },
-        ],
+          { value: 60, name: 'Visit' },
+          { value: 40, name: 'Inquiry' },
+          { value: 20, name: 'Order' },
+          { value: 80, name: 'Click' },
+          { value: 100, name: 'Show' }
+        ]
       },
-    ],
+      {
+        name: 'Actual',
+        type: 'funnel',
+        left: '10%',
+        width: '80%',
+        maxSize: '80%',
+        label: {
+          position: 'inside',
+          formatter: '{c}%',
+          color: '#fff'
+        },
+        itemStyle: {
+          opacity: 0.5,
+          borderColor: '#fff',
+          borderWidth: 2
+        },
+        emphasis: {
+          label: {
+            position: 'inside',
+            formatter: '{b}Actual: {c}%'
+          }
+        },
+        data: [
+          { value: 30, name: 'Visit' },
+          { value: 10, name: 'Inquiry' },
+          { value: 5, name: 'Order' },
+          { value: 50, name: 'Click' },
+          { value: 80, name: 'Show' }
+        ],
+        // Ensure outer shape will not be over inner shape when hover.
+        z: 100
+      }
+    ]
   };
 
   return (
@@ -383,12 +397,12 @@ export default function VendorHomePage() {
                             style={{ height: "100%" }}
                           >
                             <div>
-                              <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] font-bold">
+                              <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] weight-600 font-bold">
                                 Compliance Tracker
                               </h1>
                             </div>
                             <div>
-                              <h2 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F454F] m-0">
+                              <h2 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F454F] m-0 weight-600">
                                 Total Certificates: 15
                               </h2>
                             </div>
@@ -418,13 +432,13 @@ export default function VendorHomePage() {
                                   {" "}
                                   <img src="/assets/images/icons-images/tickIcon.svg" />
                                 </div>
-                                <h2 className="font-medium text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F]">
+                                <h2 className="font-medium text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F] weight-500">
                                   Valid: 9
                                 </h2>
                               </div>
                             </div>
                             <div style={{ width: "60%" }}>
-                              <p class="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-medium text-[#4F454F]">
+                              <p class="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-medium text-[#4F454F] d-flex justify-end items-end weight-500">
                                 Next renewal: ISO 22000 — 18 Jan 2026
                               </p>
                             </div>
@@ -440,13 +454,13 @@ export default function VendorHomePage() {
                                   {" "}
                                   <img src="/assets/images/icons-images/pendingIcon.svg" />
                                 </div>
-                                <h2 className="font-medium text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F]">
+                                <h2 className="font-medium weight-500 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F]">
                                   Expiring: 3
                                 </h2>
                               </div>
                             </div>
                             <div style={{ width: "60%" }}>
-                              <p class="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-medium text-[#4F454F]">
+                              <p class="d-flex justify-end items-end weight-500 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-medium text-[#4F454F] ">
                                 T-SSAl=25Nov2025, GMP - 02 Dec 2025
                               </p>
                             </div>
@@ -462,13 +476,13 @@ export default function VendorHomePage() {
                                   {" "}
                                   <img src="/assets/images/icons-images/dangerIcon.svg" />
                                 </div>
-                                <h2 className="font-medium text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F]">
+                                <h2 className="font-medium weight-500 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F]">
                                   Missing: 2
                                 </h2>
                               </div>
                             </div>
                             <div style={{ width: "60%" }}>
-                              <p class="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-medium text-[#4F454F]">
+                              <p class="d-flex justify-end items-end weight-500 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-medium text-[#4F454F]">
                                 (CoA – Product X, Product Y
                               </p>
                             </div>
@@ -479,7 +493,7 @@ export default function VendorHomePage() {
                             style={{ width: "100%" }}
                           >
                             <div>
-                              <div className="d-flex mr-[12px] ">
+                              <div className="d-flex mr-[12px] d-flex justify-start items-center weight-500">
                                 <div className="mr-[6px]">
                                   {" "}
                                   <img src="/assets/images/icons-images/pendingIcon.svg" />
@@ -493,7 +507,7 @@ export default function VendorHomePage() {
 
                           <Progress percent={60} success={{ percent: 30 }} />
                           <div className="d-flex justify-end">
-                            <p className="font-medium text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] text-[#4F454F]">
+                            <p className="font-medium weight-500 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] text-[#4F454F]">
                               Export License – <br></br>Submitted 5 Sep 2025,
                               <br></br> est. review 20 Sep 2025
                             </p>
@@ -502,7 +516,7 @@ export default function VendorHomePage() {
                           {/* Capa Request Section */}
                           <div className=" pt-5 border-t border-gray-200">
                             <div className="d-flex justify-between mb-3">
-                              <h2 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F4F4F]">
+                              <h2 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F4F4F] weight-600">
                                 CAPA Requests
                               </h2>
                               <div>
@@ -515,10 +529,10 @@ export default function VendorHomePage() {
                               </div>
                             </div>
                             <div className="d-flex mb-[13px]">
-                              <div className="font-medium text-sm text-[#4F4F4F] mr-[30px]">
+                              <div className="font-medium weight-500 text-sm text-[#4F4F4F] mr-[30px]">
                                 2 Open
                               </div>
-                              <div className="font-medium text-sm text-[#4F4F4F] ">
+                              <div className="font-medium weight-500 text-sm text-[#4F4F4F] ">
                                 5 Closed
                               </div>
                             </div>
@@ -556,18 +570,16 @@ export default function VendorHomePage() {
                       >
                         {" "}
                         <div className="mb-[10px]">
-                          <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] font-bold">
+                          <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] font-bold weight-600">
                             Leads & Deals
                           </h1>
                         </div>
                         <div className="border-b border-[#ADADAD] pb-3 mb-[5px]">
-                          <EChartsWrapper
-                            options={funnelOptions}
-                            type="funnel"
-                          />
+                        <EChartsWrapper options={funnelOptions} type="funnel" />
+
                         </div>
                         <div className="mb-[10px]">
-                          <h2 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F454F] m-0">
+                          <h2 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F454F] m-0 weight-500">
                             RFP Match Alerts
                           </h2>
                         </div>
@@ -577,7 +589,7 @@ export default function VendorHomePage() {
                               <div className="d-flex  flex-col justify-center items-center gap-2">
                                 <div
                                   class="bg-[#FFEAF1] text-[#7A1F3D] font-medium text-[18px] 
-            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded"
+            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded h-[40px]"
                                 >
                                   39
                                 </div>
@@ -592,7 +604,7 @@ export default function VendorHomePage() {
                               <div className="d-flex  flex-col justify-center items-center gap-2">
                                 <div
                                   class="bg-[#FFE3C8] text-[#E17100] font-medium text-[18px] 
-            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded"
+            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded h-[40px]"
                                 >
                                   10
                                 </div>
@@ -607,7 +619,7 @@ export default function VendorHomePage() {
                               <div className="d-flex  flex-col justify-center items-center gap-2">
                                 <div
                                   class="bg-[#E3FFED] text-[#00A63E] font-medium text-[18px] 
-            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded"
+            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded h-[40px]"
                                 >
                                   1.1 cr
                                 </div>
@@ -828,24 +840,7 @@ export default function VendorHomePage() {
                         <p className="text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] weight-400 text-[#4F4F4F] m-0 d-flex justify-start items-start mb-[10px]">
                           Updated supplement labeling requirements for 2024
                         </p>
-                        <p className="text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] weight-600 text-[#4F4F4F] m-0 d-flex justify-start items-start mb-[10px]">
-                          Latest FDA Guidance
-                        </p>
-                        <p className="text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] weight-400 text-[#4F4F4F] m-0 d-flex justify-start items-start mb-[10px]">
-                          Updated supplement labeling requirements for 2024
-                        </p>
-                        <p className="text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] weight-600 text-[#4F4F4F] m-0 d-flex justify-start items-start mb-[10px]">
-                          Latest FDA Guidance
-                        </p>
-                        <p className="text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] weight-400 text-[#4F4F4F] m-0 d-flex justify-start items-start mb-[10px]">
-                          Updated supplement labeling requirements for 2024
-                        </p>
-                        <p className="text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] weight-600 text-[#4F4F4F] m-0 d-flex justify-start items-start mb-[10px]">
-                          Latest FDA Guidance
-                        </p>
-                        <p className="text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] weight-400 text-[#4F4F4F] m-0 d-flex justify-start items-start mb-[30px]">
-                          Updated supplement labeling requirements for 2024
-                        </p>
+                       
                       </div>
                     </Card>
                   </div>
