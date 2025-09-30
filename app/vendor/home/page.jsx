@@ -589,7 +589,7 @@ export default function VendorHomePage() {
                               <div className="d-flex  flex-col justify-center items-center gap-2">
                                 <div
                                   class="bg-[#FFEAF1] text-[#7A1F3D] font-medium text-[18px] 
-            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded h-[40px]"
+            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded h-[40px] sm:h-[50px] md:h-[60px] lg:h-[70px] xl:h-[80px]"
                                 >
                                   39
                                 </div>
@@ -604,7 +604,7 @@ export default function VendorHomePage() {
                               <div className="d-flex  flex-col justify-center items-center gap-2">
                                 <div
                                   class="bg-[#FFE3C8] text-[#E17100] font-medium text-[18px] 
-            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded h-[40px]"
+            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded h-[40px] sm:h-[50px] md:h-[60px] lg:h-[70px] xl:h-[80px]"
                                 >
                                   10
                                 </div>
@@ -619,7 +619,7 @@ export default function VendorHomePage() {
                               <div className="d-flex  flex-col justify-center items-center gap-2">
                                 <div
                                   class="bg-[#E3FFED] text-[#00A63E] font-medium text-[18px] 
-            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded h-[40px]"
+            sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] p-2 rounded  h-[40px] sm:h-[50px] md:h-[60px] lg:h-[70px] xl:h-[80px]"
                                 >
                                   1.1 cr
                                 </div>
