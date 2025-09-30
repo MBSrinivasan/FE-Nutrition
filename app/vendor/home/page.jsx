@@ -50,80 +50,79 @@ export default function VendorHomePage() {
     },
   };
 
-
-  const funnelOptions =  {
+  const funnelOptions = {
     // title: {
     //   text: 'Funnel'
     // },
     tooltip: {
-      trigger: 'item',
-      formatter: '{a} <br/>{b} : {c}%'
+      trigger: "item",
+      formatter: "{a} <br/>{b} : {c}%",
     },
     legend: {
-      data: ['Show', 'Click', 'Visit', 'Inquiry', 'Order']
+      data: ["Show", "Click", "Visit", "Inquiry", "Order"],
     },
     series: [
       {
-        name: 'Expected',
-        type: 'funnel',
-        left: '10%',
-        width: '80%',
+        name: "Expected",
+        type: "funnel",
+        left: "10%",
+        width: "80%",
         label: {
-          formatter: '{b}'
+          formatter: "{b}",
         },
         labelLine: {
-          show: false
+          show: false,
         },
         itemStyle: {
-          opacity: 0.7
+          opacity: 0.7,
         },
         emphasis: {
           label: {
-            position: 'inside',
-            formatter: '{b}Expected: {c}%'
-          }
+            position: "inside",
+            formatter: "{b}Expected: {c}%",
+          },
         },
         data: [
-          { value: 60, name: 'Visit' },
-          { value: 40, name: 'Inquiry' },
-          { value: 20, name: 'Order' },
-          { value: 80, name: 'Click' },
-          { value: 100, name: 'Show' }
-        ]
+          { value: 60, name: "Visit" },
+          { value: 40, name: "Inquiry" },
+          { value: 20, name: "Order" },
+          { value: 80, name: "Click" },
+          { value: 100, name: "Show" },
+        ],
       },
       {
-        name: 'Actual',
-        type: 'funnel',
-        left: '10%',
-        width: '80%',
-        maxSize: '80%',
+        name: "Actual",
+        type: "funnel",
+        left: "10%",
+        width: "80%",
+        maxSize: "80%",
         label: {
-          position: 'inside',
-          formatter: '{c}%',
-          color: '#fff'
+          position: "inside",
+          formatter: "{c}%",
+          color: "#fff",
         },
         itemStyle: {
           opacity: 0.5,
-          borderColor: '#fff',
-          borderWidth: 2
+          borderColor: "#fff",
+          borderWidth: 2,
         },
         emphasis: {
           label: {
-            position: 'inside',
-            formatter: '{b}Actual: {c}%'
-          }
+            position: "inside",
+            formatter: "{b}Actual: {c}%",
+          },
         },
         data: [
-          { value: 30, name: 'Visit' },
-          { value: 10, name: 'Inquiry' },
-          { value: 5, name: 'Order' },
-          { value: 50, name: 'Click' },
-          { value: 80, name: 'Show' }
+          { value: 30, name: "Visit" },
+          { value: 10, name: "Inquiry" },
+          { value: 5, name: "Order" },
+          { value: 50, name: "Click" },
+          { value: 80, name: "Show" },
         ],
         // Ensure outer shape will not be over inner shape when hover.
-        z: 100
-      }
-    ]
+        z: 100,
+      },
+    ],
   };
 
   return (
@@ -575,8 +574,10 @@ export default function VendorHomePage() {
                           </h1>
                         </div>
                         <div className="border-b border-[#ADADAD] pb-3 mb-[5px]">
-                        <EChartsWrapper options={funnelOptions} type="funnel" />
-
+                          <EChartsWrapper
+                            options={funnelOptions}
+                            type="funnel"
+                          />
                         </div>
                         <div className="mb-[10px]">
                           <h2 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F454F] m-0 weight-500">
@@ -840,7 +841,6 @@ export default function VendorHomePage() {
                         <p className="text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] weight-400 text-[#4F4F4F] m-0 d-flex justify-start items-start mb-[10px]">
                           Updated supplement labeling requirements for 2024
                         </p>
-                       
                       </div>
                     </Card>
                   </div>
@@ -2136,246 +2136,310 @@ export default function VendorHomePage() {
                 </div>
               </div>
               <div class="col-3">
-              <div className="d-flex flex-column gap-4 py-4" style={{ maxWidth: '400px', margin: '0 auto' }}>
-      {/* Vendor Rating Card */}
-      <div className="card border-0 shadow-sm" style={{ borderRadius: '18px' }}>
-        <div className="card-body p-4">
-          {/* Header */}
-          <div className="d-flex align-items-center mb-3">
-            <svg 
-              width="17" 
-              height="16" 
-              viewBox="0 0 17 16" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              className="me-2"
-            >
-              <path 
-                d="M8.2 1.5L9.8 5.8L14.5 6.2L11.2 9.2L12.1 13.8L8.2 11.5L4.3 13.8L5.2 9.2L1.9 6.2L6.6 5.8L8.2 1.5Z" 
-                stroke="#7A1F3D"
-                strokeWidth="2"
-                fill="none"
-                strokeLinejoin="round"
-                strokeLinecap="round"
-              />
-            </svg>
-            <h5 className="mb-0 fw-semibold" style={{ color: '#4F4F4F', fontSize: '14px' }}>
-              Vendor Rating
-            </h5>
-          </div>
-          
-          {/* Divider */}
-          <hr className="my-3" style={{ borderColor: '#ADADAD', opacity: '0.5' }} />
-          
-          {/* Rating Content */}
-          <div className="text-center">
-            {/* Rating Number */}
-            <div className="mb-2">
-              <h2 className="fw-bold mb-0" style={{ color: '#4F4F4F', fontSize: '40px' }}>
-                4.8
-              </h2>
-            </div>
-            
-            {/* Star Rating */}
-            <div className="mb-2">
-              <div className="d-flex justify-content-center align-items-center">
-                {[...Array(5)].map((_, index) => (
-                  <svg
-                    key={index}
-                    width="15"
-                    height="15"
-                    viewBox="0 0 15 15"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="me-1"
+                <div
+                  className="d-flex flex-column gap-4 py-4"
+                  style={{ maxWidth: "400px", margin: "0 auto" }}
+                >
+                  {/* Vendor Rating Card */}
+                  <div
+                    className="card border-0 shadow-sm"
+                    style={{ borderRadius: "18px" }}
                   >
-                    <path
-                      d="M7.5 0L9.191 5.527H15L10.405 8.946L12.096 14.473L7.5 11.054L2.904 14.473L4.595 8.946L0 5.527H5.809L7.5 0Z"
-                      fill={index < 4 ? "#FDC700" : "none"}
-                      stroke={index >= 4 ? "#979797" : "none"}
-                      strokeWidth="1"
-                    />
-                  </svg>
-                ))}
-              </div>
-            </div>
-            
-            {/* Review Count */}
-            <p className="mb-4" style={{ color: '#4F4F4F', fontSize: '12px', marginBottom: '15px' }}>
-              Based on 47 reviews
-            </p>
-            
-            {/* View Reviews Button */}
-            <button 
-              className="btn btn-outline-secondary px-4 py-2"
-              style={{ 
-                borderColor: '#B8B8B8', 
-                color: '#7A1F3D',
-                borderRadius: '5px',
-                fontSize: '12px',
-                fontWeight: '600'
-              }}
-            >
-              View Reviews
-            </button>
-          </div>
-        </div>
-      </div>
+                    <div className="card-body p-4">
+                      {/* Header */}
+                      <div className="d-flex align-items-center mb-3">
+                        <svg
+                          width="17"
+                          height="16"
+                          viewBox="0 0 17 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="me-2"
+                        >
+                          <path
+                            d="M8.2 1.5L9.8 5.8L14.5 6.2L11.2 9.2L12.1 13.8L8.2 11.5L4.3 13.8L5.2 9.2L1.9 6.2L6.6 5.8L8.2 1.5Z"
+                            stroke="#7A1F3D"
+                            strokeWidth="2"
+                            fill="none"
+                            strokeLinejoin="round"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                        <h5
+                          className="mb-0 fw-semibold"
+                          style={{ color: "#4F4F4F", fontSize: "14px" }}
+                        >
+                          Vendor Rating
+                        </h5>
+                      </div>
 
-      {/* Marketplace Spotlight Card */}
-      <div className="card border-0 shadow-sm" style={{ borderRadius: '18px' }}>
-        <div className="card-body p-4">
-          {/* Header */}
-          <div className="d-flex align-items-center mb-3">
-            <svg 
-              width="21" 
-              height="15" 
-              viewBox="0 0 21 15" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              className="me-3"
-            >
-              <path 
-                d="M2 12L7 7L10 10L19 1" 
-                stroke="#7A1F3D"
-                strokeWidth="2"
-                fill="none"
-                strokeLinejoin="round"
-                strokeLinecap="round"
-              />
-              <path 
-                d="M15 1H19V5" 
-                stroke="#7A1F3D"
-                strokeWidth="2"
-                fill="none"
-                strokeLinejoin="round"
-                strokeLinecap="round"
-              />
-            </svg>
-            <h5 
-              className="mb-0 fw-semibold" 
-              style={{ 
-                color: '#4F4F4F', 
-                fontSize: '14px',
-                width: '172px',
-                height: '17px',
-                lineHeight: '17px'
-              }}
-            >
-              Marketplace Spotlight
-            </h5>
-          </div>
-          
-          {/* Divider */}
-          <hr className="my-3" style={{ borderColor: '#ADADAD', opacity: '0.5' }} />
-          
-          {/* Content */}
-          <div>
-            {/* Top 5 Active RFPs */}
-            <h6 className="fw-semibold mb-2" style={{ color: '#4F4F4F', fontSize: '12px' }}>
-              Top 5 Active RFPs
-            </h6>
-            
-            {/* Subtitle */}
-            <p className="mb-4" style={{ color: '#4F4F4F', fontSize: '12px' }}>
-              Projects you may qualify for:
-            </p>
-            
-            {/* RFP Listings */}
-            <div className="mb-4">
-              {/* RFP 1 */}
-              <div className="card mb-3" style={{ 
-                backgroundColor: '#FFFFFF', 
-                borderRadius: '10px',
-                width: '279px',
-                height: '84px',
-                border: '1px solid #E5E5E5'
-              }}>
-                <div className="card-body p-3">
-                  <div className="d-flex justify-content-between align-items-start">
-                    <div className="flex-grow-1">
-                      <h6 className="fw-semibold mb-1" style={{ color: '#4F4F4F', fontSize: '12px' }}>
-                        Organic Protein Manufacturing
-                      </h6>
-                      <p className="mb-0" style={{ color: '#4F4F4F', fontSize: '12px' }}>
-                        Budget: $50K-100K
-                      </p>
+                      {/* Divider */}
+                      <hr
+                        className="my-3"
+                        style={{ borderColor: "#ADADAD", opacity: "0.5" }}
+                      />
+
+                      {/* Rating Content */}
+                      <div className="text-center">
+                        {/* Rating Number */}
+                        <div className="mb-2">
+                          <h2
+                            className="fw-bold mb-0"
+                            style={{ color: "#4F4F4F", fontSize: "40px" }}
+                          >
+                            4.8
+                          </h2>
+                        </div>
+
+                        {/* Star Rating */}
+                        <div className="mb-2">
+                          <div className="d-flex justify-content-center align-items-center">
+                            {[...Array(5)].map((_, index) => (
+                              <svg
+                                key={index}
+                                width="15"
+                                height="15"
+                                viewBox="0 0 15 15"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="me-1"
+                              >
+                                <path
+                                  d="M7.5 0L9.191 5.527H15L10.405 8.946L12.096 14.473L7.5 11.054L2.904 14.473L4.595 8.946L0 5.527H5.809L7.5 0Z"
+                                  fill={index < 4 ? "#FDC700" : "none"}
+                                  stroke={index >= 4 ? "#979797" : "none"}
+                                  strokeWidth="1"
+                                />
+                              </svg>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Review Count */}
+                        <p
+                          className="mb-4"
+                          style={{
+                            color: "#4F4F4F",
+                            fontSize: "12px",
+                            marginBottom: "15px",
+                          }}
+                        >
+                          Based on 47 reviews
+                        </p>
+
+                        {/* View Reviews Button */}
+                        <button
+                          className="btn btn-outline-secondary px-4 py-2"
+                          style={{
+                            borderColor: "#B8B8B8",
+                            color: "#7A1F3D",
+                            borderRadius: "5px",
+                            fontSize: "12px",
+                            fontWeight: "600",
+                          }}
+                        >
+                          View Reviews
+                        </button>
+                      </div>
                     </div>
-                    <span 
-                      className="badge rounded-pill px-2 py-1"
-                      style={{ 
-                        backgroundColor: '#ECEEF2', 
-                        color: '#4F4F4F',
-                        fontSize: '10px',
-                        fontWeight: '600'
-                      }}
-                    >
-                      New
-                    </span>
+                  </div>
+
+                  {/* Marketplace Spotlight Card */}
+                  <div
+                    className="card border-0 shadow-sm"
+                    style={{ borderRadius: "18px" }}
+                  >
+                    <div className="card-body p-4">
+                      {/* Header */}
+                      <div className="d-flex align-items-center mb-3">
+                        <svg
+                          width="21"
+                          height="15"
+                          viewBox="0 0 21 15"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="me-3"
+                        >
+                          <path
+                            d="M2 12L7 7L10 10L19 1"
+                            stroke="#7A1F3D"
+                            strokeWidth="2"
+                            fill="none"
+                            strokeLinejoin="round"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M15 1H19V5"
+                            stroke="#7A1F3D"
+                            strokeWidth="2"
+                            fill="none"
+                            strokeLinejoin="round"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                        <h5
+                          className="mb-0 fw-semibold"
+                          style={{
+                            color: "#4F4F4F",
+                            fontSize: "14px",
+                            width: "172px",
+                            height: "17px",
+                            lineHeight: "17px",
+                          }}
+                        >
+                          Marketplace Spotlight
+                        </h5>
+                      </div>
+
+                      {/* Divider */}
+                      <hr
+                        className="my-3"
+                        style={{ borderColor: "#ADADAD", opacity: "0.5" }}
+                      />
+
+                      {/* Content */}
+                      <div>
+                        {/* Top 5 Active RFPs */}
+                        <h6
+                          className="fw-semibold mb-2"
+                          style={{ color: "#4F4F4F", fontSize: "12px" }}
+                        >
+                          Top 5 Active RFPs
+                        </h6>
+
+                        {/* Subtitle */}
+                        <p
+                          className="mb-4"
+                          style={{ color: "#4F4F4F", fontSize: "12px" }}
+                        >
+                          Projects you may qualify for:
+                        </p>
+
+                        {/* RFP Listings */}
+                        <div className="mb-4">
+                          {/* RFP 1 */}
+                          <div
+                            className="card mb-3"
+                            style={{
+                              backgroundColor: "#FFFFFF",
+                              borderRadius: "10px",
+                              width: "279px",
+                              height: "84px",
+                              border: "1px solid #E5E5E5",
+                            }}
+                          >
+                            <div className="card-body p-3">
+                              <div className="d-flex justify-content-between align-items-start">
+                                <div className="flex-grow-1">
+                                  <h6
+                                    className="fw-semibold mb-1"
+                                    style={{
+                                      color: "#4F4F4F",
+                                      fontSize: "12px",
+                                    }}
+                                  >
+                                    Organic Protein Manufacturing
+                                  </h6>
+                                  <p
+                                    className="mb-0"
+                                    style={{
+                                      color: "#4F4F4F",
+                                      fontSize: "12px",
+                                    }}
+                                  >
+                                    Budget: $50K-100K
+                                  </p>
+                                </div>
+                                <span
+                                  className="badge rounded-pill px-2 py-1"
+                                  style={{
+                                    backgroundColor: "#ECEEF2",
+                                    color: "#4F4F4F",
+                                    fontSize: "10px",
+                                    fontWeight: "600",
+                                  }}
+                                >
+                                  New
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* RFP 2 */}
+                          <div
+                            className="card mb-3"
+                            style={{
+                              backgroundColor: "#FFFFFF",
+                              borderRadius: "10px",
+                              width: "279px",
+                              height: "81px",
+                              border: "1px solid #E5E5E5",
+                            }}
+                          >
+                            <div className="card-body p-3">
+                              <div className="d-flex justify-content-between align-items-start">
+                                <div className="flex-grow-1">
+                                  <h6
+                                    className="fw-semibold mb-1"
+                                    style={{
+                                      color: "#4F4F4F",
+                                      fontSize: "12px",
+                                    }}
+                                  >
+                                    Supplement Packaging Services
+                                  </h6>
+                                  <p
+                                    className="mb-0"
+                                    style={{
+                                      color: "#4F4F4F",
+                                      fontSize: "12px",
+                                    }}
+                                  >
+                                    Budget: $20K-50K
+                                  </p>
+                                </div>
+                                <span
+                                  className="badge rounded-pill px-2 py-1"
+                                  style={{
+                                    backgroundColor: "#DBFCE7",
+                                    color: "#016630",
+                                    fontSize: "10px",
+                                    fontWeight: "600",
+                                  }}
+                                >
+                                  Trending
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* View all RFPs Button */}
+                        <div className="text-center">
+                          <button
+                            className="btn btn-link p-0 text-decoration-none"
+                            style={{
+                              color: "#7A1F3D",
+                              fontSize: "12px",
+                              fontWeight: "600",
+                              fontFamily: "Montserrat",
+                              width: "89px",
+                              height: "15px",
+                              lineHeight: "100%",
+                              letterSpacing: "4%",
+                              textDecoration: "underline",
+                              textDecorationStyle: "solid",
+                              textDecorationThickness: "1px",
+                              background: "transparent",
+                            }}
+                          >
+                            View all RFPs
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              
-              {/* RFP 2 */}
-              <div className="card mb-3" style={{ 
-                backgroundColor: '#FFFFFF', 
-                borderRadius: '10px',
-                width: '279px',
-                height: '81px',
-                border: '1px solid #E5E5E5'
-              }}>
-                <div className="card-body p-3">
-                  <div className="d-flex justify-content-between align-items-start">
-                    <div className="flex-grow-1">
-                      <h6 className="fw-semibold mb-1" style={{ color: '#4F4F4F', fontSize: '12px' }}>
-                        Supplement Packaging Services
-                      </h6>
-                      <p className="mb-0" style={{ color: '#4F4F4F', fontSize: '12px' }}>
-                        Budget: $20K-50K
-                      </p>
-                    </div>
-                    <span 
-                      className="badge rounded-pill px-2 py-1"
-                      style={{ 
-                        backgroundColor: '#DBFCE7', 
-                        color: '#016630',
-                        fontSize: '10px',
-                        fontWeight: '600'
-                      }}
-                    >
-                      Trending
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* View all RFPs Button */}
-            <div className="text-center">
-              <button 
-                className="btn btn-link p-0 text-decoration-none"
-                style={{ 
-                  color: '#7A1F3D',
-                  fontSize: '12px',
-                  fontWeight: '600',
-                  fontFamily: 'Montserrat',
-                  width: '89px',
-                  height: '15px',
-                  lineHeight: '100%',
-                  letterSpacing: '4%',
-                  textDecoration: 'underline',
-                  textDecorationStyle: 'solid',
-                  textDecorationThickness: '1px',
-                  background: 'transparent'
-                }}
-              >
-                View all RFPs
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
               </div>
             </div>
           </div>
