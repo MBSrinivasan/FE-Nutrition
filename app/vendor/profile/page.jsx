@@ -4,6 +4,7 @@ import { Collapse } from "antd";
 import VendorHeaderNav from "../../../components/vendorHeaderNav/headerNav";
 import { Card } from "@mui/material";
 import { BuildOutlined } from "@ant-design/icons";
+import VendorCompletePage from "../../../components/profileComplete/page";
 
 export default function VendorHomePage() {
   return (
@@ -228,6 +229,8 @@ export default function VendorHomePage() {
             </div>
           </div>
         </div>
+
+        <VendorCompletePage/>
       </div>
     </VendorHeaderNav>
   );
