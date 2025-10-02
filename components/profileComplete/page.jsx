@@ -3,8 +3,17 @@ import { Card } from "@mui/material";
 import { Progress } from "antd";
 import React from "react";
 import IconBorder from "../reusableComponents/borderBox/page";
-import "./profileComplete.css"
+import "./profileComplete.css";
+import { renderLabel } from "@/utils/constant";
+import { Collapse, Form, Input, Select, Row, Col, Button } from "antd";
+const { Panel } = Collapse;
+const { Option } = Select;
 export default function VendorCompletePage() {
+  const [form] = Form.useForm(); // <-- useForm hook
+
+  const onFinish = (values) => {
+    console.log("Form submitted:", values);
+  };
   return (
     <div>
       {" "}
@@ -80,6 +89,148 @@ export default function VendorCompletePage() {
           </div>
         </div>
       </div>
+      <Form
+        layout="vertical"
+        requiredMark={false}
+        form={form}
+        onFinish={onFinish}
+      >
+        <div>
+          <Collapse
+            defaultActiveKey={["1"]}
+            expandIconPosition="end"
+            className="bg-white rounded-2xl shadow-md"
+          >
+            <Panel
+              header={
+                <div className="font-semibold text-[16px] text-[#4F454F]">
+                  Company Information
+                </div>
+              }
+              key="1"
+            >
+              <Row gutter={16}>
+                <Col span={8}>
+                  <Form.Item
+                    label={renderLabel("Company Name", true)} // mandatory
+                    name="companyName"
+                    rules={[
+                      { required: true, message: "Please enter company name" },
+                    ]}
+                  >
+                    <Input placeholder="Company Name" />
+                  </Form.Item>
+                </Col>
+
+                <Col span={8}>
+                  <Form.Item
+                    label={renderLabel("Business Type", true)} // mandatory
+                    name="businessType"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please select business type",
+                      },
+                    ]}
+                  >
+                    <Select placeholder="Business Type">
+                      <Option value="private">Private</Option>
+                      <Option value="public">Public</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+
+                <Col span={8}>
+                  <Form.Item
+                    label={renderLabel("Company Registration Number", true)} // mandatory
+                    name="companyRegNo"
+                    rules={[
+                      { required: true, message: "Enter registration number" },
+                    ]}
+                  >
+                    <Input placeholder="Company Registration Number" />
+                  </Form.Item>
+                </Col>
+
+                <Col span={8}>
+                  <Form.Item
+                    label={renderLabel("Year of Establishment", false)} // optional
+                    name="year"
+                  >
+                    <Input placeholder="2015" />
+                  </Form.Item>
+                </Col>
+
+                <Col span={8}>
+                  <Form.Item
+                    label={renderLabel("Number of Employees", false)} // optional
+                    name="employees"
+                  >
+                    <Select placeholder="Select range">
+                      <Option value="200-500">200 - 500</Option>
+                      <Option value="500-1000">500 - 1000</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+
+                <Col span={8}>
+                  <Form.Item
+                    label={renderLabel("Annual Turnover", false)} // optional
+                    name="turnover"
+                  >
+                    <Select placeholder="Select range">
+                      <Option value="500m">500M - 600M</Option>
+                      <Option value="600m+">600M+</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+
+                <Col span={8}>
+                  <Form.Item
+                    label={renderLabel("Parent", false)} // optional
+                    name="parent"
+                  >
+                    <Input placeholder="Parent Company" />
+                  </Form.Item>
+                </Col>
+
+                <Col span={8}>
+                  <Form.Item
+                    label={renderLabel("Subsidiary Information", false)} // optional
+                    name="subsidiary"
+                  >
+                    <Input placeholder="Subsidiary Details" />
+                  </Form.Item>
+                </Col>
+
+                <Col span={8}>
+                  <Form.Item
+                    label={renderLabel("Ownership Type", false)} // optional
+                    name="ownershipType"
+                  >
+                    <Select placeholder="Select ownership">
+                      <Option value="private">Private</Option>
+                      <Option value="public">Public</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+
+                <Col span={8}>
+                  <Form.Item
+                    label={renderLabel(
+                      "Certifying Authority for Registration No",
+                      false
+                    )} // optional
+                    name="certifyingAuthority"
+                  >
+                    <Input placeholder="MCA in India, Companies House in UK" />
+                  </Form.Item>
+                </Col>
+              </Row>
+            </Panel>
+          </Collapse>
+        </div>
+      </Form>
     </div>
   );
 }
