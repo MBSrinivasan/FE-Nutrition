@@ -1,7 +1,7 @@
 "use client";
 import { Card } from "@mui/material";
 import { Checkbox, Progress, Upload } from "antd";
-import React, { useMemo } from "react";
+import React, { useMemo, useRef } from "react";
 import IconBorder from "../reusableComponents/borderBox/page";
 import "./profileComplete.css";
 import { renderLabel } from "@/utils/constant";
@@ -18,12 +18,20 @@ import {
 import countryList from "react-select-country-list";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import SignatureCanvas from "react-signature-canvas";
 const { Title } = Typography;
 const { Panel } = Collapse;
 const { Option } = Select;
 export default function VendorCompletePage() {
   const [form] = Form.useForm(); // <-- useForm hook
   const options = useMemo(() => countryList().getData(), []);
+  const sigCanvas = useRef({});
+
+  const clear = () => sigCanvas.current.clear();
+  const save = () => {
+    const dataUrl = sigCanvas.current.getTrimmedCanvas().toDataURL("image/png");
+    console.log("Signature Image:", dataUrl);
+  };
 
   const onFinish = (values) => {
     console.log("Form submitted:", values);
@@ -728,7 +736,7 @@ export default function VendorCompletePage() {
                       name="bankDoc"
                       rules={[{ required: true }]}
                     >
-                     <Upload style={{ width: "100%" }}>
+                      <Upload style={{ width: "100%" }}>
                         <Button style={{ width: "100%" }}>File Upload</Button>
                       </Upload>
                     </Form.Item>
@@ -738,7 +746,7 @@ export default function VendorCompletePage() {
                       label="Quality Certifications"
                       name="qualityCert"
                     >
-                     <Upload style={{ width: "100%" }}>
+                      <Upload style={{ width: "100%" }}>
                         <Button style={{ width: "100%" }}>File Upload</Button>
                       </Upload>
                     </Form.Item>
@@ -748,7 +756,7 @@ export default function VendorCompletePage() {
                       label="Insurance Certificates"
                       name="insuranceCert"
                     >
-                     <Upload style={{ width: "100%" }}>
+                      <Upload style={{ width: "100%" }}>
                         <Button style={{ width: "100%" }}>File Upload</Button>
                       </Upload>
                     </Form.Item>
@@ -758,7 +766,7 @@ export default function VendorCompletePage() {
                       label="Sustainability / Ethical Certificates"
                       name="sustainCert"
                     >
-                     <Upload style={{ width: "100%" }}>
+                      <Upload style={{ width: "100%" }}>
                         <Button style={{ width: "100%" }}>File Upload</Button>
                       </Upload>
                     </Form.Item>
@@ -841,6 +849,18 @@ export default function VendorCompletePage() {
                 </Form.Item>
               </Col>
             </Row>
+
+            <SignatureCanvas
+              ref={sigCanvas}
+              penColor="black"
+              canvasProps={{ width: 500, height: 200, className: "border" }}
+            />
+            <div style={{ marginTop: 10 }}>
+              <Button onClick={clear}>Clear</Button>
+              <Button type="primary" onClick={save} style={{ marginLeft: 10 }}>
+                Save
+              </Button>
+            </div>
           </div>
         </div>
       </Form>
