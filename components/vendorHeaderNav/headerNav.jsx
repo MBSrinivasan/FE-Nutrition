@@ -2,6 +2,8 @@
 import * as React from 'react';
 import { useCallback } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
+import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
@@ -101,33 +103,75 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function VendorHeaderNav({ children }) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const router = useRouter();
+  const pathname = usePathname();
+  
+  // Initialize from localStorage with proper SSR handling
+  const [open, setOpen] = React.useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('vendorSidebarOpen');
+      return saved !== null ? saved === 'true' : true; // Default to true (expanded)
+    }
+    return true;
+  });
 
   const handleDrawerOpen = () => {
     setOpen(true);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('vendorSidebarOpen', 'true');
+    }
   };
 
   const handleDrawerClose = () => {
     setOpen(false);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('vendorSidebarOpen', 'false');
+    }
   };
-
-  const menuItems = [
-    { text: 'Dashboard', iconSrc: '/assets/images/allimages/dashboard.svg', iconAlt: 'Dashboard', index: 0 },
-    { text: 'Profile', iconSrc: '/assets/images/allimages/profile.svg', iconAlt: 'Profile', index: 1 },
-    { text: 'My Products & Services', iconSrc: '/assets/images/allimages/my products.svg', iconAlt: 'Products', index: 2 },
-    { text: 'Messages', iconSrc: '/assets/images/allimages/messages.svg', iconAlt: 'Messages', index: 3 },
-    { text: 'My Projects', iconSrc: '/assets/images/allimages/my projects.svg', iconAlt: 'Projects', index: 4 },
-  ];
-
-  const bottomMenuItems = [
-    { text: 'Calendar', iconSrc: '/assets/images/allimages/calender.svg', iconAlt: 'Calendar', index: 5 },
-    { text: 'Sourcing', iconSrc: '/assets/images/allimages/sourcing.svg', iconAlt: 'Sourcing', index: 6 },
-  ];
-
-  const handleListItemClick = useCallback((index) => {
-    setSelectedIndex(index);
+  
+  // Sync localStorage changes across tabs/windows
+  React.useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key === 'vendorSidebarOpen' && e.newValue !== null) {
+        setOpen(e.newValue === 'true');
+      }
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
+
+  const menuItems = React.useMemo(() => [
+    { text: 'Dashboard', iconSrc: '/assets/images/allimages/dashboard.svg', iconAlt: 'Dashboard', index: 0, path: '/vendor/home' },
+    { text: 'Profile', iconSrc: '/assets/images/allimages/profile.svg', iconAlt: 'Profile', index: 1, path: '/vendor/profile' },
+    { text: 'My Products & Services', iconSrc: '/assets/images/allimages/my products.svg', iconAlt: 'Products', index: 2, path: '/vendor/products-services' },
+    { text: 'Messages', iconSrc: '/assets/images/allimages/messages.svg', iconAlt: 'Messages', index: 3, path: '/vendor/messages' },
+    { text: 'My Projects', iconSrc: '/assets/images/allimages/my projects.svg', iconAlt: 'Projects', index: 4, path: '/vendor/my-projects' },
+  ], []);
+
+  const bottomMenuItems = React.useMemo(() => [
+    { text: 'Calendar', iconSrc: '/assets/images/allimages/calender.svg', iconAlt: 'Calendar', index: 5, path: '/vendor/calendar' },
+    { text: 'Sourcing', iconSrc: '/assets/images/allimages/sourcing.svg', iconAlt: 'Sourcing', index: 6, path: '/vendor/sourcing' },
+  ], []);
+
+  // Initialize selectedIndex based on current pathname to prevent Dashboard flash
+  const [selectedIndex, setSelectedIndex] = React.useState(() => {
+    const allItems = [...menuItems, ...bottomMenuItems];
+    const currentItem = allItems.find(item => item.path === pathname);
+    return currentItem ? currentItem.index : 0;
+  });
+
+  // Update selected index when pathname changes
+  React.useEffect(() => {
+    const allItems = [...menuItems, ...bottomMenuItems];
+    const currentItem = allItems.find(item => item.path === pathname);
+    if (currentItem) {
+      setSelectedIndex(currentItem.index);
+    }
+  }, [pathname, menuItems, bottomMenuItems]);
+
+  // Remove this handler - selection is automatically handled by useEffect based on pathname
+  // This prevents the flash/glitch where Dashboard appears selected first
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -282,19 +326,17 @@ export default function VendorHeaderNav({ children }) {
           {menuItems.map((item) => (
             <ListItem key={item.text} disablePadding sx={{ display: 'block', mb: 0.3 }}>
               <ListItemButton
+                component={Link}
+                href={item.path}
                 selected={selectedIndex === item.index}
-                onClick={() => {
-                  setSelectedIndex(item.index);
-                }}
                 sx={{
                   minHeight: 40,
                   px: 1.5,
                   borderRadius: '6px',
                   position: 'relative',
-                  backgroundColor: selectedIndex === item.index && open ? 'white' : 'transparent',
+                  backgroundColor: selectedIndex === item.index ? 'white' : 'transparent', // Always white when selected
                   marginLeft: selectedIndex === item.index && open ? '4px' : '0px',
                   borderLeft: selectedIndex === item.index && open ? '10px solid white' : 'none',
-                  // boxShadow: selectedIndex === item.index && open ? 'inset 12px 0 0 0 #7A1F3D' : 'none',
                   transition: 'background-color 0.2s, margin-left 0.2s, border-left 0.2s, box-shadow 0.2s',
                   overflow: 'visible',
                   position: 'relative',
@@ -315,7 +357,7 @@ export default function VendorHeaderNav({ children }) {
                     boxShadow: 'none',
                   },
                   '&.Mui-selected': {
-                    backgroundColor: open ? 'white' : 'transparent',
+                    backgroundColor: 'white', // Always white when selected, regardless of open state
                   },
                   ...(open
                     ? {
@@ -330,7 +372,7 @@ export default function VendorHeaderNav({ children }) {
                   sx={{
                     minWidth: 0,
                     justifyContent: 'center',
-                    color: selectedIndex === item.index && open ? '#7A1F3D' : 'white',
+                    color: selectedIndex === item.index ? '#7A1F3D' : 'white', // Maroon when selected, regardless of open state
                     ...(open
                       ? {
                           mr: 3,
@@ -347,21 +389,21 @@ export default function VendorHeaderNav({ children }) {
                       width: '20px', 
                       height: '20px', 
                       objectFit: 'contain', 
-                      filter: selectedIndex === item.index && open ? 'brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(3656%) hue-rotate(329deg) brightness(89%) contrast(89%)' : 'brightness(0) invert(1)'
+                      filter: selectedIndex === item.index ? 'brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(3656%) hue-rotate(329deg) brightness(89%) contrast(89%)' : 'brightness(0) invert(1)' // Maroon when selected, white otherwise
                     }} 
                   />
                 </ListItemIcon>
                 <ListItemText
                   primary={item.text}
                   sx={{
-                    color: selectedIndex === item.index && open ? '#7A1F3D' : 'white',
+                    color: selectedIndex === item.index ? '#7A1F3D' : 'white', // Maroon when selected, regardless of open state
                     '& .MuiTypography-root': {
                       fontSize: '14px',
                       fontWeight: 600,
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
-                      color: selectedIndex === item.index && open ? '#7A1F3D' : 'white',
+                      color: selectedIndex === item.index ? '#7A1F3D' : 'white', // Maroon when selected, regardless of open state
                     },
                     ...(open
                       ? {
@@ -441,19 +483,17 @@ export default function VendorHeaderNav({ children }) {
           {bottomMenuItems.map((item) => (
             <ListItem key={item.text} disablePadding sx={{ display: 'block', mb: 0.3 }}>
               <ListItemButton
+                component={Link}
+                href={item.path}
                 selected={selectedIndex === item.index}
-                onClick={() => {
-                  setSelectedIndex(item.index);
-                }}
                 sx={{
                   minHeight: 40,
                   px: 1.5,
                   borderRadius: '6px',
                   position: 'relative',
-                  backgroundColor: selectedIndex === item.index && open ? 'white' : 'transparent',
+                  backgroundColor: selectedIndex === item.index ? 'white' : 'transparent', // Always white when selected
                   marginLeft: selectedIndex === item.index && open ? '4px' : '0px',
                   borderLeft: selectedIndex === item.index && open ? '10px solid white' : 'none',
-                  // boxShadow: selectedIndex === item.index && open ? 'inset 12px 0 0 0 #7A1F3D' : 'none',
                   transition: 'background-color 0.2s, margin-left 0.2s, border-left 0.2s, box-shadow 0.2s',
                   overflow: 'visible',
                   position: 'relative',
@@ -473,7 +513,7 @@ export default function VendorHeaderNav({ children }) {
                     backgroundColor: 'white',
                   },
                   '&.Mui-selected': {
-                    backgroundColor: open ? 'white' : 'transparent',
+                    backgroundColor: 'white', // Always white when selected, regardless of open state
                   },
                   ...(open
                     ? {
@@ -488,7 +528,7 @@ export default function VendorHeaderNav({ children }) {
                   sx={{
                     minWidth: 0,
                     justifyContent: 'center',
-                    color: selectedIndex === item.index && open ? '#7A1F3D' : 'white',
+                    color: selectedIndex === item.index ? '#7A1F3D' : 'white', // Maroon when selected, regardless of open state
                     ...(open
                       ? {
                           mr: 3,
@@ -505,7 +545,7 @@ export default function VendorHeaderNav({ children }) {
                       width: '20px', 
                       height: '20px', 
                       objectFit: 'contain', 
-                      filter: selectedIndex === item.index && open ? 'brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(3656%) hue-rotate(329deg) brightness(89%) contrast(89%)' : 'brightness(0) invert(1)'
+                      filter: selectedIndex === item.index ? 'brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(3656%) hue-rotate(329deg) brightness(89%) contrast(89%)' : 'brightness(0) invert(1)' // Maroon when selected, white otherwise
                     }} 
                   />
                 </ListItemIcon>
@@ -532,11 +572,11 @@ export default function VendorHeaderNav({ children }) {
                     </Box>
                   }
                   sx={{
-                    color: selectedIndex === item.index && open ? '#7A1F3D' : 'white',
+                    color: selectedIndex === item.index ? '#7A1F3D' : 'white', // Maroon when selected, regardless of open state
                     '& .MuiTypography-root': {
                       fontSize: '14px',
                       fontWeight: 600,
-                      color: selectedIndex === item.index && open ? '#7A1F3D' : 'white',
+                      color: selectedIndex === item.index ? '#7A1F3D' : 'white', // Maroon when selected, regardless of open state
                     },
                     ...(open
                       ? {
