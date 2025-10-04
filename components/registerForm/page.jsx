@@ -77,9 +77,9 @@ export default function RegisterForm() {
               <span className="font-34 font-ks lineh26 weight-600 color34 margin-b10  d-inline-block">
                 Vendor Registration
               </span>
-              <h1 className="font-lora font-14  weight-400 margin-b28 color100">
+              <div className="font-lora font-14  weight-400 margin-b28 color100">
                 Feel free to contuct us for any{" "}
-              </h1>
+              </div>
             </div>
           </div>
         </div>
