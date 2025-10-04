@@ -15,6 +15,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const [isRecaptchaVerified, setIsRecaptchaVerified] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   // reCAPTCHA callbacks
   const onRecaptchaSuccess = (token) => {
@@ -35,8 +36,10 @@ const Login = () => {
     console.log("reCAPTCHA error");
   };
 
-  // Load reCAPTCHA script
+  // Load reCAPTCHA script and set client flag
   useEffect(() => {
+    setIsClient(true);
+    
     // Make callbacks global
     window.onRecaptchaSuccess = onRecaptchaSuccess;
     window.onRecaptchaExpired = onRecaptchaExpired;
@@ -118,7 +121,6 @@ const Login = () => {
                 Please enter your Email and Password to continue
               </p>
             </div>
-            <div className="heightReduce">
             <Form
               name="loginForm"
               initialValues={{ remember: true }}
@@ -173,24 +175,23 @@ const Login = () => {
                 ]}
               >
                 <div className="flex justify-center">
-                  <ReCAPTCHA
-                    sitekey={SITE_KEY} // Replace with your site key
-                    onChange={handleCaptchaChange}
-                    ref={recaptchaRef}
-                  />
+                  {isClient && (
+                    <ReCAPTCHA
+                      sitekey={SITE_KEY}
+                      onChange={handleCaptchaChange}
+                      ref={recaptchaRef}
+                    />
+                  )}
                 </div>
               </Form.Item>
 
               {/* Submit Button */}
-              <Form.Item >
-                <div className="d-flex justify-center items-center w-full">
+              <Form.Item style={{ textAlign: 'center' }}>
                 <Button type="primary" htmlType="submit" block>
                   Log in
                 </Button>
-                </div>
               </Form.Item>
             </Form>
-            </div>
           </div>
         </div>
         <div
