@@ -2,36 +2,41 @@ import React from "react";
 
 const Button = ({
   height = "30px",
-  width = "120px",
+  minWidth = "120px",  // minimum width
+  maxWidth = "100%",   // maximum width
   borderRadius = "6px",
   bgColor = "#7A1F3D",
   textColor = "#fff",
   icon,
   marginLeft = "0",
-  fontSize="14px",
-  fontWeight="500",
+  fontSize = "12px",
+  fontWeight = "500",
   children,
+  fullWidth = false, // new prop to make button full width
   ...rest
 }) => {
   return (
     <button
-    className={`flex items-center justify-center  px-3 cursor-pointer`}
+      className={`flex items-center justify-center px-3 cursor-pointer ${
+        fullWidth ? "w-full" : "w-auto"
+      }`}
       style={{
         height,
-        width,
+        minWidth: fullWidth ? "100%" : minWidth,
+        maxWidth: maxWidth,
         borderRadius,
         backgroundColor: bgColor,
         color: textColor,
         border: "none",
-        gap: icon ? "8px" : "0",
+        gap: icon ? "5px" : "0",
         marginLeft: marginLeft,
         fontSize,
-        fontWeight
+        fontWeight,
       }}
       {...rest}
     >
       {icon && icon}
-      <div >{children}</div>
+      <div>{children}</div>
     </button>
   );
 };

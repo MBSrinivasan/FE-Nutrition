@@ -178,7 +178,7 @@ export default function VendorHomePage() {
                                 alt="icon"
                               />
                             }
-                            width="130px"
+                            fullWidth
                             textColor="#1D6630"
                             bgColor="#DBFCE7"
                           >
@@ -226,7 +226,7 @@ export default function VendorHomePage() {
                       <div className=" d-flex justify-content-end align-items-end mb-[15px]">
                         <Button
                           icon={<UploadOutlined />}
-                          width="130px"
+                          fullWidth
                           textColor="#FFF"
                           bgColor="#7A1F3D"
                           fontWeight="600"
@@ -540,7 +540,7 @@ export default function VendorHomePage() {
                                 {" "}
                                 <Button
                                   icon={<UploadOutlined />}
-                                  width="130px"
+                                  fullWidth
                                   textColor="#FFF"
                                   bgColor="#7A1F3D"
                                   fontWeight="600"
@@ -1383,8 +1383,6 @@ export default function VendorHomePage() {
                             {/* </div> */}
                           </div>
                         </div>
-
-                        {/* first second sarvesh */}
                       </Card>
                     </div>
                     <div class="col-6">
@@ -2451,7 +2449,7 @@ export default function VendorHomePage() {
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-6">
-                      <Card
+                    <Card
                         sx={{
                           height: "100%",
                           borderRadius: 5,
@@ -2470,234 +2468,152 @@ export default function VendorHomePage() {
                             Beetloop Intelligence Shortcut
                           </span>
                         </div>
-                        <div className="row g-3">
-                          <div className="col-12 col-md-6">
-                            <div
-                              className="p-3 rounded"
-                              style={{
-                                background: "#E8FBF1",
-                                minHeight: "100px",
-                              }}
-                            >
-                              <div className="d-flex align-items-start mb-1">
-                                <svg
-                                  className="me-2"
-                                  width="22"
-                                  height="20"
-                                  viewBox="0 0 32 22"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  style={{
-                                    display: "inline-block",
-                                    verticalAlign: "middle",
-                                  }}
-                                >
-                                  <polyline
-                                    points="2,20 12,10 20,16 30,6"
+                        <div class="container-fluid mb-[20px]">
+                          <div className="flex gap-4">
+                            <div className="flex-1 bg-[#DBFCE7] p-2 rounded">
+                              <div className="flex">
+                                <div className="w-1/4 flex items-start justify-center">
+                                  <svg
+                                    width="22"
+                                    height="20"
+                                    viewBox="0 0 32 22"
                                     fill="none"
-                                    stroke="#1DB96B"
-                                    strokeWidth="3"
-                                    strokeLinejoin="round"
-                                    strokeLinecap="round"
-                                  />
-                                  <polyline
-                                    points="25,6 30,6 30,11"
-                                    fill="none"
-                                    stroke="#1DB96B"
-                                    strokeWidth="3"
-                                    strokeLinejoin="round"
-                                    strokeLinecap="round"
-                                  />
-                                </svg>
-                                <span
-                                  className="fw-semibold"
-                                  style={{ fontSize: "1.1rem" }}
-                                >
-                                  Trending <br /> Ingredient:
-                                  <br />
-                                  Collagen
-                                </span>
-                              </div>
-                              <div
-                                style={{
-                                  color: "grey",
-                                  fontSize: "0.95rem",
-                                  marginLeft: "27px",
-                                }}
-                              >
-                                +18% YoY growth
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <polyline
+                                      points="2,20 12,10 20,16 30,6"
+                                      fill="none"
+                                      stroke="#1DB96B"
+                                      strokeWidth="3"
+                                      strokeLinejoin="round"
+                                      strokeLinecap="round"
+                                    />
+                                    <polyline
+                                      points="25,6 30,6 30,11"
+                                      fill="none"
+                                      stroke="#1DB96B"
+                                      strokeWidth="3"
+                                      strokeLinejoin="round"
+                                      strokeLinecap="round"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="w-3/4 flex flex-col gap-2">
+                                  <div className="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-semibold text-[#4F4F4F]">
+                                    Trending Ingredient: Collagen
+                                  </div>
+                                  <div className="text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-normal text-[#4F4F4F]">
+                                    +18% YoY growth
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="col-12 col-md-6">
-                            <div
-                              className="p-3 rounded"
-                              style={{
-                                background: "#EAF3FE",
-                                minHeight: "100px",
-                              }}
-                            >
-                              <div className="d-flex align-items-start mb-2">
-                                <span
-                                  className="me-2"
-                                  style={{
-                                    fontSize: "1.5rem",
-                                    color: "#3B82F6",
-                                  }}
-                                >
+
+                            <div className="flex-1 bg-[#DBEAFE] p-2 rounded">
+                              <div className="flex">
+                                <div className="w-1/4 flex items-start justify-center">
                                   ℹ️
-                                </span>
-                                <span
-                                  className="fw-semibold"
-                                  style={{ fontSize: "1.1rem" }}
-                                >
-                                  Safe Dosage: EFSA Collagen
-                                </span>
-                              </div>
-                              <div
-                                style={{
-                                  color: "grey",
-                                  fontSize: "0.95rem",
-                                  marginLeft: "40px",
-                                }}
-                              >
-                                10 g/day <br /> recommended
+                                </div>
+                                <div className="w-3/4 flex flex-col gap-2">
+                                  <div className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] font-semibold text-[#4F4F4F]">
+                                    Safe Dosage: EFSA Collagen
+                                  </div>
+                                  <div className="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-normal text-[#4F4F4F]">
+                                    10 g/day recommended
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                          <div className="col-12 col-md-6">
-                            <div
-                              className="p-3 rounded"
-                              style={{
-                                background: "#FFF7E2",
-                                minHeight: "100px",
-                              }}
-                            >
-                              <div className="d-flex align-items-start mb-2">
-                                <span
-                                  className="me-2"
-                                  style={{
-                                    fontSize: "1.5rem",
-                                    color: "#F59E42",
-                                  }}
-                                >
+                        </div>
+
+                        <div class="container-fluid mb-[20px]">
+                          <div className="flex gap-4">
+                            <div className="flex-1 bg-[#FEF3C6] p-2 rounded">
+                              <div className="flex">
+                                <div className="w-1/4 flex items-start justify-center">
                                   ⚠️
-                                </span>
-                                <span
-                                  className="fw-semibold"
-                                  style={{ fontSize: "1.1rem" }}
-                                >
-                                  Regulatory Alert:
-                                  <br />
-                                  Nisin Approval
-                                </span>
-                              </div>
-                              <div
-                                style={{
-                                  color: "grey",
-                                  fontSize: "0.95rem",
-                                  marginLeft: "40px",
-                                }}
-                              >
-                                Limit → 12.5 mg/kg
-                                <br />
-                                <span
-                                  style={{ fontSize: "0.85rem", color: "grey" }}
-                                >
-                                  (Updated 15 Sep <br /> 2025)
-                                </span>
+                                </div>
+                                <div className="w-3/4 flex flex-col gap-2">
+                                  <div className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] font-semibold text-[#4F4F4F]">
+                                    Regulatory Alert: Nisin Approval
+                                  </div>
+                                  <div className="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-normal text-[#4F4F4F]">
+                                    Limit → 12.5 mg/kg (Updated 15 Sep 2025)
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="col-12 col-md-6">
-                            <div
-                              className="p-3 rounded"
-                              style={{
-                                background: "#F4EDFE",
-                                minHeight: "162px",
-                              }}
-                            >
-                              <div className="d-flex align-items-start mb-2 ml-5">
-                                <svg
-                                  width="24"
-                                  height="24"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  style={{
-                                    display: "inline-block",
-                                    verticalAlign: "middle",
-                                    marginLeft: "10px",
-                                  }}
-                                >
-                                  <circle
-                                    cx="12"
-                                    cy="12"
-                                    r="9"
-                                    stroke="#A259E6"
-                                    strokeWidth="2.5"
+
+                            <div className="flex-1 bg-[#DBEAFE] p-2 rounded">
+                              <div className="flex">
+                                <div className="w-1/4 flex items-start justify-center">
+                                  <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
                                     fill="none"
-                                  />
-                                  <line
-                                    x1="12"
-                                    y1="3"
-                                    x2="12"
-                                    y2="21"
-                                    stroke="#A259E6"
-                                    strokeWidth="2"
-                                  />
-                                  <line
-                                    x1="3"
-                                    y1="12"
-                                    x2="21"
-                                    y2="12"
-                                    stroke="#A259E6"
-                                    strokeWidth="2"
-                                  />
-                                  <ellipse
-                                    cx="12"
-                                    cy="12"
-                                    rx="9"
-                                    ry="4"
-                                    stroke="#A259E6"
-                                    strokeWidth="2"
-                                    fill="none"
-                                  />
-                                </svg>
-                                <span
-                                  className="fw-semibold"
-                                  style={{
-                                    fontSize: "1.1rem",
-                                    marginLeft: "10px",
-                                  }}
-                                >
-                                  Export Hotspot:
-                                  <br />
-                                  UAE
-                                </span>
-                              </div>
-                              <div
-                                style={{
-                                  color: "grey",
-                                  fontSize: "0.95rem",
-                                  marginLeft: "47px",
-                                }}
-                              >
-                                Demand +22% this
-                                <br />
-                                quarter
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    style={{
+                                      display: "inline-block",
+                                      verticalAlign: "middle",
+                                    }}
+                                  >
+                                    <circle
+                                      cx="12"
+                                      cy="12"
+                                      r="9"
+                                      stroke="#A259E6"
+                                      strokeWidth="2.5"
+                                      fill="none"
+                                    />
+                                    <line
+                                      x1="12"
+                                      y1="3"
+                                      x2="12"
+                                      y2="21"
+                                      stroke="#A259E6"
+                                      strokeWidth="2"
+                                    />
+                                    <line
+                                      x1="3"
+                                      y1="12"
+                                      x2="21"
+                                      y2="12"
+                                      stroke="#A259E6"
+                                      strokeWidth="2"
+                                    />
+                                    <ellipse
+                                      cx="12"
+                                      cy="12"
+                                      rx="9"
+                                      ry="4"
+                                      stroke="#A259E6"
+                                      strokeWidth="2"
+                                      fill="none"
+                                    />
+                                  </svg>
+                                </div>
+                                <div className="w-3/4 flex flex-col gap-2">
+                                  <div className=" text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px]  font-semibold text-[#4F4F4F]">
+                                    Export Hotspot: UAE
+                                  </div>
+                                  <div className="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-normal text-[#4F4F4F]">
+                                    Demand +22% this quarter
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
 
                         {/* Recipe Trend Update Card */}
-                        <div className="mt-5">
+                       
                           <div
                             className="p-4"
                             style={{
                               backgroundColor: "#F5F5F5",
-                              borderRadius: "12px 12px 0 0",
+                              borderRadius: "12px",
                             }}
                           >
                             <div className="d-flex align-items-center mb-3">
@@ -2721,14 +2637,14 @@ export default function VendorHomePage() {
                                 </span>
                               </div>
                               <h5
-                                className="mb-0 fw-bold"
+                                className="mb-0 weight-600 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F454F] m-0"
                                 style={{ color: "#333" }}
                               >
                                 Recipe Trend Update
                               </h5>
                             </div>
                             <p
-                              className="mb-0"
+                              className="mb-0 weight-400 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[22px]  text-[#4F454F]"
                               style={{
                                 color: "#666",
                                 fontSize: "0.85rem",
@@ -2736,7 +2652,7 @@ export default function VendorHomePage() {
                               }}
                             >
                               New sweetener blends analysis → Report Due: Oct{" "}
-                              <br /> 2025
+                               2025
                             </p>
                           </div>
                           <br></br>
@@ -2764,21 +2680,14 @@ export default function VendorHomePage() {
                           >
                             Explore Intelligence
                           </button>
-                        </div>
+                     
 
                         {/* Next Release Section */}
                         <div className="mt-5">
-                          <h5 className="mb-4" style={{ color: "#333" }}>
-                            Next Release:
-                            <br />
-                            <span
-                              style={{
-                                marginTop: "3px",
-                                display: "inline-block",
-                              }}
-                            >
-                              Checklist - Supplier Audit - 05 Oct 2025
-                            </span>
+                          <h5 className="mb-4 weight-400 text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] text-[#4F4F4F]" style={{ color: "#333" }}>
+                            Next Release:Checklist - Supplier Audit - 05 Oct 2025
+                           
+                           
                           </h5>
                           <div className="row g-3">
                             <div className="col-12">

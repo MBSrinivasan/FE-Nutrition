@@ -12761,6 +12761,10 @@ a.solutions2 span i {
   box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important;
 }
 
+.heightReduce .ant-form-item {
+  margin-bottom: 10px !important;
+}
+
 /* .row>*{
   padding-left: 0px !important;
 } */
