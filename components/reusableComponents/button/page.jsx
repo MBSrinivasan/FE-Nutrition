@@ -8,7 +8,7 @@ const Button = ({
   textColor = "#fff",
   icon,
   marginLeft = "0",
-  fontSize="10px",
+  fontSize="14px",
   fontWeight="500",
   children,
   ...rest

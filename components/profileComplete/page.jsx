@@ -1,7 +1,7 @@
 "use client";
 import { Card } from "@mui/material";
 import { Checkbox, Progress, Upload } from "antd";
-import React, { useMemo, useRef } from "react";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 import IconBorder from "../reusableComponents/borderBox/page";
 import "./profileComplete.css";
 import { renderLabel } from "@/utils/constant";
@@ -14,27 +14,158 @@ import {
   Col,
   Button,
   Typography,
+  message,
 } from "antd";
 import countryList from "react-select-country-list";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import SignatureCanvas from "react-signature-canvas";
+import ButtonTwo from "../reusableComponents/button/page";
+import { CheckCircleOutlined } from "@ant-design/icons";
 const { Title } = Typography;
 const { Panel } = Collapse;
 const { Option } = Select;
 export default function VendorCompletePage() {
   const [form] = Form.useForm(); // <-- useForm hook
   const options = useMemo(() => countryList().getData(), []);
-  const sigCanvas = useRef({});
+  const canvasRef = useRef(null);
+  const [signatureData, setSignatureData] = useState(null);
+  const [hasSignature, setHasSignature] = useState(false);
+  const [isDrawing, setIsDrawing] = useState(false);
 
-  const clear = () => sigCanvas.current.clear();
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    const startDrawing = (e) => {
+      setIsDrawing(true);
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+
+      ctx.beginPath();
+      ctx.moveTo(
+        (e.touches ? e.touches[0].clientX : e.clientX) * scaleX -
+          rect.left * scaleX,
+        (e.touches ? e.touches[0].clientY : e.clientY) * scaleY -
+          rect.top * scaleY
+      );
+    };
+
+    const draw = (e) => {
+      if (!isDrawing) return;
+
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+
+      ctx.lineTo(
+        (e.touches ? e.touches[0].clientX : e.clientX) * scaleX -
+          rect.left * scaleX,
+        (e.touches ? e.touches[0].clientY : e.clientY) * scaleY -
+          rect.top * scaleY
+      );
+      ctx.stroke();
+    };
+
+    const stopDrawing = () => {
+      setIsDrawing(false);
+    };
+
+    // Add event listeners
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", stopDrawing);
+    canvas.addEventListener("mouseout", stopDrawing);
+
+    // Touch events for mobile
+    canvas.addEventListener("touchstart", startDrawing);
+    canvas.addEventListener("touchmove", draw);
+    canvas.addEventListener("touchend", stopDrawing);
+
+    return () => {
+      canvas.removeEventListener("mousedown", startDrawing);
+      canvas.removeEventListener("mousemove", draw);
+      canvas.removeEventListener("mouseup", stopDrawing);
+      canvas.removeEventListener("mouseout", stopDrawing);
+      canvas.removeEventListener("touchstart", startDrawing);
+      canvas.removeEventListener("touchmove", draw);
+      canvas.removeEventListener("touchend", stopDrawing);
+    };
+  }, [isDrawing]);
+
+  const clear = () => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      setSignatureData(null);
+      setHasSignature(false);
+    }
+  };
+
+  const isCanvasEmpty = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return true;
+
+    const ctx = canvas.getContext("2d");
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+
+    // Check if any pixel has been drawn on (not white or transparent)
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
+      const a = data[i + 3];
+
+      // If pixel is not white (255,255,255) or transparent (0 alpha), there's content
+      if (a > 0 && (r !== 255 || g !== 255 || b !== 255)) {
+        return false;
+      }
+    }
+
+    return true; // Canvas is empty
+  };
+
   const save = () => {
-    const dataUrl = sigCanvas.current.getTrimmedCanvas().toDataURL("image/png");
-    console.log("Signature Image:", dataUrl);
+    try {
+      // Check if canvas is empty
+      if (isCanvasEmpty()) {
+        message.error("Please provide your signature before saving.");
+        return;
+      }
+
+      const dataUrl = canvasRef.current.toDataURL("image/png");
+      setSignatureData(dataUrl);
+      setHasSignature(true);
+
+      // Set form value for signature
+      form.setFieldsValue({ signature: dataUrl });
+
+      message.success("E-signature saved successfully!");
+    } catch (error) {
+      console.error("Error saving signature:", error);
+      message.error("Failed to save signature. Please try again.");
+    }
   };
 
   const onFinish = (values) => {
+    // Validate signature before form submission
+    if (!hasSignature && !signatureData) {
+      message.error(
+        "Please provide and save your e-signature before submitting the form."
+      );
+      return;
+    }
+
     console.log("Form submitted:", values);
+    message.success("Vendor profile completed successfully!");
   };
   return (
     <div>
@@ -850,16 +981,79 @@ export default function VendorCompletePage() {
               </Col>
             </Row>
 
-            <SignatureCanvas
-              ref={sigCanvas}
-              penColor="black"
-              canvasProps={{ width: 500, height: 200, className: "border" }}
-            />
-            <div style={{ marginTop: 10 }}>
-              <Button onClick={clear}>Clear</Button>
-              <Button type="primary" onClick={save} style={{ marginLeft: 10 }}>
-                Save
-              </Button>
+            {/* E-Signature Section */}
+            <Title
+              level={5}
+              className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] weight-600 font-semibold  text-[#4F454F] mb-4"
+            >
+              E-Signature *
+            </Title>
+
+            <Form.Item
+              name="signature"
+              rules={[
+                {
+                  required: true,
+                  validator: () => {
+                    if (!hasSignature && !signatureData) {
+                      return Promise.reject(
+                        new Error("Please provide your e-signature")
+                      );
+                    }
+                    return Promise.resolve();
+                  },
+                },
+              ]}
+            >
+              <div className="border border-gray-300 p-4 rounded-lg">
+                <div className="text-start mb-2 text-sm text-gray-600">
+                  Please draw your signature in the box below
+                </div>
+
+                <canvas
+                  ref={canvasRef}
+                  width={500}
+                  height={200}
+                  className="border border-gray-400 rounded cursor-crosshair hover:border-blue-400 focus:border-blue-500 bg-white mx-auto block"
+                  style={{
+                    cursor: "crosshair",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "8px",
+                    backgroundColor: "white",
+                  }}
+                />
+
+                {/* Status indicator */}
+                {hasSignature && (
+                  <div className="text-green-600 text-sm mt-2 text-center">
+                    ✓ Signature saved successfully
+                  </div>
+                )}
+
+                <div className="mt-4 flex gap-2 justify-center">
+                  <Button onClick={clear} danger>
+                    Clear Signature
+                  </Button>
+                  <Button type="primary" onClick={save}>
+                    {hasSignature ? "Update Signature" : "Save Signature"}
+                  </Button>
+                </div>
+              </div>
+            </Form.Item>
+
+            {/* Submit Button */}
+            <div className="mt-6 text-center">
+              <div className="flex justify-center w-100">
+                <ButtonTwo
+                  icon={<CheckCircleOutlined />}
+                  width="267px"
+                  height="60px"
+                  borderRadius="10px"
+                  htmlType="submit"
+                >
+                  Complete Vendor Registration
+                </ButtonTwo>
+              </div>
             </div>
           </div>
         </div>
