@@ -1,0 +1,43 @@
+
+/* Default: Mobile first */
+.searchbarWidth {
+    width: 100%; /* full width on very small screens */
+    max-width: 350px; /* limit so it doesn’t stretch too much on tiny screens */
+  }
+  
+  /* Small screens: 640px–767px */
+  @media (min-width: 640px) and (max-width: 767px) {
+    .searchbarWidth {
+      width: 350px;
+    }
+  }
+  
+  /* Medium screens: 768px–1023px */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .searchbarWidth {
+      width: 400px;
+    }
+  }
+  
+  /* Large screens: 1024px–1279px */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .searchbarWidth {
+      width: 450px; /* your default */
+    }
+  }
+  
+  /* Extra large screens: 1280px–1535px */
+  @media (min-width: 1280px) and (max-width: 1535px) {
+    .searchbarWidth {
+      width: 500px;
+    }
+  }
+  
+  /* 2XL screens: 1536px and above */
+  @media (min-width: 1536px) {
+    .searchbarWidth {
+      width: 600px;
+    }
+  }
+  
+

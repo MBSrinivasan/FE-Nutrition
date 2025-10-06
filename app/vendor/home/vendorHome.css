@@ -49,3 +49,514 @@ font-weight: 500;
   font-size: 14px;
   font-weight: 500;
 }
+
+.dashboard-card {
+  width: 100%;
+  border-radius: 18px;
+  background: #FFFFFF;
+
+  transition: all 0.3s ease;
+  overflow: visible;
+  position: relative;
+}
+
+@media (max-width: 576px) {
+  .dashboard-card {
+    padding: 10px;
+  }
+}
+
+.payments-title {
+  margin-bottom: 16px;
+}
+
+.payments-title h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #1F2937;
+  margin: 0;
+  position: relative;
+  bottom: 25px;
+}
+
+@media (max-width: 576px) {
+  .payments-title h2 {
+    font-size: 16px;
+  }
+}
+
+
+
+.donut-chart {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+@media (max-width: 576px) {
+  .donut-chart {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .donut-chart {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+.donut-chart svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.total-amount {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #7A1F3D;
+  margin: 0;
+}
+
+.total-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #6B7280;
+  margin: 0;
+}
+
+.financial-item {
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 32px;
+}
+
+@media (max-width: 576px) {
+  .financial-item {
+    padding: 4px 8px;
+    min-height: 28px;
+  }
+}
+
+.financial-item:last-child {
+  margin-bottom: 0;
+}
+
+.financial-item.received {
+  background: #F0FDF4;
+}
+
+.financial-item.pending {
+  background: #FFFBEB;
+}
+
+.financial-item.overdue {
+  background: #FEF2F2;
+}
+
+.financial-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.financial-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.financial-icon.received {
+  background: #16A34A;
+  color: white;
+}
+
+.financial-icon.pending {
+  background: #EA580C;
+  color: white;
+}
+
+.financial-icon.overdue {
+  background: #DC2626;
+  color: white;
+}
+
+.financial-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.financial-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #4F4F4F;
+  margin: 0 0 4px 0;
+}
+
+.financial-amount {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  margin: 0 0 4px 0;
+}
+
+.financial-amount.received {
+  color: #16A34A;
+}
+
+.financial-amount.pending {
+  color: #EA580C;
+}
+
+.financial-amount.overdue {
+  color: #DC2626;
+}
+
+.financial-detail {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.financial-detail.received {
+  color: #16A34A;
+}
+
+.financial-detail.pending {
+  color: #EA580C;
+}
+
+.financial-detail.overdue {
+  color: #DC2626;
+}
+
+.divider-line {
+  width: 100%;
+  height: 1px;
+  background: #E5E5E5;
+  margin: 20px 0;
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #4F4F4F;
+  margin: 20px 0 15px 0;
+}
+
+.transaction-item {
+  background: #F8F9FA;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 576px) {
+  .transaction-item {
+    padding: 6px 8px;
+    margin-bottom: 4px;
+  }
+}
+
+.transaction-item:last-child {
+  margin-bottom: 0;
+}
+
+.transaction-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot.paid {
+  background: #016630;
+
+}
+
+.status-dot.pending {
+  background: #FE9A00;
+
+}
+
+.transaction-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-amount {
+  width: 127px;
+  height: 13px;
+  flex-shrink: 0;
+  color: #4F4F4F;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  margin: 0 0 4px 0;
+}
+
+.transaction-date {
+  width: 90px;
+  height: 13px;
+  flex-shrink: 0;
+  color: #4F4F4F;
+  font-family: 'Montserrat', sans-serif;
+  
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  margin: 0;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-badge.paid {
+  color: #DBFCE7;
+  background: #016630;
+
+}
+
+.status-badge.pending {
+  background: #F3F4F6;
+  color: #6B7280;
+}
+
+.performance-section {
+  position: relative;
+  top: 5px;
+}
+
+.performance-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 11px;
+  margin-top: 15px;
+}
+
+.performance-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #4F4F4F;
+  margin: 0;
+}
+
+.performance-icon {
+  width: 16px;
+  height: 16px;
+  fill: #7A1F3D;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 576px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .kpi-grid {
+    gap: 4px;
+  }
+}
+
+.kpi-item {
+  text-align: center;
+  padding: 6px;
+  background: transparent;
+}
+
+@media (max-width: 576px) {
+  .kpi-item {
+    padding: 4px;
+  }
+}
+
+.kpi-value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  margin: 0 0 2px 0;
+}
+
+@media (max-width: 576px) {
+  .kpi-value {
+    font-size: 14px;
+  }
+}
+
+.kpi-value.conversion {
+  color: #7A1F3D;
+}
+
+.kpi-value.response {
+  color: #2563EB;
+}
+
+.kpi-value.delivery {
+  color: #16A34A;
+}
+
+.kpi-value.compliance {
+  color: #EA580C;
+}
+
+.kpi-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #6B7280;
+  margin: 0;
+}
+
+.vendor-rank-card {
+  background: #F1E8EB;
+  border-radius: 10px;
+  padding: 8px;
+  text-align: left;
+  position: relative;
+  top: 20px; /* Pushes the card down visually without affecting its height or content */
+}
+
+@media (max-width: 576px) {
+  .vendor-rank-card {
+    padding: 6px;
+  }
+}
+
+.vendor-rank-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  color: #7A1F3D;
+  margin: 0 0 8px 0;
+  width: 81px;
+  height: 15px;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.vendor-rank-desc {
+  color: #4F4F4F;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0px;
+  width: 130px;
+  height: 13px;
+  margin: 0;
+}
+.rightSpacing{
+  margin-left: 5px;
+}
+
+
+/* Small screens: 640px–767px */
+@media (min-width: 640px) and (max-width: 767px) {
+  .searchbarWidth {
+    width: 350px;
+  }
+}
+
+/* Medium screens: 768px–1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .searchbarWidth {
+    width: 400px;
+  }
+}
+
+/* Large screens: 1024px–1279px */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .searchbarWidth {
+    width: 450px; /* your default */
+  }
+}
+
+/* Extra large screens: 1280px–1535px */
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .searchbarWidth {
+    width: 500px;
+  }
+}
+
+/* 2XL screens: 1536px and above */
+@media (min-width: 1536px) {
+  .searchbarWidth {
+    width: 600px;
+  }
+}
+
+
+

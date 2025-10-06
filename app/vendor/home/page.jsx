@@ -11,6 +11,7 @@ import { MessageOutlined, UploadOutlined } from "@ant-design/icons";
 import IconBorder from "@/components/reusableComponents/borderBox/page";
 import HighchartsWrapper from "@/components/Charts/HighchartsWrapper";
 import EChartsWrapper from "@/components/Charts/EChartsWrapper";
+import Link from "next/link";
 
 export default function VendorHomePage() {
   // Donut chart configuration for Compliance Tracker
@@ -297,18 +298,11 @@ export default function VendorHomePage() {
                         marginRight: "8px",
                       }}
                     />
-                    <h3
-                      style={{
-                        margin: 0,
-                        fontSize: "16px",
-                        fontWeight: "600",
-                        color: "#4F454F",
-                      }}
-                    >
+                    <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] weight-500 font-bold text-[#4F4F4F]">
                       Quick Alerts
-                    </h3>
+                    </h1>
                   </div>
-                  <div class="border-b border-[#ADADAD]"></div>
+                  <div class="border-b border-[#ADADAD] mb-[10px]"></div>
 
                   <div
                     style={{
@@ -389,26 +383,24 @@ export default function VendorHomePage() {
                       >
                         <div
                           className="flex justify-between items-start mb-2 "
-                          style={{ height: "25%" }}
+                          
                         >
                           <div
                             className="d-flex flex-col justify-between"
-                            style={{ height: "100%" }}
+                           
                           >
                             <div>
-                              <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] weight-600 font-bold">
+                              <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] weight-500 font-bold">
                                 Compliance Tracker
                               </h1>
                             </div>
-                            <div>
-                              <h2 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F454F] m-0 weight-600">
-                                Total Certificates: 15
-                              </h2>
-                            </div>
+                            
                           </div>
-                          <div
+                          
+                        </div>
+                        <div
                             className="relative flex items-center justify-center"
-                            style={{ height: "100%" }}
+                           
                           >
                             <HighchartsWrapper
                               options={donutChartOptions}
@@ -418,7 +410,11 @@ export default function VendorHomePage() {
                               78%
                             </div>
                           </div>
-                        </div>
+                          <div className="mb-2">
+                              <h2 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F454F] m-0 weight-600">
+                                Total Certificates: 15
+                              </h2>
+                            </div>
 
                         <div className="flex flex-col gap-3">
                           <div
@@ -569,7 +565,7 @@ export default function VendorHomePage() {
                       >
                         {" "}
                         <div className="mb-[10px]">
-                          <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] font-bold weight-600">
+                          <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] font-bold weight-500 text-[#4F4F4F]">
                             Leads & Deals
                           </h1>
                         </div>
@@ -712,16 +708,9 @@ export default function VendorHomePage() {
                             marginRight: "8px",
                           }}
                         />
-                        <h3
-                          style={{
-                            margin: 0,
-                            fontSize: "16px",
-                            fontWeight: "600",
-                            color: "#4F454F",
-                          }}
-                        >
+                        <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] weight-500 font-bold text-[#4F4F4F]">
                           Quick Supports
-                        </h3>
+                        </h1>
                       </div>
                       <div class="border-b border-[#ADADAD] mb-[20px]"></div>
                       <div className="d-flex gap-2 mb-[20px]">
@@ -786,16 +775,9 @@ export default function VendorHomePage() {
                             marginRight: "8px",
                           }}
                         />
-                        <h3
-                          style={{
-                            margin: 0,
-                            fontSize: "16px",
-                            fontWeight: "600",
-                            color: "#4F454F",
-                          }}
-                        >
+                        <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] weight-500 font-bold text-[#4F4F4F]">
                           Knowledge Hub Highlights
-                        </h3>
+                        </h1>
                       </div>
                       <div class="border-b border-[#ADADAD] mb-[20px]"></div>
                       <div className="mb-[10px]">
@@ -1396,736 +1378,289 @@ export default function VendorHomePage() {
                           padding: "20px 20px",
                         }}
                       >
-                        <style
-                          dangerouslySetInnerHTML={{
-                            __html: `
-        .dashboard-card {
-          width: 100%;
-          // min-height: 695px;
-          border-radius: 18px;
-          background: #FFFFFF;
-          // padding: 12px;
-          // box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-          transition: all 0.3s ease;
-          overflow: visible;
-          position: relative;
-        }
-        
-        @media (max-width: 576px) {
-          .dashboard-card {
-            padding: 10px;
-          }
-        }
-        
-        .payments-title {
-          margin-bottom: 16px;
-        }
-        
-        .payments-title h2 {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 500;
-          font-size: 18px;
-          line-height: 1.2;
-          color: #1F2937;
-          margin: 0;
-          position: relative;
-          bottom: 25px;
-        }
-        
-        @media (max-width: 576px) {
-          .payments-title h2 {
-            font-size: 16px;
-          }
-        }
-        
-       
-        
-        .donut-chart {
-          width: 120px;
-          height: 120px;
-          position: relative;
-        }
-        
-        @media (max-width: 576px) {
-          .donut-chart {
-            width: 100px;
-            height: 100px;
-          }
-        }
-        
-        @media (min-width: 577px) and (max-width: 768px) {
-          .donut-chart {
-            width: 110px;
-            height: 110px;
-          }
-        }
-        
-        .donut-chart svg {
-          width: 100%;
-          height: 100%;
-          transform: rotate(-90deg);
-        }
-        
-        .donut-center {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          text-align: center;
-        }
-        
-        .total-amount {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 700;
-          font-size: 18px;
-          line-height: 1.2;
-          color: #7A1F3D;
-          margin: 0;
-        }
-        
-        .total-label {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 400;
-          font-size: 12px;
-          line-height: 1.2;
-          color: #6B7280;
-          margin: 0;
-        }
-        
-        .financial-item {
-          border-radius: 8px;
-          padding: 6px 10px;
-          margin-bottom: 4px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          min-height: 32px;
-        }
-        
-        @media (max-width: 576px) {
-          .financial-item {
-            padding: 4px 8px;
-            min-height: 28px;
-          }
-        }
-        
-        .financial-item:last-child {
-          margin-bottom: 0;
-        }
-        
-        .financial-item.received {
-          background: #F0FDF4;
-        }
-        
-        .financial-item.pending {
-          background: #FFFBEB;
-        }
-        
-        .financial-item.overdue {
-          background: #FEF2F2;
-        }
-        
-        .financial-left {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-        
-        .financial-icon {
-          width: 24px;
-          height: 24px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-        }
-        
-        .financial-icon.received {
-          background: #16A34A;
-          color: white;
-        }
-        
-        .financial-icon.pending {
-          background: #EA580C;
-          color: white;
-        }
-        
-        .financial-icon.overdue {
-          background: #DC2626;
-          color: white;
-        }
-        
-        .financial-content {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          text-align: right;
-        }
-        
-        .financial-label {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 500;
-          font-size: 14px;
-          line-height: 1.2;
-          color: #4F4F4F;
-          margin: 0 0 4px 0;
-        }
-        
-        .financial-amount {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 700;
-          font-size: 16px;
-          line-height: 1.2;
-          margin: 0 0 4px 0;
-        }
-        
-        .financial-amount.received {
-          color: #16A34A;
-        }
-        
-        .financial-amount.pending {
-          color: #EA580C;
-        }
-        
-        .financial-amount.overdue {
-          color: #DC2626;
-        }
-        
-        .financial-detail {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 400;
-          font-size: 12px;
-          line-height: 1.2;
-          margin: 0;
-        }
-        
-        .financial-detail.received {
-          color: #16A34A;
-        }
-        
-        .financial-detail.pending {
-          color: #EA580C;
-        }
-        
-        .financial-detail.overdue {
-          color: #DC2626;
-        }
-        
-        .divider-line {
-          width: 100%;
-          height: 1px;
-          background: #E5E5E5;
-          margin: 25px 0;
-        }
-        
-        .section-title {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 500;
-          font-size: 14px;
-          line-height: 100%;
-          letter-spacing: 0px;
-          text-align: left;
-          color: #4F4F4F;
-          margin: 20px 0 15px 0;
-        }
-        
-        .transaction-item {
-          background: #F8F9FA;
-          border-radius: 8px;
-          padding: 8px 10px;
-          margin-bottom: 6px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-        
-        @media (max-width: 576px) {
-          .transaction-item {
-            padding: 6px 8px;
-            margin-bottom: 4px;
-          }
-        }
-        
-        .transaction-item:last-child {
-          margin-bottom: 0;
-        }
-        
-        .transaction-left {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-        
-        .status-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          flex-shrink: 0;
-        }
-        
-        .status-dot.paid {
-          background: #016630;
-
-        }
-        
-        .status-dot.pending {
-          background: #FE9A00;
-
-        }
-        
-        .transaction-details {
-          display: flex;
-          flex-direction: column;
-        }
-        
-        .transaction-amount {
-          width: 127px;
-          height: 13px;
-          flex-shrink: 0;
-          color: #4F4F4F;
-          font-family: 'Montserrat', sans-serif;
-          font-size: 12px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: normal;
-          letter-spacing: 0.48px;
-          margin: 0 0 4px 0;
-        }
-        
-        .transaction-date {
-          width: 90px;
-          height: 13px;
-          flex-shrink: 0;
-          color: #4F4F4F;
-          font-family: 'Montserrat', sans-serif;
-          font-size: 12px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: normal;
-          letter-spacing: 0.48px;
-          margin: 0;
-        }
-        
-        .status-badge {
-          padding: 6px 12px;
-          border-radius: 20px;
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 500;
-          font-size: 12px;
-          line-height: 1.2;
-        }
-        
-        .status-badge.paid {
-          color: #DBFCE7;
-          background: #016630;
-
-        }
-        
-        .status-badge.pending {
-          background: #F3F4F6;
-          color: #6B7280;
-        }
-        
-        .performance-section {
-          position: relative;
-          top: 5px;
-        }
-        
-        .performance-header {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          margin-bottom: 11px;
-          margin-top: 15px;
-        }
-        
-        .performance-title {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 600;
-          font-size: 16px;
-          line-height: 1.2;
-          color: #4F4F4F;
-          margin: 0;
-        }
-        
-        .performance-icon {
-          width: 16px;
-          height: 16px;
-          fill: #7A1F3D;
-        }
-        
-        .kpi-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 6px;
-          margin-bottom: 8px;
-        }
-        
-        @media (max-width: 576px) {
-          .kpi-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 4px;
-          }
-        }
-        
-        @media (min-width: 577px) and (max-width: 768px) {
-          .kpi-grid {
-            gap: 4px;
-          }
-        }
-        
-        .kpi-item {
-          text-align: center;
-          padding: 6px;
-          background: transparent;
-        }
-        
-        @media (max-width: 576px) {
-          .kpi-item {
-            padding: 4px;
-          }
-        }
-        
-        .kpi-value {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 700;
-          font-size: 16px;
-          line-height: 1.2;
-          margin: 0 0 2px 0;
-        }
-        
-        @media (max-width: 576px) {
-          .kpi-value {
-            font-size: 14px;
-          }
-        }
-        
-        .kpi-value.conversion {
-          color: #7A1F3D;
-        }
-        
-        .kpi-value.response {
-          color: #2563EB;
-        }
-        
-        .kpi-value.delivery {
-          color: #16A34A;
-        }
-        
-        .kpi-value.compliance {
-          color: #EA580C;
-        }
-        
-        .kpi-label {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 500;
-          font-size: 12px;
-          line-height: 1.2;
-          color: #6B7280;
-          margin: 0;
-        }
-        
-        .vendor-rank-card {
-          background: #F1E8EB;
-          border-radius: 10px;
-          padding: 8px;
-          text-align: left;
-          position: relative;
-          top: 20px; /* Pushes the card down visually without affecting its height or content */
-        }
-        
-        @media (max-width: 576px) {
-          .vendor-rank-card {
-            padding: 6px;
-          }
-        }
-        
-        .vendor-rank-title {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 600;
-          font-size: 12px;
-          line-height: 100%;
-          color: #7A1F3D;
-          margin: 0 0 8px 0;
-          width: 81px;
-          height: 15px;
-          letter-spacing: 0px;
-          text-align: center;
-        }
-        
-        .vendor-rank-desc {
-          color: #4F4F4F;
-          text-align: center;
-          font-family: 'Montserrat', sans-serif;
-          font-size: 11px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 100%;
-          letter-spacing: 0px;
-          width: 130px;
-          height: 13px;
-          margin: 0;
-        }
-      `,
-                          }}
-                        />
-
-                        <div className="container-fluid py-4">
-                          <div className="row">
-                            <div className="col-12">
-                              <div className="dashboard-card">
-                                {/* Payments Overview Title */}
-                                <div className="payments-title">
-                                  <h2>Payments Overview</h2>
+                        <div className="mb-[10px]">
+                          <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] weight-500 font-bold text-[#4F4F4F]">
+                            Payments Overview
+                          </h1>
+                        </div>
+                        <div className="d-flex items-center mb-[10px]">
+                          <div className="donut-chart mx-auto">
+                            <svg viewBox="0 0 100 100">
+                              {/* Received - Green (65%) */}
+                              <circle
+                                cx="50"
+                                cy="50"
+                                r="40"
+                                fill="none"
+                                stroke="#22C55E"
+                                strokeWidth="12"
+                                strokeDasharray="251.2"
+                                strokeDashoffset="87.92"
+                                strokeLinecap="round"
+                              />
+                              {/* Pending - Orange (25%) */}
+                              <circle
+                                cx="50"
+                                cy="50"
+                                r="40"
+                                fill="none"
+                                stroke="#F59E0B"
+                                strokeWidth="12"
+                                strokeDasharray="251.2"
+                                strokeDashoffset="150.72"
+                                strokeLinecap="round"
+                              />
+                              {/* Overdue - Red (10%) */}
+                              <circle
+                                cx="50"
+                                cy="50"
+                                r="40"
+                                fill="none"
+                                stroke="#EF4444"
+                                strokeWidth="12"
+                                strokeDasharray="251.2"
+                                strokeDashoffset="226.08"
+                                strokeLinecap="round"
+                              />
+                            </svg>
+                            <div className="donut-center">
+                              <div className="total-amount">3.4 Cr</div>
+                              <div className="total-label">Total Value</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex flex-col gap-3">
+                          <div
+                            className="flex bg-[#F0FDF4] rounded-[10px] w-full  items-center p-[10px] justify-between"
+                            style={{ width: "100%" }}
+                          >
+                            <div style={{ width: "40%" }}>
+                              <div className="d-flex mr-[12px] items-center">
+                                <div className="mr-[6px]">
+                                  {" "}
+                                  <img src="/assets/images/icons-images/tickIcon.svg" />
                                 </div>
+                                <h2 className="font-medium text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F] weight-500">
+                                  Received
+                                </h2>
+                              </div>
+                            </div>
+                            <div style={{ width: "60%" }}>
+                              <p class="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-medium text-[#016630] d-flex justify-end items-end weight-600">
+                                ₹2.1 Cr
+                              </p>
+                            </div>
+                          </div>
 
-                                <div className="row align-items-center">
-                                  {/* Left Side - Donut Chart */}
-                                  <div className="col-12 col-md-6 text-center mb-4 mb-md-0">
-                                    <div className="donut-chart mx-auto">
-                                      <svg viewBox="0 0 100 100">
-                                        {/* Received - Green (65%) */}
-                                        <circle
-                                          cx="50"
-                                          cy="50"
-                                          r="40"
-                                          fill="none"
-                                          stroke="#22C55E"
-                                          strokeWidth="12"
-                                          strokeDasharray="251.2"
-                                          strokeDashoffset="87.92"
-                                          strokeLinecap="round"
-                                        />
-                                        {/* Pending - Orange (25%) */}
-                                        <circle
-                                          cx="50"
-                                          cy="50"
-                                          r="40"
-                                          fill="none"
-                                          stroke="#F59E0B"
-                                          strokeWidth="12"
-                                          strokeDasharray="251.2"
-                                          strokeDashoffset="150.72"
-                                          strokeLinecap="round"
-                                        />
-                                        {/* Overdue - Red (10%) */}
-                                        <circle
-                                          cx="50"
-                                          cy="50"
-                                          r="40"
-                                          fill="none"
-                                          stroke="#EF4444"
-                                          strokeWidth="12"
-                                          strokeDasharray="251.2"
-                                          strokeDashoffset="226.08"
-                                          strokeLinecap="round"
-                                        />
-                                      </svg>
-                                      <div className="donut-center">
-                                        <div className="total-amount">
-                                          3.4 Cr
-                                        </div>
-                                        <div className="total-label">
-                                          Total Value
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  {/* Right Side - Financial Breakdown */}
-                                  <div className="col-12 col-md-6">
-                                    {/* Received */}
-                                    <div className="financial-item received">
-                                      <div className="financial-left">
-                                        <div className="financial-icon received">
-                                          <svg
-                                            width="16"
-                                            height="16"
-                                            viewBox="0 0 24 24"
-                                            fill="currentColor"
-                                          >
-                                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                                          </svg>
-                                        </div>
-                                        <div className="financial-label">
-                                          Received
-                                        </div>
-                                      </div>
-                                      <div className="financial-content">
-                                        <div className="financial-amount received">
-                                          ₹2.1 Cr
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    {/* Pending */}
-                                    <div className="financial-item pending">
-                                      <div className="financial-left">
-                                        <div className="financial-icon pending">
-                                          <svg
-                                            width="16"
-                                            height="16"
-                                            viewBox="0 0 24 24"
-                                            fill="currentColor"
-                                          >
-                                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 16.2L11 13v-6h2v5.2l4.2 4.2-1.4 1.4z" />
-                                          </svg>
-                                        </div>
-                                        <div className="financial-label">
-                                          Pending
-                                        </div>
-                                      </div>
-                                      <div className="financial-content">
-                                        <div className="financial-amount pending">
-                                          ₹1.0 Cr
-                                        </div>
-                                        <div className="financial-detail pending">
-                                          Next Due: 27 Sep 2025
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    {/* Overdue */}
-                                    <div className="financial-item overdue">
-                                      <div className="financial-left">
-                                        <div className="financial-icon overdue">
-                                          <svg
-                                            width="16"
-                                            height="16"
-                                            viewBox="0 0 24 24"
-                                            fill="currentColor"
-                                          >
-                                            <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
-                                          </svg>
-                                        </div>
-                                        <div className="financial-label">
-                                          Overdue
-                                        </div>
-                                      </div>
-                                      <div className="financial-content">
-                                        <div className="financial-amount overdue">
-                                          ₹0.3 Cr
-                                        </div>
-                                        <div className="financial-detail overdue">
-                                          Invoice #456-Due 10 Sep
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                          <div
+                            className="flex bg-[#FFFBEB] rounded-[10px] w-full  items-center p-[10px] justify-between"
+                            style={{ width: "100%" }}
+                          >
+                            <div style={{ width: "40%" }}>
+                              <div className="d-flex mr-[12px] items-center">
+                                <div className="mr-[6px]">
+                                  {" "}
+                                  <img src="/assets/images/icons-images/pendingIcon.svg" />
                                 </div>
+                                <h2 className="font-medium weight-500 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F]">
+                                  Pending
+                                </h2>
+                              </div>
+                            </div>
+                            <div style={{ width: "60%" }} className="">
+                              <p class="d-flex justify-end items-end weight-600 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]  text-[#BB4D00] ">
+                                ₹1.0 Cr
+                              </p>
+                              <p class="d-flex justify-end items-end weight-400 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]  text-[#E88200] ">
+                                Next Due: 27 Sep 2025
+                              </p>
+                            </div>
+                          </div>
 
-                                {/* Divider Line */}
-                                <div className="divider-line"></div>
-
-                                {/* Recent Transactions Section */}
-                                <div>
-                                  <h3 className="section-title">
-                                    Recent Transactions
-                                  </h3>
-
-                                  {/* Transaction 1 - Paid */}
-                                  <div className="transaction-item">
-                                    <div className="transaction-left">
-                                      <div className="status-dot paid"></div>
-                                      <div className="transaction-details">
-                                        <div className="transaction-amount">
-                                          50,000 - Client X
-                                        </div>
-                                        <div className="transaction-date">
-                                          20 Sep 2025
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="status-badge paid">
-                                      Paid
-                                    </div>
-                                  </div>
-
-                                  {/* Transaction 2 - Pending */}
-                                  <div className="transaction-item">
-                                    <div className="transaction-left">
-                                      <div className="status-dot pending"></div>
-                                      <div className="transaction-details">
-                                        <div className="transaction-amount">
-                                          2,10,000 - Client Y
-                                        </div>
-                                        <div className="transaction-date">
-                                          18 Sep 2025
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="status-badge pending">
-                                      Pending (Due 25 Sep)
-                                    </div>
-                                  </div>
+                          <div
+                            className="flex bg-[#FEF2F2] rounded-[10px] w-full  items-center p-[10px] justify-between"
+                            style={{ width: "100%" }}
+                          >
+                            <div style={{ width: "40%" }}>
+                              <div className="d-flex mr-[12px] items-center">
+                                <div className="mr-[6px]">
+                                  {" "}
+                                  <img src="/assets/images/icons-images/dangerIcon.svg" />
                                 </div>
+                                <h2 className="font-medium weight-500 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F]">
+                                  Overdue
+                                </h2>
+                              </div>
+                            </div>
+                            <div style={{ width: "60%" }}>
+                              <p class="d-flex justify-end items-end weight-600 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]  text-[#C10007] ">
+                                ₹0.3 Cr
+                              </p>
+                              <p class="d-flex justify-end items-end weight-400 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]  text-[#C10007] ">
+                                Invoice #456-Due 10 Sep
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="divider-line"></div>
+                        <div className="mb-[10px]">
+                          <h2 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F454F] m-0">
+                            Recent Transactions
+                          </h2>
+                        </div>
+                        <div className="flex flex-col gap-3">
+                          <div
+                            className="flex bg-[#F5F6F7] rounded-[10px] w-full  items-center p-[10px] justify-between"
+                            style={{ width: "100%" }}
+                          >
+                            <div style={{ width: "90%" }}>
+                              <div className="d-flex mr-[12px] items-center">
+                                <div className="mr-[6px]">
+                                  <div className="status-dot paid"></div>
+                                </div>
+                                <div className="d-flex flex-col">
+                                  <h2 className="font-medium text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F] weight-600">
+                                    50,000 - Client X
+                                  </h2>
+                                  <p class="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-medium text-[#4F4F4F] d-flex justify-start items-end weight-600">
+                                    20 Sep 2025
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div style={{ width: "10%" }}>
+                              <div className="status-badge paid text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px]">
+                                Paid
+                              </div>
+                            </div>
+                          </div>
 
-                                {/* Divider Line */}
-                                <div className="divider-line"></div>
-
-                                {/* Performance Dashboard Section */}
-                                <div className="performance-section">
-                                  <div className="performance-header">
-                                    <svg
-                                      className="performance-icon"
-                                      viewBox="0 0 24 24"
-                                    >
-                                      <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
-                                    </svg>
-                                    <h3 className="performance-title">
-                                      Performance Dashboard
-                                    </h3>
-                                  </div>
-
-                                  <div className="kpi-grid">
-                                    <div className="kpi-item">
-                                      <div className="kpi-value conversion">
-                                        25%
+                          <div
+                            className="flex bg-[#F5F6F7] rounded-[10px] w-full  items-center p-[10px] justify-between"
+                            style={{ width: "100%" }}
+                          >
+                            <div style={{ width: "60%" }}>
+                              <div className="d-flex mr-[12px] items-center">
+                                <div className="mr-[6px]">
+                                  <div className="status-dot pending"></div>
+                                </div>
+                                <div className="d-flex flex-col">
+                                  <h2 className="font-medium text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F] weight-600">
+                                    2,10,000 - Client Y
+                                  </h2>
+                                  <p class="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] font-medium text-[#4F4F4F] d-flex justify-start items-end weight-600">
+                                    18 Sep 2025
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div style={{ width: "40%" }}>
+                              <div className="d-flex justify-end w-full">
+                                {" "}
+                                <p className="text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] weight-500 text-[4F4F4F] ">
+                                  Pending (Due 25 Sep)
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="divider-line"></div>
+                        <div className="d-flex mb-[10px]">
+                          <svg className="performance-icon" viewBox="0 0 24 24">
+                            <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
+                          </svg>
+                          <h2 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F] weight-600 rightSpacing">
+                            Performance Dashboard
+                          </h2>
+                        </div>
+                        <div
+                          className="tab-content mb-[10px]"
+                          id="pills-tabContent"
+                        >
+                          <div
+                            className="tab-pane fade show active"
+                            id="pills-allcountries"
+                            role="tabpanel"
+                            aria-labelledby="pills-allcountries-tab"
+                            tabIndex={0}
+                          >
+                            <div className="countries4-section-area">
+                              <div className="row">
+                                <div className="col-lg-6 col-md-6">
+                                  <div className="d-flex justify-center items-center w-full">
+                                    <div className="d-flex flex-col justify-center items-center">
+                                      <div className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] xl:text-[28px] text-[#7A1F3D] weight-600">
+                                        21%
                                       </div>
-                                      <div className="kpi-label">
+                                      <div className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F] weight-500">
+                                        {" "}
                                         Conversion Rate
                                       </div>
                                     </div>
-
-                                    <div className="kpi-item">
-                                      <div className="kpi-value response">
+                                  </div>
+                                </div>
+                                <div className="col-lg-6 col-md-6">
+                                  <div className="d-flex justify-center items-center w-full">
+                                    <div className="d-flex flex-col justify-center items-center">
+                                      <div className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] xl:text-[28px] text-[#155DFC] weight-600">
                                         1.8d
                                       </div>
-                                      <div className="kpi-label">
+                                      <div className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F] weight-500">
+                                        {" "}
                                         Avg Response Time
                                       </div>
                                     </div>
+                                  </div>
+                                </div>{" "}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
-                                    <div className="kpi-item">
-                                      <div className="kpi-value delivery">
+                        <div className="tab-content" id="pills-tabContent">
+                          <div
+                            className="tab-pane fade show active"
+                            id="pills-allcountries"
+                            role="tabpanel"
+                            aria-labelledby="pills-allcountries-tab"
+                            tabIndex={0}
+                          >
+                            <div className="countries4-section-area">
+                              <div className="row">
+                                <div className="col-lg-6 col-md-6">
+                                  <div className="d-flex justify-center items-center w-full">
+                                    <div className="d-flex flex-col justify-center items-center">
+                                      <div className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] xl:text-[28px] text-[#00A63E] weight-600">
                                         90%
                                       </div>
-                                      <div className="kpi-label">
+                                      <div className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F] weight-500">
+                                        {" "}
                                         On-Time Delivery
                                       </div>
                                     </div>
-
-                                    <div className="kpi-item">
-                                      <div className="kpi-value compliance">
+                                  </div>
+                                </div>
+                                <div className="col-lg-6 col-md-6">
+                                  <div className="d-flex justify-center items-center w-full">
+                                    <div className="d-flex flex-col justify-center items-center">
+                                      <div className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] xl:text-[28px] text-[#E17100] weight-600">
                                         78%
                                       </div>
-                                      <div className="kpi-label">
+                                      <div className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] text-[#4F454F] weight-500">
+                                        {" "}
                                         Compliance Health
                                       </div>
                                     </div>
                                   </div>
-
-                                  <div className="vendor-rank-card">
-                                    <div className="vendor-rank-title">
-                                      Vendor Rank
-                                    </div>
-                                    <div className="vendor-rank-desc">
-                                      Top 25% Nutra Suppliers
-                                    </div>
-                                  </div>
-                                </div>
+                                </div>{" "}
                               </div>
                             </div>
+                          </div>
+                        </div>
+                        <div className="vendor-rank-card mb-[10px]">
+                          <div className="vendor-rank-title">Vendor Rank</div>
+                          <div className="vendor-rank-desc">
+                            Top 25% Nutra Suppliers
                           </div>
                         </div>
                       </Card>
@@ -2134,310 +1669,195 @@ export default function VendorHomePage() {
                 </div>
               </div>
               <div class="col-3">
-                <div
-                  className="d-flex flex-column gap-4 py-4"
-                  style={{ maxWidth: "400px", margin: "0 auto" }}
+                <Card
+                  sx={{
+                    borderRadius: "18px",
+                    border: "1px solid #E5E5E5",
+                    marginTop: "10px",
+                    backgroundColor: "#FFF",
+                    padding: "20px",
+                  }}
                 >
-                  {/* Vendor Rating Card */}
                   <div
-                    className="card border-0 shadow-sm"
-                    style={{ borderRadius: "18px" }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "16px",
+                    }}
                   >
-                    <div className="card-body p-4">
-                      {/* Header */}
-                      <div className="d-flex align-items-center mb-3">
-                        <svg
-                          width="17"
-                          height="16"
-                          viewBox="0 0 17 16"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="me-2"
-                        >
-                          <path
-                            d="M8.2 1.5L9.8 5.8L14.5 6.2L11.2 9.2L12.1 13.8L8.2 11.5L4.3 13.8L5.2 9.2L1.9 6.2L6.6 5.8L8.2 1.5Z"
-                            stroke="#7A1F3D"
-                            strokeWidth="2"
-                            fill="none"
-                            strokeLinejoin="round"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                        <h5
-                          className="mb-0 fw-semibold"
-                          style={{ color: "#4F4F4F", fontSize: "14px" }}
-                        >
-                          Vendor Rating
-                        </h5>
-                      </div>
-
-                      {/* Divider */}
-                      <hr
-                        className="my-3"
-                        style={{ borderColor: "#ADADAD", opacity: "0.5" }}
+                    <svg
+                      width="17"
+                      height="16"
+                      viewBox="0 0 17 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="me-2"
+                    >
+                      <path
+                        d="M8.2 1.5L9.8 5.8L14.5 6.2L11.2 9.2L12.1 13.8L8.2 11.5L4.3 13.8L5.2 9.2L1.9 6.2L6.6 5.8L8.2 1.5Z"
+                        stroke="#7A1F3D"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
                       />
+                    </svg>
+                    <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] weight-500  text-[#4F4F4F]">
+                      Vendor Rating
+                    </h1>
+                  </div>
+                  <div class="border-b border-[#ADADAD] mb-[10px]"></div>
 
-                      {/* Rating Content */}
-                      <div className="text-center">
-                        {/* Rating Number */}
-                        <div className="mb-2">
-                          <h2
-                            className="fw-bold mb-0"
-                            style={{ color: "#4F4F4F", fontSize: "40px" }}
-                          >
-                            4.8
-                          </h2>
-                        </div>
-
-                        {/* Star Rating */}
-                        <div className="mb-2">
-                          <div className="d-flex justify-content-center align-items-center">
-                            {[...Array(5)].map((_, index) => (
-                              <svg
-                                key={index}
-                                width="15"
-                                height="15"
-                                viewBox="0 0 15 15"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="me-1"
-                              >
-                                <path
-                                  d="M7.5 0L9.191 5.527H15L10.405 8.946L12.096 14.473L7.5 11.054L2.904 14.473L4.595 8.946L0 5.527H5.809L7.5 0Z"
-                                  fill={index < 4 ? "#FDC700" : "none"}
-                                  stroke={index >= 4 ? "#979797" : "none"}
-                                  strokeWidth="1"
-                                />
-                              </svg>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Review Count */}
-                        <p
-                          className="mb-4"
-                          style={{
-                            color: "#4F4F4F",
-                            fontSize: "12px",
-                            marginBottom: "15px",
-                          }}
-                        >
-                          Based on 47 reviews
-                        </p>
-
-                        {/* View Reviews Button */}
-                        <button
-                          className="btn btn-outline-secondary px-4 py-2"
-                          style={{
-                            borderColor: "#B8B8B8",
-                            color: "#7A1F3D",
-                            borderRadius: "5px",
-                            fontSize: "12px",
-                            fontWeight: "600",
-                          }}
-                        >
-                          View Reviews
-                        </button>
+                  <div className="row">
+                    <div class="col">
+                      <div className="d-flex justify-center items-center w-full">
+                        <h1 className=" text-[40px] sm:text-[42px] md:text-[44px] lg:text-[48px] xl:text-[50px] text-[#4F454F] weight-600">
+                          4.8
+                        </h1>
                       </div>
                     </div>
                   </div>
-
-                  {/* Marketplace Spotlight Card */}
-                  <div
-                    className="card border-0 shadow-sm"
-                    style={{ borderRadius: "18px" }}
-                  >
-                    <div className="card-body p-4">
-                      {/* Header */}
-                      <div className="d-flex align-items-center mb-3">
+                  <div className="mb-2">
+                    <div className="d-flex justify-content-center align-items-center">
+                      {[...Array(5)].map((_, index) => (
                         <svg
-                          width="21"
+                          key={index}
+                          width="15"
                           height="15"
-                          viewBox="0 0 21 15"
+                          viewBox="0 0 15 15"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
-                          className="me-3"
+                          className="me-1"
                         >
                           <path
-                            d="M2 12L7 7L10 10L19 1"
-                            stroke="#7A1F3D"
-                            strokeWidth="2"
-                            fill="none"
-                            strokeLinejoin="round"
-                            strokeLinecap="round"
-                          />
-                          <path
-                            d="M15 1H19V5"
-                            stroke="#7A1F3D"
-                            strokeWidth="2"
-                            fill="none"
-                            strokeLinejoin="round"
-                            strokeLinecap="round"
+                            d="M7.5 0L9.191 5.527H15L10.405 8.946L12.096 14.473L7.5 11.054L2.904 14.473L4.595 8.946L0 5.527H5.809L7.5 0Z"
+                            fill={index < 4 ? "#FDC700" : "none"}
+                            stroke={index >= 4 ? "#979797" : "none"}
+                            strokeWidth="1"
                           />
                         </svg>
-                        <h5
-                          className="mb-0 fw-semibold"
-                          style={{
-                            color: "#4F4F4F",
-                            fontSize: "14px",
-                            width: "172px",
-                            height: "17px",
-                            lineHeight: "17px",
-                          }}
-                        >
-                          Marketplace Spotlight
-                        </h5>
-                      </div>
-
-                      {/* Divider */}
-                      <hr
-                        className="my-3"
-                        style={{ borderColor: "#ADADAD", opacity: "0.5" }}
+                      ))}
+                    </div>
+                  </div>
+                  <div className="d-flex items-center justify-center mb-2">
+                    <p class="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] font-medium text-[#4F454F]">
+                      Based on 47 reviews
+                    </p>
+                  </div>
+                  <div className="d-flex items-center justify-center mb-2">
+                    <button
+                      className="btn btn-outline-secondary px-4 py-2"
+                      style={{
+                        borderColor: "#B8B8B8",
+                        color: "#7A1F3D",
+                        borderRadius: "5px",
+                        fontSize: "12px",
+                        fontWeight: "600",
+                      }}
+                    >
+                      View Reviews
+                    </button>
+                  </div>
+                </Card>
+                <Card
+                  sx={{
+                    borderRadius: "18px",
+                    border: "1px solid #E5E5E5",
+                    marginTop: "10px",
+                    backgroundColor: "#FFF",
+                    padding: "20px",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "16px",
+                    }}
+                  >
+                    <svg
+                      width="21"
+                      height="15"
+                      viewBox="0 0 21 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="me-3"
+                    >
+                      <path
+                        d="M2 12L7 7L10 10L19 1"
+                        stroke="#7A1F3D"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
                       />
+                      <path
+                        d="M15 1H19V5"
+                        stroke="#7A1F3D"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                    <h1 className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] weight-500 weight-500 text-[#4F4F4F]">
+                      Marketplace Spotlight
+                    </h1>
+                  </div>
+                  <div class="border-b border-[#ADADAD] mb-[10px]"></div>
 
-                      {/* Content */}
-                      <div>
-                        {/* Top 5 Active RFPs */}
-                        <h6
-                          className="fw-semibold mb-2"
-                          style={{ color: "#4F4F4F", fontSize: "12px" }}
-                        >
-                          Top 5 Active RFPs
-                        </h6>
+                  <div>
+                    {/* Top 5 Active RFPs */}
+                    <h6
+                      className="fw-semibold mb-2"
+                      style={{ color: "#4F4F4F", fontSize: "12px" }}
+                    >
+                      Top 5 Active RFPs
+                    </h6>
 
-                        {/* Subtitle */}
-                        <p
-                          className="mb-4"
-                          style={{ color: "#4F4F4F", fontSize: "12px" }}
-                        >
-                          Projects you may qualify for:
+                    {/* Subtitle */}
+                    <p
+                      className="mb-4"
+                      style={{ color: "#4F4F4F", fontSize: "12px" }}
+                    >
+                      Projects you may qualify for:
+                    </p>
+                    <div className="border border-[#E5E5E5] p-2 rounded mb-2">
+                      <div className="mb-1">
+                        <p class="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] weight-600 text-[#4F454F]">
+                          Organic Protein Manufacturing
                         </p>
-
-                        {/* RFP Listings */}
-                        <div className="mb-4">
-                          {/* RFP 1 */}
-                          <div
-                            className="card mb-3"
-                            style={{
-                              backgroundColor: "#FFFFFF",
-                              borderRadius: "10px",
-                              width: "279px",
-                              height: "84px",
-                              border: "1px solid #E5E5E5",
-                            }}
-                          >
-                            <div className="card-body p-3">
-                              <div className="d-flex justify-content-between align-items-start">
-                                <div className="flex-grow-1">
-                                  <h6
-                                    className="fw-semibold mb-1"
-                                    style={{
-                                      color: "#4F4F4F",
-                                      fontSize: "12px",
-                                    }}
-                                  >
-                                    Organic Protein Manufacturing
-                                  </h6>
-                                  <p
-                                    className="mb-0"
-                                    style={{
-                                      color: "#4F4F4F",
-                                      fontSize: "12px",
-                                    }}
-                                  >
-                                    Budget: $50K-100K
-                                  </p>
-                                </div>
-                                <span
-                                  className="badge rounded-pill px-2 py-1"
-                                  style={{
-                                    backgroundColor: "#ECEEF2",
-                                    color: "#4F4F4F",
-                                    fontSize: "10px",
-                                    fontWeight: "600",
-                                  }}
-                                >
-                                  New
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* RFP 2 */}
-                          <div
-                            className="card mb-3"
-                            style={{
-                              backgroundColor: "#FFFFFF",
-                              borderRadius: "10px",
-                              width: "279px",
-                              height: "81px",
-                              border: "1px solid #E5E5E5",
-                            }}
-                          >
-                            <div className="card-body p-3">
-                              <div className="d-flex justify-content-between align-items-start">
-                                <div className="flex-grow-1">
-                                  <h6
-                                    className="fw-semibold mb-1"
-                                    style={{
-                                      color: "#4F4F4F",
-                                      fontSize: "12px",
-                                    }}
-                                  >
-                                    Supplement Packaging Services
-                                  </h6>
-                                  <p
-                                    className="mb-0"
-                                    style={{
-                                      color: "#4F4F4F",
-                                      fontSize: "12px",
-                                    }}
-                                  >
-                                    Budget: $20K-50K
-                                  </p>
-                                </div>
-                                <span
-                                  className="badge rounded-pill px-2 py-1"
-                                  style={{
-                                    backgroundColor: "#DBFCE7",
-                                    color: "#016630",
-                                    fontSize: "10px",
-                                    fontWeight: "600",
-                                  }}
-                                >
-                                  Trending
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* View all RFPs Button */}
-                        <div className="text-center">
-                          <button
-                            className="btn btn-link p-0 text-decoration-none"
-                            style={{
-                              color: "#7A1F3D",
-                              fontSize: "12px",
-                              fontWeight: "600",
-                              fontFamily: "Montserrat",
-                              width: "89px",
-                              height: "15px",
-                              lineHeight: "100%",
-                              letterSpacing: "4%",
-                              textDecoration: "underline",
-                              textDecorationStyle: "solid",
-                              textDecorationThickness: "1px",
-                              background: "transparent",
-                            }}
-                          >
-                            View all RFPs
-                          </button>
-                        </div>
+                      </div>
+                      <div className="mb-1">
+                        <p class="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] weight-400 text-[#4F454F]">
+                        Budget: $50K-100K
+                        </p>
+                      </div>
+                      <div >
+                      <div className="bg-[#E5E5E5] p-1 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] rounded w-1/4 text-center
+                      ">New</div>
+                      </div>
+                    </div>
+                    <div className="border border-[#E5E5E5] p-2 rounded mb-2">
+                      <div className="mb-1">
+                        <p class="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] weight-600 text-[#4F454F]">
+                          Organic Protein Manufacturing
+                        </p>
+                      </div>
+                      <div className="mb-1">
+                        <p class="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] weight-400 text-[#4F454F]">
+                        Budget: $50K-100K
+                        </p>
+                      </div>
+                      <div >
+                      <div className="bg-[#E5E5E5] p-1 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] rounded w-1/4 text-center
+                      ">New</div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Card>
+
+               
               </div>
             </div>
           </div>
@@ -2449,7 +1869,7 @@ export default function VendorHomePage() {
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-6">
-                    <Card
+                      <Card
                         sx={{
                           height: "100%",
                           borderRadius: 5,
@@ -2608,86 +2028,86 @@ export default function VendorHomePage() {
                         </div>
 
                         {/* Recipe Trend Update Card */}
-                       
-                          <div
-                            className="p-4"
-                            style={{
-                              backgroundColor: "#F5F5F5",
-                              borderRadius: "12px",
-                            }}
-                          >
-                            <div className="d-flex align-items-center mb-3">
-                              <div
-                                className="me-3"
-                                style={{
-                                  width: "24px",
-                                  height: "24px",
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                }}
-                              >
-                                <span
-                                  style={{
-                                    fontSize: "1.2rem",
-                                    color: "#7A1F3D",
-                                  }}
-                                >
-                                  🕐
-                                </span>
-                              </div>
-                              <h5
-                                className="mb-0 weight-600 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F454F] m-0"
-                                style={{ color: "#333" }}
-                              >
-                                Recipe Trend Update
-                              </h5>
-                            </div>
-                            <p
-                              className="mb-0 weight-400 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[22px]  text-[#4F454F]"
+
+                        <div
+                          className="p-4"
+                          style={{
+                            backgroundColor: "#F5F5F5",
+                            borderRadius: "12px",
+                          }}
+                        >
+                          <div className="d-flex align-items-center mb-3">
+                            <div
+                              className="me-3"
                               style={{
-                                color: "#666",
-                                fontSize: "0.85rem",
-                                lineHeight: "1.4",
+                                width: "24px",
+                                height: "24px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
                               }}
                             >
-                              New sweetener blends analysis → Report Due: Oct{" "}
-                               2025
-                            </p>
+                              <span
+                                style={{
+                                  fontSize: "1.2rem",
+                                  color: "#7A1F3D",
+                                }}
+                              >
+                                🕐
+                              </span>
+                            </div>
+                            <h5
+                              className="mb-0 weight-600 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] font-semibold text-[#4F454F] m-0"
+                              style={{ color: "#333" }}
+                            >
+                              Recipe Trend Update
+                            </h5>
                           </div>
-                          <br></br>
-                          <button
-                            className="btn w-100"
+                          <p
+                            className="mb-0 weight-400 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[22px]  text-[#4F454F]"
                             style={{
-                              marginTop: "10px",
-                              backgroundColor: "#7A1F3D",
-                              color: "white",
-                              border: "none",
-                              borderRadius: "12px",
-                              padding: "12px 20px",
-                              fontSize: "0.95rem",
-                              fontWeight: "600",
-                              transition: "all 0.3s ease",
-                            }}
-                            onMouseEnter={(e) => {
-                              e.target.style.backgroundColor = "#6B1A35";
-                              e.target.style.transform = "translateY(-1px)";
-                            }}
-                            onMouseLeave={(e) => {
-                              e.target.style.backgroundColor = "#7A1F3D";
-                              e.target.style.transform = "translateY(0)";
+                              color: "#666",
+                              fontSize: "0.85rem",
+                              lineHeight: "1.4",
                             }}
                           >
-                            Explore Intelligence
-                          </button>
-                     
+                            New sweetener blends analysis → Report Due: Oct 2025
+                          </p>
+                        </div>
+                        <br></br>
+                        <button
+                          className="btn w-100"
+                          style={{
+                            marginTop: "10px",
+                            backgroundColor: "#7A1F3D",
+                            color: "white",
+                            border: "none",
+                            borderRadius: "12px",
+                            padding: "12px 20px",
+                            fontSize: "0.95rem",
+                            fontWeight: "600",
+                            transition: "all 0.3s ease",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.target.style.backgroundColor = "#6B1A35";
+                            e.target.style.transform = "translateY(-1px)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.target.style.backgroundColor = "#7A1F3D";
+                            e.target.style.transform = "translateY(0)";
+                          }}
+                        >
+                          Explore Intelligence
+                        </button>
 
                         {/* Next Release Section */}
                         <div className="mt-5">
-                          <h5 className="mb-4 weight-400 text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] text-[#4F4F4F]" style={{ color: "#333" }}>
-                            Next Release:Checklist - Supplier Audit - 05 Oct 2025
-                           
-                           
+                          <h5
+                            className="mb-4 weight-400 text-[16px] sm:text-[20px] md:text-[24px] lg:text-[32px] xl:text-[40px] text-[#4F4F4F]"
+                            style={{ color: "#333" }}
+                          >
+                            Next Release:Checklist - Supplier Audit - 05 Oct
+                            2025
                           </h5>
                           <div className="row g-3">
                             <div className="col-12">
