@@ -5,6 +5,8 @@ import Button from "../../components/reusableComponents/button/page";
 import { CheckOutlined } from "@ant-design/icons";
 import { Form, Input, Checkbox, Typography } from "antd";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useRouter } from "next/navigation";
+import { renderLabel } from "@/utils/constant";
 
 const { Text, Link } = Typography;
 
@@ -16,6 +18,7 @@ const Login = () => {
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const [isRecaptchaVerified, setIsRecaptchaVerified] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const router = useRouter();
 
   // reCAPTCHA callbacks
   const onRecaptchaSuccess = (token) => {
@@ -39,7 +42,7 @@ const Login = () => {
   // Load reCAPTCHA script and set client flag
   useEffect(() => {
     setIsClient(true);
-    
+
     // Make callbacks global
     window.onRecaptchaSuccess = onRecaptchaSuccess;
     window.onRecaptchaExpired = onRecaptchaExpired;
@@ -66,25 +69,7 @@ const Login = () => {
     };
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!isRecaptchaVerified) {
-      alert("Please complete the reCAPTCHA verification");
-      return;
-    }
-
-    console.log("Login submitted:", {
-      email,
-      password,
-      rememberMe,
-      recaptchaToken,
-    });
-  };
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+ 
   const onFinish = (values) => {
     console.log("Form Values:", values);
     // Add your login logic here
@@ -98,7 +83,14 @@ const Login = () => {
   const handleCaptchaChange = (value) => {
     console.log("Captcha value:", value);
   };
-  const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+  const SITE_KEY =
+    process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ||
+    "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+
+
+    const handleVerify = () => {
+      router.push("/");
+    };
 
   return (
     <>
@@ -127,22 +119,26 @@ const Login = () => {
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
               layout="vertical"
+              requiredMark={false}
             >
               {/* Email */}
               <Form.Item
-                label="Email"
+                label={renderLabel("Email", true)}
                 name="email"
                 rules={[
                   { required: true, message: "Please input your email!" },
                   { type: "email", message: "Please enter a valid email!" },
                 ]}
               >
-                <Input placeholder="Enter your email" style={{minWidth:"400px"}} />
+                <Input
+                  placeholder="Enter your email"
+                  style={{ minWidth: "400px" }}
+                />
               </Form.Item>
 
               {/* Password */}
               <Form.Item
-                label="Password"
+                label={renderLabel("Password", true)}
                 name="password"
                 rules={[
                   { required: true, message: "Please input your password!" },
@@ -186,8 +182,15 @@ const Login = () => {
               </Form.Item>
 
               {/* Submit Button */}
-              <Form.Item style={{ textAlign: 'center' }}>
-                <Button type="primary" htmlType="submit" block>
+              <Form.Item style={{ display: "flex", justifyContent: "center" }}>
+                <Button
+                  icon={<CheckOutlined />}
+                  minWidth="187px"
+                  height="44px"
+                  borderRadius="8px"
+                  onClick={handleVerify}
+                  // disabled={otp.join("").length !== 6}
+                >
                   Log in
                 </Button>
               </Form.Item>
@@ -219,7 +222,6 @@ const Login = () => {
           </Link>
         </div>
       </div>
-
     </>
   );
 };

@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { CheckOutlined } from "@ant-design/icons";
 import Button from "@/components/reusableComponents/button/page";
 import { InputOTP } from "antd-input-otp";
+import { useRouter } from "next/navigation";
+
 
 export default function VerifyPage() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -10,6 +12,7 @@ export default function VerifyPage() {
   const [canResend, setCanResend] = useState(false);
 
   const [otpValues, setOtpValues] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -48,11 +51,7 @@ export default function VerifyPage() {
   };
 
   const handleVerify = () => {
-    const otpString = otp.join("");
-    if (otpString.length === 6) {
-      console.log("Verifying OTP:", otpString);
-      // Add your verification logic here
-    }
+    router.push("/login");
   };
 
   return (
@@ -60,7 +59,7 @@ export default function VerifyPage() {
       {/* Main Container */}
       <div className=" max-w-sm sm:max-w-md lg:max-w-lg">
         {/* Verify Code Card */}
-        <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8 lg:p-10 w-full rounded-[10px] p-[40px]">
+        <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8 lg:p-10 w-full rounded-[10px] p-[20px]">
           {/* BEETLOOP Logo */}
           <div className="text-center py-3 border-b border-[#D8D8D8] mb-[15px] sm:mb-8">
             <img src="/assets/images/allimages/7 1.png" alt="Logo" />
@@ -124,11 +123,11 @@ export default function VerifyPage() {
           <div className="flex justify-center ">
             <Button
               icon={<CheckOutlined />}
-              width="50%"
+              minWidth="187px"
               height="44px"
               borderRadius="8px"
               onClick={handleVerify}
-              disabled={otp.join("").length !== 6}
+              // disabled={otp.join("").length !== 6}
             >
               <span className="text-sm sm:text-base font-medium">Verify</span>
             </Button>

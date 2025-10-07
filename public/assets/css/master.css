@@ -12765,6 +12765,13 @@ a.solutions2 span i {
   margin-bottom: 10px !important;
 }
 
+
+
+.ant-select-focused .ant-select-selector {
+  border-color: #7A1F3D !important; /* Active/focused border */
+  box-shadow: 0 0 0 2px rgba(29, 102, 48, 0.2); /* Optional glow */
+}
+
 /* .row>*{
   padding-left: 0px !important;
 } */

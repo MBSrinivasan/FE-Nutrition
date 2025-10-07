@@ -16,6 +16,8 @@ const { Option } = Select;
 export default function RegisterForm() {
   const [active, setActive] = useState("buyer");
   const [phone, setPhone] = useState("");
+  const [selectedCountryCode, setSelectedCountryCode] = useState("in"); // Default to India
+  const [selectedCountry, setSelectedCountry] = useState("IN"); // Track selected country for Tax ID validation
 
   const options = useMemo(() => countryList().getData(), []);
   const [form] = Form.useForm();
@@ -26,6 +28,160 @@ export default function RegisterForm() {
   const handleValuesChange = (changedValues) => {
     if (changedValues.email) {
       form.setFieldsValue({ username: changedValues.email });
+    }
+  };
+
+  // Tax ID validation patterns for different countries
+  const taxIdPatterns = {
+    IN: {
+      pattern: /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/,
+      placeholder: "Enter PAN (e.g., ABCDE1234F)",
+      label: "PAN Number (India)",
+      message: "Invalid PAN format. Must be 10 characters (e.g., ABCDE1234F)",
+    },
+    US: {
+      pattern: /^\d{2}-?\d{7}$/,
+      placeholder: "Enter EIN (e.g., 12-3456789)",
+      label: "EIN Number (USA)",
+      message: "Invalid EIN format. Must be 9 digits (e.g., 12-3456789)",
+    },
+    GB: {
+      pattern: /^(GB)?([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})$/,
+      placeholder: "Enter VAT (e.g., GB123456789)",
+      label: "VAT Number (UK)",
+      message: "Invalid VAT format (e.g., GB123456789)",
+    },
+    CA: {
+      pattern: /^\d{9}(RT\d{4})?$/,
+      placeholder: "Enter BN (e.g., 123456789RT0001)",
+      label: "Business Number (Canada)",
+      message: "Invalid BN format. Must be 9 digits or 15 characters with RT",
+    },
+    AU: {
+      pattern: /^\d{11}$/,
+      placeholder: "Enter ABN (e.g., 12345678901)",
+      label: "ABN Number (Australia)",
+      message: "Invalid ABN format. Must be 11 digits",
+    },
+    DE: {
+      pattern: /^DE\d{9}$/,
+      placeholder: "Enter VAT (e.g., DE123456789)",
+      label: "VAT Number (Germany)",
+      message: "Invalid VAT format. Must be DE followed by 9 digits",
+    },
+    FR: {
+      pattern: /^FR[A-Z0-9]{2}\d{9}$/,
+      placeholder: "Enter VAT (e.g., FRXX123456789)",
+      label: "VAT Number (France)",
+      message: "Invalid VAT format (e.g., FRXX123456789)",
+    },
+    SG: {
+      pattern: /^\d{8}[A-Z]$/,
+      placeholder: "Enter UEN (e.g., 12345678A)",
+      label: "UEN Number (Singapore)",
+      message: "Invalid UEN format. Must be 8 digits followed by a letter",
+    },
+    AE: {
+      pattern: /^\d{15}$/,
+      placeholder: "Enter TRN (e.g., 123456789012345)",
+      label: "TRN Number (UAE)",
+      message: "Invalid TRN format. Must be 15 digits",
+    },
+    CN: {
+      pattern: /^\d{15}$|^\d{18}$|^\d{20}$/,
+      placeholder: "Enter USCC (e.g., 91110000000000000A)",
+      label: "USCC Number (China)",
+      message: "Invalid USCC format. Must be 15, 18, or 20 characters",
+    },
+    JP: {
+      pattern: /^T\d{13}$/,
+      placeholder: "Enter Corporate Number (e.g., T1234567890123)",
+      label: "Corporate Number (Japan)",
+      message: "Invalid format. Must be T followed by 13 digits",
+    },
+    BR: {
+      pattern: /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/,
+      placeholder: "Enter CNPJ (e.g., 00.000.000/0000-00)",
+      label: "CNPJ Number (Brazil)",
+      message: "Invalid CNPJ format (e.g., 00.000.000/0000-00)",
+    },
+    MX: {
+      pattern: /^[A-Z&Ñ]{3,4}\d{6}[A-V1-9][A-Z1-9][0-9A]$/,
+      placeholder: "Enter RFC (e.g., ABC123456XXX)",
+      label: "RFC Number (Mexico)",
+      message: "Invalid RFC format",
+    },
+    IT: {
+      pattern: /^IT\d{11}$/,
+      placeholder: "Enter VAT (e.g., IT12345678901)",
+      label: "VAT Number (Italy)",
+      message: "Invalid VAT format. Must be IT followed by 11 digits",
+    },
+    ES: {
+      pattern: /^ES[A-Z0-9]\d{7}[A-Z0-9]$/,
+      placeholder: "Enter CIF/NIF (e.g., ESA12345678)",
+      label: "CIF/NIF Number (Spain)",
+      message: "Invalid CIF/NIF format",
+    },
+    NL: {
+      pattern: /^NL\d{9}B\d{2}$/,
+      placeholder: "Enter BTW (e.g., NL123456789B01)",
+      label: "BTW Number (Netherlands)",
+      message: "Invalid BTW format (e.g., NL123456789B01)",
+    },
+    SE: {
+      pattern: /^SE\d{10}01$/,
+      placeholder: "Enter VAT (e.g., SE123456789001)",
+      label: "VAT Number (Sweden)",
+      message: "Invalid VAT format",
+    },
+    CH: {
+      pattern: /^CHE-\d{3}\.\d{3}\.\d{3}$/,
+      placeholder: "Enter UID (e.g., CHE-123.456.789)",
+      label: "UID Number (Switzerland)",
+      message: "Invalid UID format (e.g., CHE-123.456.789)",
+    },
+    ZA: {
+      pattern: /^\d{10}$/,
+      placeholder: "Enter Tax Reference (e.g., 1234567890)",
+      label: "Tax Reference (South Africa)",
+      message: "Invalid Tax Reference. Must be 10 digits",
+    },
+    KR: {
+      pattern: /^\d{3}-\d{2}-\d{5}$/,
+      placeholder: "Enter Business Number (e.g., 123-45-67890)",
+      label: "Business Number (South Korea)",
+      message: "Invalid format (e.g., 123-45-67890)",
+    },
+    MY: {
+      pattern: /^[A-Z0-9]{10,12}$/,
+      placeholder: "Enter SSM (e.g., 202001234567)",
+      label: "SSM Number (Malaysia)",
+      message: "Invalid SSM format. Must be 10-12 characters",
+    },
+    // Default for other countries
+    default: {
+      pattern: null,
+      placeholder: "Enter Local Tax ID (e.g., PAN, VAT, EIN)",
+      label: "Local Tax ID",
+      message: "Please enter a valid tax ID",
+    },
+  };
+
+  // Get tax ID config based on selected country
+  const getTaxIdConfig = (countryCode) => {
+    return taxIdPatterns[countryCode] || taxIdPatterns.default;
+  };
+
+  // Handle country selection and update phone country code
+  const handleCountryChange = (countryCode) => {
+    // Convert 2-letter ISO code to lowercase for react-phone-input-2
+    if (countryCode) {
+      setSelectedCountryCode(countryCode.toLowerCase());
+      setSelectedCountry(countryCode); // Store uppercase for tax validation
+      
+      // Clear tax ID field when country changes to re-validate with new rules
+      form.setFieldsValue({ taxId: "" });
     }
   };
   return (
@@ -153,6 +309,7 @@ export default function RegisterForm() {
                                 .toLowerCase()
                                 .startsWith(input.toLowerCase())
                             }
+                            onChange={handleCountryChange}
                           />
                         </Form.Item>
                       </div>
@@ -262,7 +419,9 @@ export default function RegisterForm() {
                             style={{ height: "48px" }}
                           /> */}
                           <PhoneInput
-                            country={"in"} // default country
+                            country={selectedCountryCode} // dynamically updated based on country selection
+                            value={phone}
+                            onChange={setPhone}
                             enableSearch={true} // ✅ search bar for country list
                             disableSearchIcon={false}
                             inputStyle={{ height: "48px", width: "100%" }}
@@ -291,9 +450,26 @@ export default function RegisterForm() {
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
-                        <Form.Item name="taxId" label="Local Tax ID">
+                        <Form.Item
+                          name="taxId"
+                          label={getTaxIdConfig(selectedCountry).label}
+                          rules={[
+                            {
+                              validator: (_, value) => {
+                                if (!value) {
+                                  return Promise.resolve(); // Optional field
+                                }
+                                const config = getTaxIdConfig(selectedCountry);
+                                if (config.pattern && !config.pattern.test(value)) {
+                                  return Promise.reject(new Error(config.message));
+                                }
+                                return Promise.resolve();
+                              },
+                            },
+                          ]}
+                        >
                           <Input
-                            placeholder="Example: PAN, VAT, ITN"
+                            placeholder={getTaxIdConfig(selectedCountry).placeholder}
                             style={{ height: "48px" }}
                           />
                         </Form.Item>
@@ -403,14 +579,14 @@ export default function RegisterForm() {
                       </div>
 
                       <Form.Item
-                        name="username"
+                        name="email"
                         rules={[
-                          { required: true, message: "Please enter username" },
+                          { required: true, message: "Please enter Email" },
                         ]}
-                        label={renderLabel("Username", true)}
+                        label={renderLabel("Email", true)}
                       >
                         <Input
-                          placeholder="Choose a username (usually your email)"
+                          placeholder="enter Email"
                           style={{ height: "48px" }}
                         />
                       </Form.Item>
