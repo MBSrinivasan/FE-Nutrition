@@ -12719,14 +12719,14 @@ a.solutions2 span i {
 .ant-input-textarea:focus,
 .ant-input-textarea:hover {
   border-color: #7A1F3D !important;
-  box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important;
+  /* box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important; */
 }
 
 /* For react-phone-input-2 */
 .react-tel-input .form-control:focus,
 .react-tel-input .form-control:hover {
   border-color: #7A1F3D !important;
-  box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important;
+  /* box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important; */
 }
 /* When the phone input field is hovered */
 .react-tel-input .form-control:hover + .flag-dropdown .selected-flag,
@@ -12758,7 +12758,7 @@ a.solutions2 span i {
   color: #374151 !important;
   border-color: #7A1F3D !important;
   background: #ffffff;
-  box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important;
+  /* box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important; */
 }
 
 .heightReduce .ant-form-item {
@@ -12775,6 +12775,9 @@ a.solutions2 span i {
 /* .row>*{
   padding-left: 0px !important;
 } */
+ .marginRight-5{
+  margin-right: 5px;
+ }
 
 
 

@@ -725,7 +725,7 @@ export default function RegisterForm() {
             </div>
           </div>
         </div>
-        {/* Sign in link - Outside the form */}
+       
         <div
           style={{
             textAlign: "center",
