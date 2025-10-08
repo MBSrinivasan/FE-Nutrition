@@ -88,7 +88,7 @@ export default function VerifyPage() {
               <InputOTP
                 inputType="custom"
                 // Regex below is for all input except numeric
-                inputRegex="[^0-9]"
+                inputRegex="[0-9]"
                 onChange={setOtpValues}
                 value={otpValues}
                 inputClassName="input-classname"
@@ -134,6 +134,7 @@ export default function VerifyPage() {
           </div>
         </div>
       </div>
+    
     </div>
   );
 }

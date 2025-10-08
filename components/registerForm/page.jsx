@@ -10,10 +10,12 @@ import { CheckCircleOutlined } from "@ant-design/icons";
 import countryList from "react-select-country-list";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { useRouter } from "next/navigation";
 
 const { Option } = Select;
 
 export default function RegisterForm() {
+  const router = useRouter();
   const [active, setActive] = useState("buyer");
   const [phone, setPhone] = useState("");
   const [selectedCountryCode, setSelectedCountryCode] = useState("in"); // Default to India
@@ -24,6 +26,8 @@ export default function RegisterForm() {
 
   const onFinish = (values) => {
     console.log("Form Values:", values);
+    // Navigate to verify page after successful registration
+    router.push("/verify");
   };
   const handleValuesChange = (changedValues) => {
     if (changedValues.email) {

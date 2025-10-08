@@ -87,7 +87,7 @@ const Login = () => {
     "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
   const handleVerify = () => {
-    router.push("/");
+    router.push("/vendor/home");
   };
 
   return (
@@ -151,7 +151,7 @@ const Login = () => {
                   <Form.Item name="remember" valuePropName="checked" noStyle>
                     <Checkbox>Remember me</Checkbox>
                   </Form.Item>
-                  <Link href="/forgetpassword" style={{ fontSize: "14px" }}>
+                  <Link href="/forgot-password" style={{ fontSize: "14px" }}>
                     Forgot password?
                   </Link>
                 </div>
