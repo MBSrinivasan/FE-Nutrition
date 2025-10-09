@@ -12719,14 +12719,14 @@ a.solutions2 span i {
 .ant-input-textarea:focus,
 .ant-input-textarea:hover {
   border-color: #7A1F3D !important;
-  box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important;
+  /* box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important; */
 }
 
 /* For react-phone-input-2 */
 .react-tel-input .form-control:focus,
 .react-tel-input .form-control:hover {
   border-color: #7A1F3D !important;
-  box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important;
+  /* box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important; */
 }
 /* When the phone input field is hovered */
 .react-tel-input .form-control:hover + .flag-dropdown .selected-flag,
@@ -12758,16 +12758,56 @@ a.solutions2 span i {
   color: #374151 !important;
   border-color: #7A1F3D !important;
   background: #ffffff;
-  box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important;
+  /* box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important; */
 }
 
 .heightReduce .ant-form-item {
   margin-bottom: 10px !important;
 }
 
+
+
+.ant-select-focused .ant-select-selector {
+  border-color: #7A1F3D !important; /* Active/focused border */
+  box-shadow: 0 0 0 2px rgba(29, 102, 48, 0.2); /* Optional glow */
+}
+
 /* .row>*{
   padding-left: 0px !important;
 } */
+ .marginRight-5{
+  margin-right: 5px;
+ }
+ .marginRight-1{
+  margin-right: 1px;
+ }
+ .marginRight-2{
+  margin-right: 2px;
+ }
+ .marginRight-3{
+  margin-right: 3px;
+ }
+ .marginRight-4{
+  margin-right: 4px;
+ }
+ .paddingRight-10{
+padding-right: 10px;
+ }
+ .paddingLeft-10{
+  padding-left: 10px;
+   }
+   .marginBottom-5{
+margin-bottom: 5px;
+   }
+   .paddingTop-10{
+    padding-top: 10px;
+   }
+   .paddingTop-20{
+    padding-top: 20px;
+   }
+   .marginTop-2{
+margin-top: 2px;
+   }
 
 
 
