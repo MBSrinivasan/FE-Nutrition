@@ -1,6 +1,6 @@
 .robot {    
     font-size: 14px;
-    font-family: 'Roboto', sans-serif;
+    font-family:'Montserrat', sans-serif;
 }
 
 .box-container {
@@ -36,14 +36,14 @@ input[type="checkbox"]:checked::before {
 .logo-text {
     text-align: right;
     font-size: 9px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .logo-text-tos {
     display: block;
     text-align: right;
     font-size: 9px;
-    font-family: 'Roboto', sans-serif;
+    font-family:'Montserrat', sans-serif;
     margin-left: 80px;
 }
 

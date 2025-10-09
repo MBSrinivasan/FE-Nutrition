@@ -197,7 +197,7 @@ FOOTER AREA CSS
 }
 .progress-wrap::after {
  position: absolute;
- font-family: "FontAwesome";
+ font-family: 'Montserrat', sans-serif;
  content: "\f062";
  text-align: center;
  line-height: 56px;
@@ -218,7 +218,7 @@ FOOTER AREA CSS
 }
 .progress-wrap::before {
  position: absolute;
- font-family: "FontAwesome";
+ font-family:'Montserrat', sans-serif;
  content: "\f062";
  text-align: center;
  line-height: 56px;
@@ -3178,7 +3178,7 @@ a.purchasebtn:hover{
 }
 .get-preview {
   color: #007DE7;
-  font-family: Kumbh Sans;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -3654,7 +3654,7 @@ img.missionimg2 {
 button#pills-profile-tab {
   background: none;
   color: var(--main-text-color, #1D2940);
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -3669,7 +3669,7 @@ button#pills-profile-tab:hover {
 button#pills-home-tab {
   background: none;
   color: var(--main-text-color, #1D2940);
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -3685,7 +3685,7 @@ button#pills-home-tab:hover {
 button#pills-contact-tab {
   background: none;
   color: var(--main-text-color, #1D2940);
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family:'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -5689,7 +5689,7 @@ span.aropaln2 img {
 
 .countries-tabs ul li.nav-item button {
   color: #071A1C;
-  font-family: Outfit;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -6934,7 +6934,7 @@ img.elementor-3 {
   height: 52px;
   text-align: center;
   line-height: 52px;
-  font-family: 'gilroy';
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
 .join-btn-2 h3 {
@@ -7333,7 +7333,7 @@ img.elemneotrs13 {
 }
 .features9 ul li p {
   color: #0B111D;
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -8367,7 +8367,7 @@ a.laearnmore2:hover {
   display: inline-block;
   align-items: center;
   color: var(--main-color, #1D2940);
-  font-family: Outfit;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -8376,7 +8376,7 @@ a.laearnmore2:hover {
 
 .blog-auhtor-text ul li a {
   color: var(--main-color, #1D2940);
-  font-family: Outfit;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -8794,7 +8794,7 @@ color: #fff;
 }
 .bloginput input::placeholder{
   color: var(--main-text-color, #1D2940);
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 font-size: 16px;
 font-style: normal;
 font-weight: 500;
@@ -8803,7 +8803,7 @@ opacity: 0.7;
 }
 .bloginput textarea::placeholder{
   color: var(--main-text-color, #1D2940);
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 font-size: 16px;
 font-style: normal;
 font-weight: 500;
@@ -9528,7 +9528,7 @@ a.contact3.contactboredrbtn {
   border-radius: 2px;
   background: #E9EDF4;
   color: #575E63;
-  font-family: Nunito;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -9715,7 +9715,7 @@ button.button13.positionbtn {position: relative;left: 0;margin-top: 20px;}
 .contact3-fromarea .nice-select span {
   color: #757575;
   /* opacity: 0; */
-  font-family: 'Nunito';
+  font-family: 'Montserrat', sans-serif;
 }
 .contact9-allinput .nice-select span {
   color: #717185;
@@ -10175,7 +10175,7 @@ ul.contact-select li {
     margin-bottom: 20px;
     background: #F3F3F4;
     color: #091622;
-    font-family: Kumbh Sans;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -10190,7 +10190,7 @@ ul.contact-select li {
     padding: 20px 16px;
     height: 140px;
     color: #091622;
-    font-family: Kumbh Sans;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -10278,7 +10278,7 @@ ul.contact-select li:hover{
 }
 .first-name-input11 .nice-select span.current {
   color: #747979;
-  font-family: 'Outfit', sans-serif;
+  font-family:'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -10286,7 +10286,7 @@ ul.contact-select li:hover{
 }
 .textarea11::placeholder {
   color: #4D5050;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -10410,7 +10410,7 @@ img.elementor-19 {
 }
 button.accordion-button.collapsed {
   color: var(--main-color, #1D2940);
-  font-family: 'Lora', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -10422,7 +10422,7 @@ background: var(--main-color, #1D2940);
 }
 .accordion-button:not(.collapsed){
 color: #fff;
-font-family: 'Lora', serif;
+font-family:'Montserrat', sans-serif;
 font-size: 20px;
 font-style: normal;
 font-weight: 600;
@@ -10571,7 +10571,7 @@ img.elementors67 {
 .all-btntabs li button.nav-link {
     color: none;
     color: #0C161D;
-    font-family: Nunito;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
@@ -11043,11 +11043,11 @@ a.hovertext:hover {
   outline: none;
   color: #fff;
   font-size: 18px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 60%;
 }
 .input1-area input::placeholder{
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -11506,7 +11506,7 @@ a.solutions12:hover img {
 }
 .cta11-authorarea button {
   color: #22BFCA;
-  font-family: Outfit;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -12110,7 +12110,7 @@ img.elementor-14 {
 
 .cta-contact5 form input::placeholder {
   color: #575E63;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;

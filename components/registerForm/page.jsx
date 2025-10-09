@@ -196,10 +196,10 @@ export default function RegisterForm() {
             <div className="col-lg-12">
               <div className="contact-main-box margin-b38">
                 <div className="contact-header">
-                  <h1 className="font-lora font-16 weight-600 lineh-26 color-18 margin-b">
+                  <h1 className=" font-16 weight-600 lineh-26 color-18 margin-b">
                     Account Type
                   </h1>
-                  <p className="font-ks font-16 weight-400 color-18 lineh26 margin-b1">
+                  <p className=" font-16 weight-400 color-18 lineh26 margin-b1">
                     Select the type of account you’d like to create
                   </p>
                 </div>
