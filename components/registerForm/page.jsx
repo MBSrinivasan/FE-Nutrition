@@ -235,10 +235,10 @@ export default function RegisterForm() {
         <div className="row">
           <div className="col-lg-12">
             <div className="contact1-header text-center">
-              <span className="font-34 font-ks lineh26 weight-600 color34 margin-b10  d-inline-block">
+              <span className="font-34  lineh26 weight-600 color34 margin-b10  d-inline-block">
                 Vendor Registration
               </span>
-              <div className="font-lora font-14  weight-400 margin-b28 color100">
+              <div className=" font-14  weight-400 margin-b28 color100">
                 Join our vendor network and start your partnership journey
               </div>
             </div>
