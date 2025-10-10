@@ -11,9 +11,7 @@ export default function VendorHomePage() {
   return (
     <VendorHeaderNav>
       <div className="" style={{ marginTop: "48px", width: "100%" }}>
-      
-<VendorMainPage/>
-        
+        <VendorMainPage />
       </div>
     </VendorHeaderNav>
   );
