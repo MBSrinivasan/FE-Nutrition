@@ -23,11 +23,13 @@ import {
 } from "@ant-design/icons";
 import Button from "../reusableComponents/button/page";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 const { Panel } = Collapse;
 
 export default function VendorMainPage() {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
+  const router = useRouter();
   const handleChange = (info) => {
     if (info.file.status === "uploading") {
       setLoading(true);
@@ -134,7 +136,13 @@ export default function VendorMainPage() {
                       <Col xs={24} sm={16}>
                         <div className="">
                           <div className="d-flex flex-col  paddingRight-10 h-full">
-                            <div className="text-end text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[20px] text-[#7A1F3D] weight-600 underline cursor-pointer">
+                            <div
+                              className="text-end text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[20px] text-[#7A1F3D] weight-600 underline cursor-pointer"
+                              onClick={() =>
+                                router.push("/vendor/profile/profileComplete")
+                              }
+                            >
+                               
                               Complete your profile
                             </div>
                             <div>
@@ -396,7 +404,9 @@ export default function VendorMainPage() {
                   <Col xs={24} sm={12} md={8}>
                     <div className="flex justify-center">
                       <Upload>
-                        <Button icon={<DownloadOutlined />}>Export Profile to PDF</Button>
+                        <Button icon={<DownloadOutlined />}>
+                          Export Profile to PDF
+                        </Button>
                       </Upload>
                     </div>
                   </Col>
@@ -414,7 +424,9 @@ export default function VendorMainPage() {
                   <Col xs={24} sm={12} md={8}>
                     <div className="flex justify-center">
                       <Upload>
-                        <Button icon={<UploadOutlined />}>Upload Documents</Button>
+                        <Button icon={<UploadOutlined />}>
+                          Upload Documents
+                        </Button>
                       </Upload>
                     </div>
                   </Col>

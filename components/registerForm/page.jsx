@@ -188,6 +188,7 @@ export default function RegisterForm() {
       form.setFieldsValue({ taxId: "" });
     }
   };
+  
   return (
     <>
       <div className="contact1-section-area section-padding5 registerForm">
@@ -238,7 +239,7 @@ export default function RegisterForm() {
                 Vendor Registration
               </span>
               <div className="font-lora font-14  weight-400 margin-b28 color100">
-                Feel free to contuct us for any{" "}
+              Join our vendor network and start your partnership journey
               </div>
             </div>
           </div>
