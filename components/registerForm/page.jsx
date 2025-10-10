@@ -183,12 +183,12 @@ export default function RegisterForm() {
     if (countryCode) {
       setSelectedCountryCode(countryCode.toLowerCase());
       setSelectedCountry(countryCode); // Store uppercase for tax validation
-      
+
       // Clear tax ID field when country changes to re-validate with new rules
       form.setFieldsValue({ taxId: "" });
     }
   };
-  
+
   return (
     <>
       <div className="contact1-section-area section-padding5 registerForm">
@@ -239,7 +239,7 @@ export default function RegisterForm() {
                 Vendor Registration
               </span>
               <div className="font-lora font-14  weight-400 margin-b28 color100">
-              Join our vendor network and start your partnership journey
+                Join our vendor network and start your partnership journey
               </div>
             </div>
           </div>
@@ -256,7 +256,7 @@ export default function RegisterForm() {
                         <IconBorder
                           icon={
                             <img
-                              src="assets/images/icons-images/Company-Information.svg"
+                              src="/assets/images/icons-images/company.svg"
                               alt="icon"
                               width={100}
                               height={100}
@@ -291,7 +291,10 @@ export default function RegisterForm() {
                       </Form.Item>
 
                       <div className="grid grid-cols-2 gap-4">
-                        <Form.Item name="businessType" label="Business Type">
+                        <Form.Item
+                          name="businessType"
+                          label={renderLabel("Business Type", true)}
+                        >
                           <Select
                             placeholder="Select business type"
                             style={{ height: "48px" }}
@@ -302,7 +305,10 @@ export default function RegisterForm() {
                           </Select>
                         </Form.Item>
 
-                        <Form.Item name="country" label="Country">
+                        <Form.Item
+                          name="country"
+                          label={renderLabel("Country", true)}
+                        >
                           <Select
                             showSearch
                             placeholder="Select Country"
@@ -319,7 +325,10 @@ export default function RegisterForm() {
                         </Form.Item>
                       </div>
 
-                      <Form.Item name="address" label="Business Address">
+                      <Form.Item
+                        name="address"
+                        label={renderLabel("Business Address", true)}
+                      >
                         <Input.TextArea
                           rows={5}
                           placeholder="Enter your complete business address"
@@ -328,13 +337,7 @@ export default function RegisterForm() {
 
                       <Form.Item
                         name="websiteURL"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please enter Website URL",
-                          },
-                        ]}
-                        label={renderLabel("Website URL", true)}
+                        label={renderLabel("Website URL", false)}
                       >
                         <Input
                           placeholder="https://www.yourcompany.com"
@@ -429,6 +432,7 @@ export default function RegisterForm() {
                             onChange={setPhone}
                             enableSearch={true} // ✅ search bar for country list
                             disableSearchIcon={false}
+                            countryCodeEditable={false} // ✅ prevent country code from being erased
                             inputStyle={{ height: "48px", width: "100%" }}
                             buttonStyle={{ border: "1px solid #d9d9d9" }} // match AntD style
                           />
@@ -441,7 +445,7 @@ export default function RegisterForm() {
                           <IconBorder
                             icon={
                               <img
-                                src="assets/images/icons-images/Compliance-Legal.svg"
+                                src="assets/images/icons-images/Portal-Credentials.svg"
                                 alt="icon"
                                 width={100}
                                 height={100}
@@ -457,7 +461,8 @@ export default function RegisterForm() {
                       <div className="grid grid-cols-2 gap-4">
                         <Form.Item
                           name="taxId"
-                          label={getTaxIdConfig(selectedCountry).label}
+                          label={renderLabel(getTaxIdConfig(selectedCountry).label, false)}
+
                           rules={[
                             {
                               validator: (_, value) => {
@@ -465,8 +470,13 @@ export default function RegisterForm() {
                                   return Promise.resolve(); // Optional field
                                 }
                                 const config = getTaxIdConfig(selectedCountry);
-                                if (config.pattern && !config.pattern.test(value)) {
-                                  return Promise.reject(new Error(config.message));
+                                if (
+                                  config.pattern &&
+                                  !config.pattern.test(value)
+                                ) {
+                                  return Promise.reject(
+                                    new Error(config.message)
+                                  );
                                 }
                                 return Promise.resolve();
                               },
@@ -474,12 +484,16 @@ export default function RegisterForm() {
                           ]}
                         >
                           <Input
-                            placeholder={getTaxIdConfig(selectedCountry).placeholder}
+                            placeholder={
+                              getTaxIdConfig(selectedCountry).placeholder
+                            }
                             style={{ height: "48px" }}
                           />
                         </Form.Item>
 
-                        <Form.Item name="duns" label="DUNS Number">
+                     
+                          
+                          <Form.Item name="duns"  label={renderLabel("DUNS Number", false)}  >
                           <Input
                             placeholder="Enter DUNS number (if applicable)"
                             style={{ height: "48px" }}
@@ -487,7 +501,7 @@ export default function RegisterForm() {
                         </Form.Item>
                       </div>
 
-                      <Form.Item name="nda" label="Upload NDA Document">
+                      <Form.Item name="nda"   label={renderLabel("Upload NDA Document", false)} >
                         <Upload.Dragger
                           name="nda"
                           multiple={false}
@@ -560,7 +574,7 @@ export default function RegisterForm() {
                       <Form.Item name="agreement" valuePropName="checked">
                         <Checkbox>
                           I have read, understood, and agree to the terms of the
-                          Non-Disclosure Agreement (NDA).
+                          Non-Disclosure Agreement (NDA) *
                         </Checkbox>
                       </Form.Item>
 
@@ -570,11 +584,13 @@ export default function RegisterForm() {
                           <IconBorder
                             icon={
                               <img
-                                src="assets/images/icons-images/Portal-Credentials.svg"
+                              src="assets/images/icons-images/Company-Information.svg"
+                                
                                 alt="icon"
                                 width={100}
                                 height={100}
                               />
+                              
                             }
                           />
                         </div>
@@ -730,7 +746,7 @@ export default function RegisterForm() {
             </div>
           </div>
         </div>
-       
+
         <div
           style={{
             textAlign: "center",

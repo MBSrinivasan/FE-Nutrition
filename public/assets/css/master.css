@@ -12726,7 +12726,7 @@ a.solutions2 span i {
 .react-tel-input .form-control:focus,
 .react-tel-input .form-control:hover {
   border-color: #7A1F3D !important;
-  /* box-shadow: 0 0 0 2px rgba(122, 31, 61, 0.2) !important; */
+  box-shadow: none !important;
 }
 /* When the phone input field is hovered */
 .react-tel-input .form-control:hover + .flag-dropdown .selected-flag,
