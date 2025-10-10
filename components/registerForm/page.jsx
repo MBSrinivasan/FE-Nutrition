@@ -294,6 +294,12 @@ export default function RegisterForm() {
                         <Form.Item
                           name="businessType"
                           label={renderLabel("Business Type", true)}
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please select Business Type",
+                            },
+                          ]}
                         >
                           <Select
                             placeholder="Select business type"
@@ -308,6 +314,12 @@ export default function RegisterForm() {
                         <Form.Item
                           name="country"
                           label={renderLabel("Country", true)}
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please select Country",
+                            },
+                          ]}
                         >
                           <Select
                             showSearch
@@ -328,6 +340,12 @@ export default function RegisterForm() {
                       <Form.Item
                         name="address"
                         label={renderLabel("Business Address", true)}
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please enter Business Address",
+                          },
+                        ]}
                       >
                         <Input.TextArea
                           rows={5}

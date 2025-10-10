@@ -13,7 +13,7 @@ export default function VendorHomePage() {
       <div className="" style={{ marginTop: "48px", width: "100%" }}>
       
 <VendorMainPage/>
-        {/* <VendorCompletePage/> */}
+        
       </div>
     </VendorHeaderNav>
   );
