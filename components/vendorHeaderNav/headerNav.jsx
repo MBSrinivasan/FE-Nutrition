@@ -2,7 +2,12 @@
 import * as React from "react";
 import { useCallback } from "react";
 import "../vendorHeaderNav/headerNav.css";
-import { styled, useTheme } from "@mui/material/styles";
+import {
+  styled,
+  useTheme,
+  ThemeProvider,
+  createTheme,
+} from "@mui/material/styles";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import Box from "@mui/material/Box";
@@ -34,6 +39,8 @@ import {
   Badge,
   Button,
   Chip,
+  Tooltip,
+  AvatarGroup,
 } from "@mui/material";
 
 const drawerWidth = 280;
@@ -110,6 +117,13 @@ const Drawer = styled(MuiDrawer, {
     overflowX: "hidden",
   },
 }));
+
+// Create custom theme with Montserrat font
+const customTheme = createTheme({
+  typography: {
+    fontFamily: "var(--montserrat-font-family), Montserrat, sans-serif",
+  },
+});
 
 export default function VendorHeaderNav({ children }) {
   const theme = useTheme();
@@ -232,769 +246,589 @@ export default function VendorHeaderNav({ children }) {
   // This prevents the flash/glitch where Dashboard appears selected first
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar sx={{ justifyContent: "space-between", px: 3 }}>
-          <Box sx={{ display: "flex", alignItems: "center", flex: 1 }}>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={[
-                {
-                  marginRight: 2,
-                  color: "#202224",
-                },
-                open && { display: "none" },
-              ]}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Box>
-
-          <div className="d-flex justify-between w-full">
-            <div>
-              <TextField
-                placeholder="Search product, service, projects, buyers..."
-                variant="outlined"
-                size="small"
-                className="searchbarWidth"
-                sx={{
-                  // width: '450px',
-                  "& .MuiOutlinedInput-root": {
-                    backgroundColor: "#F5F6FA",
-                    borderRadius: "19px",
-                    "& fieldset": {
-                      borderColor: "#D5D5D5",
-                    },
-                  },
-                }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon sx={{ color: "#666", opacity: 0.5 }} />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </div>
-            <div>
-              <div className="d-flex items-center">
-                <Badge badgeContent={6} color="error">
-                  <NotificationsIcon sx={{ color: "#4880FF" }} />
-                </Badge>
-
-                <MessageIcon
-                  sx={{
-                    color: "#4CB8A6",
-                    bgcolor: "#E6F4F1",
-                    borderRadius: "50%",
-                    width: 36,
-                    height: 36,
-                    p: 0.7,
-                    boxSizing: "content-box",
-                    boxShadow: "0 2px 8px 0 rgba(76,184,166,0.10)",
-                    ml: 2,
-                  }}
-                />
-
-                <Avatar
-                  sx={{
-                    bgcolor: "#ECECF0",
-                    color: "#000000",
-                    fontWeight: 600,
-                    ml: 2,
-                    marginRight: "15px",
-                  }}
-                >
-                  VP
-                </Avatar>
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      fontWeight: 600,
-                      color: "#000000",
-                      fontSize: "14px",
-                      lineHeight: 1.2,
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    Vendor Pro
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      fontWeight: 400,
-                      color: "#666666",
-                      fontSize: "12px",
-                      lineHeight: 1.2,
-                      mt: 0.2,
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    75% Complete
-                  </Typography>
-                </Box>
-
-                <IconButton
-                  sx={{
-                    color: "#7A1F3D",
-                    ml: 1,
-                    "&:hover": {
-                      backgroundColor: "rgba(122, 31, 61, 0.04)",
-                    },
-                  }}
-                  size="small"
-                >
-                  <img
-                    src="/assets/images/allimages/logout icon.svg"
-                    alt="Logout"
-                    style={{
-                      width: "16px",
-                      height: "16px",
-                      objectFit: "contain",
-                      marginLeft: "5px",
-                    }}
-                  />
-                </IconButton>
-              </div>
-            </div>
-          </div>
-        </Toolbar>
-      </AppBar>
-
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader style={{ backgroundColor: "white" }}>
-          {open && (
-            <Box sx={{ display: "flex", alignItems: "center", flex: 1 }}>
-              <img
-                src="/assets/images/allimages/7 1.png"
-                alt="Beetloop Logo"
-                style={{
-                  height: "32px",
-                  width: "auto",
-                  objectFit: "contain",
-                  backgroundColor: "white",
-                  padding: "4px 8px",
-                  borderRadius: "4px",
-                }}
-              />
-            </Box>
-          )}
-          <IconButton onClick={handleDrawerClose} sx={{ color: "black" }}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </DrawerHeader>
-
-        <Box sx={{ overflow: "auto", flex: 1, overflowX: "hidden" }}>
-          <List sx={{ px: 1, overflowX: "hidden" }}>
-            {menuItems.map((item) => (
-              <ListItem
-                key={item.text}
-                disablePadding
-                sx={{ display: "block", mb: 0.3 }}
-              >
-                <ListItemButton
-                  component={Link}
-                  href={item.path}
-                  selected={selectedIndex === item.index}
-                  sx={{
-                    minHeight: 40,
-                    px: 1.5,
-                    borderRadius: "6px",
-                    position: "relative",
-                    backgroundColor:
-                      selectedIndex === item.index ? "white" : "transparent", // Always white when selected
-                    marginLeft:
-                      selectedIndex === item.index && open ? "4px" : "0px",
-                    borderLeft:
-                      selectedIndex === item.index && open
-                        ? "10px solid white"
-                        : "none",
-                    transition:
-                      "background-color 0.2s, margin-left 0.2s, border-left 0.2s, box-shadow 0.2s",
-                    overflow: "visible",
-                    position: "relative",
-                    zIndex: 1,
-                    "& *": {
-                      transition: "color 0.2s",
-                    },
-                    "&:hover": {
-                      backgroundColor:
-                        selectedIndex === item.index
-                          ? "white"
-                          : "rgba(255, 255, 255, 0.10)",
-                      boxShadow:
-                        selectedIndex === item.index
-                          ? "none"
-                          : "0 2px 8px 0 rgba(0,0,0,0.03)",
-                    },
-                    "&:hover:not(.Mui-selected)": {
-                      backgroundColor: "rgba(255, 255, 255, 0.10)",
-                      boxShadow: "0 2px 8px 0 rgba(0,0,0,0.03)",
-                    },
-                    "&.Mui-selected:hover": {
-                      backgroundColor: "white",
-                      boxShadow: "none",
-                    },
-                    "&.Mui-selected": {
-                      backgroundColor: "white", // Always white when selected, regardless of open state
-                    },
-                    ...(open
-                      ? {
-                          justifyContent: "initial",
-                        }
-                      : {
-                          justifyContent: "center",
-                        }),
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      justifyContent: "center",
-                      color: selectedIndex === item.index ? "#7A1F3D" : "white", // Maroon when selected, regardless of open state
-                      ...(open
-                        ? {
-                            mr: 3,
-                          }
-                        : {
-                            mr: "auto",
-                          }),
-                    }}
-                  >
-                    <img
-                      src={item.iconSrc}
-                      alt={item.iconAlt}
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        objectFit: "contain",
-                        filter:
-                          selectedIndex === item.index
-                            ? "brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(3656%) hue-rotate(329deg) brightness(89%) contrast(89%)"
-                            : "brightness(0) invert(1)", // Maroon when selected, white otherwise
-                      }}
-                    />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={item.text}
-                    sx={{
-                      color: selectedIndex === item.index ? "#7A1F3D" : "white", // Maroon when selected, regardless of open state
-                      "& .MuiTypography-root": {
-                        fontSize: "14px",
-                        fontWeight: 600,
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        color:
-                          selectedIndex === item.index ? "#7A1F3D" : "white", // Maroon when selected, regardless of open state
-                      },
-                      ...(open
-                        ? {
-                            opacity: 1,
-                          }
-                        : {
-                            opacity: 0,
-                          }),
-                    }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          {/*         
-        <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.2)', mx: 2, my: 2 }} /> */}
-
-          <Box
+    <ThemeProvider theme={customTheme}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar position="fixed" open={open}>
+          <Toolbar
             sx={{
-              px: 1,
-              py: 0.5,
-              backgroundColor: "white",
-              borderRadius: "8px",
-              mx: 2,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-              boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1)",
+              justifyContent: "space-between",
+              px: 3,
+              fontFamily:
+                "var(--montserrat-font-family), Montserrat, sans-serif",
             }}
           >
-            <Box
-              sx={{ display: "flex", alignItems: "center", gap: 1.5, flex: 1 }}
-            >
-              <Box
-                sx={{
-                  position: "relative",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "20px",
-                  height: "20px",
-                }}
+            <Box sx={{ display: "flex", alignItems: "center", flex: 1 }}>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                sx={[
+                  {
+                    marginRight: 2,
+                    color: "#202224",
+                  },
+                  open && { display: "none" },
+                ]}
               >
-                <LightbulbIcon
-                  sx={{
-                    color: "transparent",
-                    fontSize: "20px",
-                    stroke: "#FFD8E5",
-                    strokeWidth: 1.5,
-                    fill: "transparent",
-                  }}
-                />
-                <CheckIcon
-                  sx={{
-                    position: "absolute",
-                    color: "#FFD8E5",
-                    fontSize: "10px",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    strokeWidth: 1.5,
-                  }}
-                />
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ color: "#4F4F4F", fontWeight: 500 }}
-              >
-                Knowledge Hub
-              </Typography>
+                <MenuIcon />
+              </IconButton>
             </Box>
 
-            <Box
-              sx={{
-                backgroundColor: "#FFD8E5",
-                borderRadius: "5px",
-                px: 0.8,
-                py: 0,
-                minWidth: "fit-content",
-                ml: 2,
-              }}
-            >
-              <Typography
-                variant="caption"
-                sx={{ color: "#4F4F4F", fontWeight: 500, fontSize: "11px" }}
-              >
-                New
-              </Typography>
-            </Box>
-          </Box>
-
-          <Divider
-            sx={{ borderColor: "rgba(255, 255, 255, 0.2)", mx: 2, my: 1 }}
-          />
-
-          <List sx={{ px: 2 }}>
-            {bottomMenuItems.map((item) => (
-              <ListItem
-                key={item.text}
-                disablePadding
-                sx={{ display: "block", mb: 0.3 }}
-              >
-                <ListItemButton
-                  component={Link}
-                  href={item.path}
-                  selected={selectedIndex === item.index}
+            <div className="d-flex justify-between w-full">
+              <div>
+                <TextField
+                  placeholder="Search product, service, projects, buyers..."
+                  variant="outlined"
+                  size="small"
+                  className="searchbarWidth"
                   sx={{
-                    minHeight: 40,
-                    px: 1.5,
-                    borderRadius: "6px",
-                    position: "relative",
-                    backgroundColor:
-                      selectedIndex === item.index ? "white" : "transparent", // Always white when selected
-                    marginLeft:
-                      selectedIndex === item.index && open ? "4px" : "0px",
-                    borderLeft:
-                      selectedIndex === item.index && open
-                        ? "10px solid white"
-                        : "none",
-                    transition:
-                      "background-color 0.2s, margin-left 0.2s, border-left 0.2s, box-shadow 0.2s",
-                    overflow: "visible",
-                    position: "relative",
-                    zIndex: 1,
-                    "& *": {
-                      transition: "none !important",
-                    },
-                    "&:hover": {
-                      backgroundColor:
-                        selectedIndex === item.index
-                          ? "white"
-                          : "rgba(255, 255, 255, 0.10)",
-                      boxShadow:
-                        selectedIndex === item.index
-                          ? "none"
-                          : "0 2px 8px 0 rgba(0,0,0,0.03)",
-                    },
-                    "&:hover:not(.Mui-selected)": {
-                      backgroundColor: "rgba(255, 255, 255, 0.10)",
-                      boxShadow: "0 2px 8px 0 rgba(0,0,0,0.03)",
-                    },
-                    "&.Mui-selected:hover": {
-                      backgroundColor: "white",
-                    },
-                    "&.Mui-selected": {
-                      backgroundColor: "white", // Always white when selected, regardless of open state
-                    },
-                    ...(open
-                      ? {
-                          justifyContent: "initial",
-                        }
-                      : {
-                          justifyContent: "center",
-                        }),
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      justifyContent: "center",
-                      color: selectedIndex === item.index ? "#7A1F3D" : "white", // Maroon when selected, regardless of open state
-                      ...(open
-                        ? {
-                            mr: 3,
-                          }
-                        : {
-                            mr: "auto",
-                          }),
-                    }}
-                  >
-                    <img
-                      src={item.iconSrc}
-                      alt={item.iconAlt}
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        objectFit: "contain",
-                        filter:
-                          selectedIndex === item.index
-                            ? "brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(3656%) hue-rotate(329deg) brightness(89%) contrast(89%)"
-                            : "brightness(0) invert(1)", // Maroon when selected, white otherwise
-                      }}
-                    />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={
-                      <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 1 }}
-                      >
-                        <span
-                          style={{
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                          }}
-                        >
-                          {item.text}
-                        </span>
-                        {item.text === "Sourcing" && (
-                          <img
-                            src="/assets/images/allimages/lock.svg"
-                            alt="Lock"
-                            style={{
-                              width: "12px",
-                              height: "12px",
-                              objectFit: "contain",
-                              marginLeft: "12px",
-                            }}
-                          />
-                        )}
-                      </Box>
-                    }
-                    sx={{
-                      color: selectedIndex === item.index ? "#7A1F3D" : "white", // Maroon when selected, regardless of open state
-                      "& .MuiTypography-root": {
-                        fontSize: "14px",
-                        fontWeight: 600,
-                        color:
-                          selectedIndex === item.index ? "#7A1F3D" : "white", // Maroon when selected, regardless of open state
+                    // width: '450px',
+                    "& .MuiOutlinedInput-root": {
+                      backgroundColor: "#F5F6FA",
+                      borderRadius: "19px",
+                      "& fieldset": {
+                        borderColor: "#D5D5D5",
                       },
-                      ...(open
-                        ? {
-                            opacity: 1,
-                          }
-                        : {
-                            opacity: 0,
-                          }),
+                    },
+                  }}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon sx={{ color: "#666", opacity: 0.5 }} />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div>
+                <div className="d-flex items-center">
+                  <Badge badgeContent={6} color="error">
+                    <NotificationsIcon sx={{ color: "#4880FF" }} />
+                  </Badge>
+
+                  <MessageIcon
+                    sx={{
+                      color: "#4CB8A6",
+                      bgcolor: "#E6F4F1",
+                      borderRadius: "50%",
+                      width: 36,
+                      height: 36,
+                      p: 0.7,
+                      boxSizing: "content-box",
+                      boxShadow: "0 2px 8px 0 rgba(76,184,166,0.10)",
+                      ml: 2,
                     }}
                   />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
 
-          {open && (
-            <>
-              {/* We'll find you a supplier section */}
-              <Divider
-                sx={{ borderColor: "rgba(255, 255, 255, 0.2)", mx: 2, my: 2 }}
-              />
-
-              <Box sx={{ px: 2, py: 2 }}>
-                <Box
-                  sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Avatar
+                  <Avatar
+                    sx={{
+                      bgcolor: "#ECECF0",
+                      color: "#000000",
+                      fontWeight: 600,
+                      ml: 2,
+                      marginRight: "15px",
+                    }}
+                  >
+                    VP
+                  </Avatar>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
                       sx={{
-                        width: 24,
-                        height: 24,
-                        fontSize: "10px",
-                        bgcolor: "#E6F4F1",
-                        color: "#4CB8A6",
-                        zIndex: 3,
+                        fontWeight: 600,
+                        color: "#000000",
+                        fontSize: "14px",
+                        lineHeight: 1.2,
+                        whiteSpace: "nowrap",
                       }}
                     >
-                      A
-                    </Avatar>
-                    <Avatar
+                      Vendor Pro
+                    </Typography>
+                    <Typography
+                      variant="body2"
                       sx={{
-                        width: 24,
-                        height: 24,
-                        fontSize: "10px",
-                        bgcolor: "#E6F4F1",
-                        color: "#4CB8A6",
-                        zIndex: 2,
-                        ml: -1,
+                        fontWeight: 400,
+                        color: "#666666",
+                        fontSize: "12px",
+                        lineHeight: 1.2,
+                        mt: 0.2,
+                        whiteSpace: "nowrap",
                       }}
                     >
-                      B
-                    </Avatar>
-                    <Avatar
-                      sx={{
-                        width: 24,
-                        height: 24,
-                        fontSize: "10px",
-                        bgcolor: "#E6F4F1",
-                        color: "#4CB8A6",
-                        zIndex: 1,
-                        ml: -1,
-                      }}
-                    >
-                      C
-                    </Avatar>
+                      75% Complete
+                    </Typography>
                   </Box>
-                </Box>
 
-                <Typography
-                  variant="body2"
-                  sx={{ color: "white", fontWeight: 600, mb: 1 }}
-                >
-                  We'll find you a supplier
-                </Typography>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    color: "white",
-                    fontSize: "12px",
-                    display: "block",
-                    mb: 2,
-                    lineHeight: 1.4,
-                    whiteSpace: "normal",
-                    wordWrap: "break-word",
-                    overflowWrap: "break-word",
-                  }}
-                >
-                  Tell us what you're looking for, and we'll recommend a few of
-                  our best supplier for your needs.
-                </Typography>
-
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "white",
-                    color: "#7A1F3D",
-                    borderRadius: "8px",
-                    px: 3,
-                    py: 0.7,
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-                    "&:hover": {
-                      backgroundColor: "#f5f5f5",
-                    },
-                  }}
-                  endIcon={
+                  <IconButton
+                    sx={{
+                      color: "#7A1F3D",
+                      ml: 1,
+                      "&:hover": {
+                        backgroundColor: "rgba(122, 31, 61, 0.04)",
+                      },
+                    }}
+                    size="small"
+                  >
                     <img
-                      src="/assets/images/allimages/arrow.svg"
-                      alt="Arrow"
+                      src="/assets/images/allimages/logout icon.svg"
+                      alt="Logout"
                       style={{
                         width: "16px",
                         height: "16px",
                         objectFit: "contain",
+                        marginLeft: "5px",
                       }}
                     />
-                  }
-                >
-                  Post a Project
-                </Button>
-              </Box>
-            </>
-          )}
+                  </IconButton>
+                </div>
+              </div>
+            </div>
+          </Toolbar>
+        </AppBar>
 
-          {open && (
-            <>
-              {/* Beetloop Intelligence section */}
-              <Divider
-                sx={{ borderColor: "rgba(255, 255, 255, 0.2)", mx: 2, my: 2 }}
-              />
-
-              <Box
-                sx={{
-                  px: 2,
-                  py: 1.5,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  marginRight: "20px",
-                }}
-              >
-                <Chip
-                  label="Beetloop Intelligence"
-                  sx={{
-                    backgroundColor: "#35898F",
-                    color: "white",
-                    fontSize: "12px",
-                    width: "156px",
-                    height: "26px",
-                    mb: 1,
-                    "& .MuiChip-label": {
-                      px: 2,
-                    },
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader style={{ backgroundColor: "white" }}>
+            {open && (
+              <Box sx={{ display: "flex", alignItems: "center", flex: 1 }}>
+                <img
+                  src="/assets/images/allimages/7 1.png"
+                  alt="Beetloop Logo"
+                  style={{
+                    height: "32px",
+                    width: "auto",
+                    objectFit: "contain",
+                    backgroundColor: "white",
+                    padding: "4px 8px",
+                    borderRadius: "4px",
                   }}
                 />
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: "white",
-                    fontSize: "12px",
-                    textAlign: "center",
-                    marginRight: "10px",
-                  }}
-                >
-                  Nutrition • Regulatory • Recipes
-                </Typography>
               </Box>
+            )}
+            <IconButton onClick={handleDrawerClose} sx={{ color: "black" }}>
+              {theme.direction === "rtl" ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
+            </IconButton>
+          </DrawerHeader>
 
-              {/* Beetloop Consulting section */}
-              <Divider
-                sx={{ borderColor: "rgba(255, 255, 255, 0.2)", mx: 2, my: 2 }}
-              />
+          <Box
+            sx={{
+              overflow: "auto",
+              flex: 1,
+              overflowX: "hidden",
+              fontFamily:
+                "var(--montserrat-font-family), Montserrat, sans-serif",
+            }}
+          >
+            <List sx={{ px: 2, pt: 4, pb: 1, overflowX: "hidden" }}>
+              {menuItems.map((item) => (
+                <ListItem
+                  key={item.text}
+                  disablePadding
+                  sx={{ display: "block", mb: 0.3 }}
+                >
+                  <Tooltip
+                    title={item.text}
+                    placement="right"
+                    disableHoverListener={open}
+                    arrow
+                  >
+                    <ListItemButton
+                      component={Link}
+                      href={item.path}
+                      selected={selectedIndex === item.index}
+                      sx={{
+                        minHeight: 40,
+                        px: 1.5,
+                        borderRadius: "6px",
+                        position: "relative",
+                        backgroundColor:
+                          selectedIndex === item.index
+                            ? "white"
+                            : "transparent", // Always white when selected
+                        marginLeft:
+                          selectedIndex === item.index && open ? "4px" : "0px",
+                        borderLeft:
+                          selectedIndex === item.index && open
+                            ? "10px solid white"
+                            : "none",
+                        transition:
+                          "background-color 0.2s, margin-left 0.2s, border-left 0.2s, box-shadow 0.2s",
+                        overflow: "visible",
+                        position: "relative",
+                        zIndex: 1,
+                        "& *": {
+                          transition: "color 0.2s",
+                        },
+                        "&:hover": {
+                          backgroundColor:
+                            selectedIndex === item.index
+                              ? "white"
+                              : "rgba(255, 255, 255, 0.10)",
+                          boxShadow:
+                            selectedIndex === item.index
+                              ? "none"
+                              : "0 2px 8px 0 rgba(0,0,0,0.03)",
+                        },
+                        "&:hover:not(.Mui-selected)": {
+                          backgroundColor: "rgba(255, 255, 255, 0.10)",
+                          boxShadow: "0 2px 8px 0 rgba(0,0,0,0.03)",
+                        },
+                        "&.Mui-selected:hover": {
+                          backgroundColor: "white",
+                          boxShadow: "none",
+                        },
+                        "&.Mui-selected": {
+                          backgroundColor: "white", // Always white when selected, regardless of open state
+                        },
+                        ...(open
+                          ? {
+                              justifyContent: "initial",
+                            }
+                          : {
+                              justifyContent: "center",
+                            }),
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          justifyContent: "center",
+                          color:
+                            selectedIndex === item.index ? "#7A1F3D" : "white", // Maroon when selected, regardless of open state
+                          ...(open
+                            ? {
+                                mr: 3,
+                              }
+                            : {
+                                mr: "auto",
+                              }),
+                        }}
+                      >
+                        <img
+                          src={item.iconSrc}
+                          alt={item.iconAlt}
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            objectFit: "contain",
+                            filter:
+                              selectedIndex === item.index
+                                ? "brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(3656%) hue-rotate(329deg) brightness(89%) contrast(89%)"
+                                : "brightness(0) invert(1)", // Maroon when selected, white otherwise
+                          }}
+                        />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={item.text}
+                        sx={{
+                          color:
+                            selectedIndex === item.index ? "#7A1F3D" : "white", // Maroon when selected, regardless of open state
+                          "& .MuiTypography-root": {
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            color:
+                              selectedIndex === item.index
+                                ? "#7A1F3D"
+                                : "white", // Maroon when selected, regardless of open state
+                          },
+                          ...(open
+                            ? {
+                                opacity: 1,
+                              }
+                            : {
+                                opacity: 0,
+                              }),
+                        }}
+                      />
+                    </ListItemButton>
+                  </Tooltip>
+                </ListItem>
+              ))}
+            </List>
+            {/*         
+        <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.2)', mx: 2, my: 2 }} /> */}
 
+            <Tooltip
+              title="Knowledge Hub (New)"
+              placement="right"
+              disableHoverListener={open}
+              arrow
+            >
               <Box
                 sx={{
-                  px: 2,
-                  py: 1.5,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  marginRight: "20px",
-                }}
-              >
-                <Chip
-                  label="Beetloop Consulting"
-                  sx={{
-                    backgroundColor: "#E0C551",
-                    color: "#4F4F4F",
-                    fontSize: "12px",
-                    height: "24px",
-                    mb: 1,
-                    "& .MuiChip-label": {
-                      px: 2.5,
-                    },
-                  }}
-                />
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: "white",
-                    fontSize: "12px",
-                    textAlign: "center",
-                    marginRight: "10px",
-                  }}
-                >
-                  Exclusive in-house expert services
-                </Typography>
-              </Box>
+                  px: 1,
+                  py: 0.5,
 
-              {/* Quick Support section */}
-              <Divider
-                sx={{ borderColor: "rgba(255, 255, 255, 0.2)", mx: 2, my: 2 }}
-              />
+                  backgroundColor: "white",
+                  borderRadius: "8px",
+                  mx: open ? 2 : 1,
+                  mt: 1,
 
-              <Box
-                sx={{
-                  px: 2,
-                  py: 1,
                   display: "flex",
                   alignItems: "center",
-                  gap: 1.5,
+                  justifyContent: open ? "flex-start" : "center",
+                  boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1)",
+                  cursor: "pointer",
                 }}
               >
-                <ChatBubbleOutlineIcon
-                  sx={{ color: "white", fontSize: "18px" }}
-                />
-                <Typography
-                  variant="body2"
-                  sx={{ color: "white", fontSize: "12px" }}
-                >
-                  Quick Support
-                </Typography>
-              </Box>
-
-              {/* Customer Support section */}
-
-              <Box sx={{ px: 2, py: 1.5 }}>
                 <Box
                   sx={{
                     display: "flex",
-                    flexDirection: "column",
                     alignItems: "center",
-                    mb: 1,
+                    gap: 1.5,
+                    flex: open ? 1 : 0,
                   }}
                 >
                   <Box
                     sx={{
+                      position: "relative",
                       display: "flex",
                       alignItems: "center",
-                      gap: 1.5,
-                      mb: 1,
+                      justifyContent: "center",
+                      width: "20px",
+                      height: "20px",
                     }}
                   >
-                    <Avatar
+                    <LightbulbIcon
                       sx={{
-                        width: 30,
-                        height: 30,
-                        bgcolor: "white",
-                        color: "#7A1F3D",
-                        fontSize: "12px",
-                        fontWeight: 600,
+                        color: "transparent",
+                        fontSize: "20px",
+                        stroke: "#FFD8E5",
+                        strokeWidth: 1.5,
+                        fill: "transparent",
                       }}
-                    >
-                      CS
-                    </Avatar>
+                    />
+                    <CheckIcon
+                      sx={{
+                        position: "absolute",
+                        color: "#FFD8E5",
+                        fontSize: "10px",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        strokeWidth: 1.5,
+                      }}
+                    />
+                  </Box>
+                  {open && (
                     <Typography
                       variant="body2"
-                      sx={{ color: "white", fontSize: "12px", fontWeight: 700 }}
+                      sx={{ color: "#4F4F4F", fontWeight: 500 }}
                     >
-                      Customer Support
+                      Knowledge Hub
+                    </Typography>
+                  )}
+                </Box>
+
+                {open && (
+                  <Box
+                    sx={{
+                      backgroundColor: "#FFD8E5",
+                      borderRadius: "5px",
+                      px: 0.8,
+                      py: 0,
+                      minWidth: "fit-content",
+                      ml: 2,
+                    }}
+                  >
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        color: "#4F4F4F",
+                        fontWeight: 500,
+                        fontSize: "11px",
+                      }}
+                    >
+                      New
                     </Typography>
                   </Box>
+                )}
+              </Box>
+            </Tooltip>
 
+            <List sx={{ px: 2, pt: 2, pb: 4 }}>
+              {bottomMenuItems.map((item) => (
+                <ListItem
+                  key={item.text}
+                  disablePadding
+                  sx={{ display: "block", mb: 0.3 }}
+                >
+                  <Tooltip
+                    title={item.text}
+                    placement="right"
+                    disableHoverListener={open}
+                    arrow
+                  >
+                    <ListItemButton
+                      component={Link}
+                      href={item.path}
+                      selected={selectedIndex === item.index}
+                      sx={{
+                        minHeight: 40,
+                        px: 1.5,
+                        borderRadius: "6px",
+                        position: "relative",
+                        backgroundColor:
+                          selectedIndex === item.index
+                            ? "white"
+                            : "transparent", // Always white when selected
+                        marginLeft:
+                          selectedIndex === item.index && open ? "4px" : "0px",
+                        borderLeft:
+                          selectedIndex === item.index && open
+                            ? "10px solid white"
+                            : "none",
+                        transition:
+                          "background-color 0.2s, margin-left 0.2s, border-left 0.2s, box-shadow 0.2s",
+                        overflow: "visible",
+                        position: "relative",
+                        zIndex: 1,
+                        "& *": {
+                          transition: "none !important",
+                        },
+                        "&:hover": {
+                          backgroundColor:
+                            selectedIndex === item.index
+                              ? "white"
+                              : "rgba(255, 255, 255, 0.10)",
+                          boxShadow:
+                            selectedIndex === item.index
+                              ? "none"
+                              : "0 2px 8px 0 rgba(0,0,0,0.03)",
+                        },
+                        "&:hover:not(.Mui-selected)": {
+                          backgroundColor: "rgba(255, 255, 255, 0.10)",
+                          boxShadow: "0 2px 8px 0 rgba(0,0,0,0.03)",
+                        },
+                        "&.Mui-selected:hover": {
+                          backgroundColor: "white",
+                        },
+                        "&.Mui-selected": {
+                          backgroundColor: "white", // Always white when selected, regardless of open state
+                        },
+                        ...(open
+                          ? {
+                              justifyContent: "initial",
+                            }
+                          : {
+                              justifyContent: "center",
+                            }),
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          justifyContent: "center",
+                          color:
+                            selectedIndex === item.index ? "#7A1F3D" : "white", // Maroon when selected, regardless of open state
+                          ...(open
+                            ? {
+                                mr: 3,
+                              }
+                            : {
+                                mr: "auto",
+                              }),
+                        }}
+                      >
+                        <img
+                          src={item.iconSrc}
+                          alt={item.iconAlt}
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            objectFit: "contain",
+                            filter:
+                              selectedIndex === item.index
+                                ? "brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(3656%) hue-rotate(329deg) brightness(89%) contrast(89%)"
+                                : "brightness(0) invert(1)", // Maroon when selected, white otherwise
+                          }}
+                        />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 1,
+                            }}
+                          >
+                            <span
+                              style={{
+                                whiteSpace: "nowrap",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                              }}
+                            >
+                              {item.text}
+                            </span>
+                            {item.text === "Sourcing" && (
+                              <img
+                                src="/assets/images/allimages/lock.svg"
+                                alt="Lock"
+                                style={{
+                                  width: "12px",
+                                  height: "12px",
+                                  objectFit: "contain",
+                                  marginLeft: "12px",
+                                }}
+                              />
+                            )}
+                          </Box>
+                        }
+                        sx={{
+                          color:
+                            selectedIndex === item.index ? "#7A1F3D" : "white", // Maroon when selected, regardless of open state
+                          "& .MuiTypography-root": {
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            color:
+                              selectedIndex === item.index
+                                ? "#7A1F3D"
+                                : "white", // Maroon when selected, regardless of open state
+                          },
+                          ...(open
+                            ? {
+                                opacity: 1,
+                              }
+                            : {
+                                opacity: 0,
+                              }),
+                        }}
+                      />
+                    </ListItemButton>
+                  </Tooltip>
+                </ListItem>
+              ))}
+            </List>
+            <Divider
+              sx={{
+                borderColor: "#ADADAD",
+                mx: 2,
+                my: 1,
+                borderBottomWidth: "3px",
+              }}
+            />
+
+            {open && (
+              <>
+                {/* We'll find you a supplier section */}
+
+                <Box sx={{ px: 2, py: 3, pt: 3 }}>
                   <Box
                     sx={{
                       display: "flex",
@@ -1003,90 +837,364 @@ export default function VendorHeaderNav({ children }) {
                       mb: 2,
                     }}
                   >
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        color: "#D1D1D1",
-                        fontSize: "10px",
-                        marginLeft: "10px",
-                      }}
-                    >
-                      Usually responds in 2-3 hours
-                    </Typography>
-                    <Box
-                      sx={{
-                        width: 6,
-                        height: 6,
-                        borderRadius: "50%",
-                        backgroundColor: "#05DF72",
-                      }}
-                    />
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                      <AvatarGroup max={4}>
+                        <Avatar
+                          alt="Remy Sharp"
+                          src="/static/images/avatar/1.jpg"
+                        />
+                        <Avatar
+                          alt="Travis Howard"
+                          src="/static/images/avatar/2.jpg"
+                        />
+                        <Avatar
+                          alt="Cindy Baker"
+                          src="/static/images/avatar/3.jpg"
+                        />
+                        <Avatar
+                          alt="Agnes Walker"
+                          src="/static/images/avatar/4.jpg"
+                        />
+                        <Avatar
+                          alt="Trevor Henderson"
+                          src="/static/images/avatar/5.jpg"
+                        />
+                      </AvatarGroup>
+                    </Box>
                   </Box>
-                </Box>
 
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                >
-                  <Button
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "#7A1F3D",
-                      color: "white",
-                      borderRadius: "5px",
-                      px: 7,
-                      py: 0.5,
-                      fontSize: "12px",
-                      fontWeight: 600,
-                      textTransform: "none",
-                      mb: 1,
-                      "&:hover": {
-                        backgroundColor: "#6a1a35",
-                      },
-                    }}
-                    startIcon={
-                      <ChatBubbleOutlineIcon sx={{ fontSize: "13px" }} />
-                    }
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "white", fontWeight: 600, mb: 1 }}
                   >
-                    Start Chat
-                  </Button>
-
+                    We'll find you a supplier
+                  </Typography>
                   <Typography
                     variant="caption"
                     sx={{
                       color: "white",
-                      fontSize: "10px",
+                      fontSize: "12px",
+                      display: "block",
+                      mb: 2,
+                      lineHeight: 1.4,
                       whiteSpace: "normal",
                       wordWrap: "break-word",
-                      textAlign: "center",
+                      overflowWrap: "break-word",
                     }}
                   >
-                    Or call: +91 9876543210
+                    Tell us what you're looking for, and we'll recommend a few
+                    of our best supplier for your needs.
+                  </Typography>
+
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "white",
+                      color: "#7A1F3D",
+                      borderRadius: "8px",
+                      px: 3,
+                      py: 0.7,
+                      fontSize: "12px",
+                      fontWeight: 600,
+                      textTransform: "none",
+                      boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+                      "&:hover": {
+                        backgroundColor: "#f5f5f5",
+                      },
+                    }}
+                    endIcon={
+                      <img
+                        src="/assets/images/allimages/arrow.svg"
+                        alt="Arrow"
+                        style={{
+                          width: "16px",
+                          height: "16px",
+                          objectFit: "contain",
+                        }}
+                      />
+                    }
+                  >
+                    Post a Project
+                  </Button>
+                </Box>
+              </>
+            )}
+
+            {open && (
+              <>
+                {/* Beetloop Intelligence section */}
+                <Divider
+                  sx={{
+                    borderColor: "#ADADAD",
+                    mx: 2,
+                    my: 1,
+                    borderBottomWidth: "3px",
+                  }}
+                />
+
+                <Box
+                  sx={{
+                    px: 2,
+                    py: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "start",
+                    marginRight: "20px",
+                    pt: 2,
+                    pb: 2,
+                  }}
+                >
+                  <Chip
+                    label="Beetloop Intelligence"
+                    sx={{
+                      backgroundColor: "#35898F",
+                      color: "#fff",
+                      fontSize: "12px",
+                      width: "156px",
+                      height: "26px",
+                      mb: 2,
+                      borderRadius: "10px",
+
+                      "& .MuiChip-label": {
+                        px: 2,
+                      },
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "6px",
+                      color: "white",
+                      fontSize: "12px",
+                    }}
+                  >
+                    <span>Nutrition</span>
+                    <span style={{ fontSize: "16px" }}>•</span>
+                    <span>Regulatory</span>
+                    <span style={{ fontSize: "16px" }}>•</span>
+                    <span>Recipes</span>
+                  </Box>
+                </Box>
+
+                {/* Beetloop Consulting section */}
+                <Divider
+                  sx={{
+                    borderColor: "#ADADAD",
+                    mx: 2,
+                    my: 1,
+                    borderBottomWidth: "3px",
+                  }}
+                />
+
+                <Box
+                  sx={{
+                    px: 2,
+                    py: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "start",
+                    marginRight: "20px",
+                    pt: 2,
+                    pb: 2,
+                  }}
+                >
+                  <Chip
+                    label="Beetloop Consulting"
+                    sx={{
+                      backgroundColor: "#E0C551",
+                      color: "#4F4F4F",
+                      fontSize: "12px",
+                      height: "24px",
+                      mb: 1,
+                      "& .MuiChip-label": {
+                        px: 2.5,
+                      },
+                    }}
+                  />
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "white",
+                      fontSize: "12px",
+                      textAlign: "center",
+                      marginRight: "10px",
+                    }}
+                  >
+                    Exclusive in-house expert services
                   </Typography>
                 </Box>
-              </Box>
-            </>
-          )}
-        </Box>
-      </Drawer>
 
-      <Box component="main" sx={{ flexGrow: 1, p: 2 }}>
-        <Box
-          sx={{
-            display: "flex",
-            // flexDirection: 'column',
-            // justifyContent: 'center',
-            // alignItems: 'center',
-            minHeight: "80vh",
-            width: "100%",
-          }}
-        >
-          {children}
+                {/* Quick Support section */}
+                <Divider
+                  sx={{
+                    borderColor: "#ADADAD",
+                    mx: 2,
+                    my: 1,
+                    borderBottomWidth: "3px",
+                  }}
+                />
+
+                <Box
+                  sx={{
+                    px: 2,
+                    py: 1,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1.5,
+                    fontFamily:
+                      "var(--montserrat-font-family), Montserrat, sans-serif",
+                  }}
+                >
+                  <ChatBubbleOutlineIcon
+                    sx={{ color: "white", fontSize: "18px" }}
+                  />
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "white", fontSize: "12px" }}
+                  >
+                    Quick Support
+                  </Typography>
+                </Box>
+
+                {/* Customer Support section */}
+
+                <Box sx={{ px: 2, py: 1.5 }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      mb: 1,
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 1.5,
+                        mb: 1,
+                      }}
+                    >
+                      <Avatar
+                        sx={{
+                          width: 30,
+                          height: 30,
+                          bgcolor: "white",
+                          color: "#7A1F3D",
+                          fontSize: "12px",
+                          fontWeight: 600,
+                        }}
+                      >
+                        CS
+                      </Avatar>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "white",
+                          fontSize: "12px",
+                          fontWeight: 700,
+                        }}
+                      >
+                        Customer Support
+                      </Typography>
+                    </Box>
+
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 1,
+                        mb: 2,
+                      }}
+                    >
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: "#D1D1D1",
+                          fontSize: "10px",
+                          marginLeft: "10px",
+                        }}
+                      >
+                        Usually responds in 2-3 hours
+                      </Typography>
+                      <Box
+                        sx={{
+                          width: 6,
+                          height: 6,
+                          borderRadius: "50%",
+                          backgroundColor: "#05DF72",
+                        }}
+                      />
+                    </Box>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Button
+                      variant="contained"
+                      sx={{
+                        backgroundColor: "#7A1F3D",
+                        color: "white",
+                        borderRadius: "5px",
+                        border: "1px solid #FFF",
+                        px: 7,
+                        py: 0.5,
+                        fontSize: "12px",
+                        fontWeight: 600,
+                        textTransform: "none",
+                        mb: 1,
+                        "&:hover": {
+                          backgroundColor: "#6a1a35",
+                        },
+                      }}
+                      startIcon={
+                        <ChatBubbleOutlineIcon sx={{ fontSize: "13px" }} />
+                      }
+                    >
+                      Start Chat
+                    </Button>
+
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        color: "white",
+                        fontSize: "10px",
+                        whiteSpace: "normal",
+                        wordWrap: "break-word",
+                        textAlign: "center",
+                      }}
+                    >
+                      Or call: +91 9876543210
+                    </Typography>
+                  </Box>
+                </Box>
+              </>
+            )}
+          </Box>
+        </Drawer>
+
+        <Box component="main" sx={{ flexGrow: 1, p: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              // flexDirection: 'column',
+              // justifyContent: 'center',
+              // alignItems: 'center',
+              minHeight: "80vh",
+              width: "100%",
+            }}
+          >
+            {children}
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 }
