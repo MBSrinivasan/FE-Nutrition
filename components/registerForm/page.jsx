@@ -11,6 +11,9 @@ import countryList from "react-select-country-list";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useRouter } from "next/navigation";
+import MainButton from "../reusableComponents/reusableButton/page";
+import TickIcon from "../../public/assets/images/icons-images/tickWithCircle.svg";
+import Image from "next/image";
 
 const { Option } = Select;
 
@@ -197,19 +200,19 @@ export default function RegisterForm() {
             <div className="col-lg-12">
               <div className="contact-main-box margin-b38">
                 <div className="contact-header">
-                  <h1 className=" font-16 weight-600 lineh-26 color-18 margin-b">
+                  <div class="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] weight-600 text-[#000] mb-[5px]">
                     Account Type
-                  </h1>
-                  <p className=" font-16 weight-400 color-18 lineh26 margin-b1">
+                  </div>
+                  <div class="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] weight-400 text-[#000] margin-b1">
                     Select the type of account you’d like to create
-                  </p>
+                  </div>
                 </div>
                 <div className="splitBoxMain">
                   <div className="buttonSplit">
                     <div
                       className={`buttonOne px-4 py-2 cursor-pointer font-medium ${
                         active === "buyer"
-                          ? "bg-white text-[#7A1F3D]"
+                          ? "bg-white text-[#7A1F3D] weight-600"
                           : "bg-transparent text-[##374151]"
                       }`}
                       onClick={() => setActive("buyer")}
@@ -220,7 +223,7 @@ export default function RegisterForm() {
                       onClick={() => setActive("vendor")}
                       className={`buttonTwo px-4 py-2 cursor-pointer font-medium ${
                         active === "vendor"
-                          ? "bg-white text-[#7A1F3D]"
+                          ? "bg-white text-[#7A1F3D] weight-600"
                           : "bg-transparent text-[##374151]"
                       }`}
                     >
@@ -235,10 +238,11 @@ export default function RegisterForm() {
         <div className="row">
           <div className="col-lg-12">
             <div className="contact1-header text-center">
-              <span className="font-34 font-ks lineh26 weight-600 color34 margin-b10  d-inline-block">
+              {/* <span className="font-34  lineh26 weight-600 color34 mb-[5px]  d-inline-block"> */}
+              <div class="text-[34px] sm:text-[36px] md:text-[38px] lg:text-[40px] xl:text-[42px] weight-600 text-[#000] mb-[5px]">
                 Vendor Registration
-              </span>
-              <div className="font-lora font-14  weight-400 margin-b28 color100">
+              </div>
+              <div class="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] weight-400 text-[#4B5577] mb-[24px]">
                 Join our vendor network and start your partnership journey
               </div>
             </div>
@@ -479,8 +483,10 @@ export default function RegisterForm() {
                       <div className="grid grid-cols-2 gap-4">
                         <Form.Item
                           name="taxId"
-                          label={renderLabel(getTaxIdConfig(selectedCountry).label, false)}
-
+                          label={renderLabel(
+                            getTaxIdConfig(selectedCountry).label,
+                            false
+                          )}
                           rules={[
                             {
                               validator: (_, value) => {
@@ -509,17 +515,50 @@ export default function RegisterForm() {
                           />
                         </Form.Item>
 
-                     
-                          
-                          <Form.Item name="duns"  label={renderLabel("DUNS Number", false)}  >
+                        <Form.Item
+                          name="duns"
+                          label={renderLabel("DUNS Number", false)}
+                          rules={[
+                            {
+                              pattern: /^\d{9}$/,
+                              message: "DUNS number must be exactly 9 digits",
+                            },
+                          ]}
+                        >
                           <Input
                             placeholder="Enter DUNS number (if applicable)"
                             style={{ height: "48px" }}
+                            onKeyPress={(e) => {
+                              // Block if not a number
+                              if (!/[0-9]/.test(e.key)) {
+                                e.preventDefault();
+                              }
+
+                              // Block typing if already 9 digits
+                              const value = e.currentTarget.value;
+                              if (value.length >= 9) {
+                                e.preventDefault();
+                              }
+                            }}
+                            onChange={(e) => {
+                              // Remove any pasted non-numeric characters
+                              const numeric = e.target.value
+                                .replace(/\D/g, "")
+                                .slice(0, 9);
+                              e.target.value = numeric;
+                            }}
+                            
                           />
+                              <div className="  text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] weight-400 text-[#9CA3AF] margin-b1 mt-2">
+                          
+                            Required for international business</div>
                         </Form.Item>
                       </div>
 
-                      <Form.Item name="nda"   label={renderLabel("Upload NDA Document", false)} >
+                      <Form.Item
+                        name="nda"
+                        label={renderLabel("Upload NDA Document", false)}
+                      >
                         <Upload.Dragger
                           name="nda"
                           multiple={false}
@@ -528,9 +567,9 @@ export default function RegisterForm() {
                           showUploadList={false}
                           style={{
                             border: "2px dashed #d1d5db",
-                            borderRadius: "8px",
+                            borderRadius: "10px",
                             backgroundColor: "#ffffff",
-                            padding: "40px 20px",
+                            padding: "4px",
                             textAlign: "center",
                             cursor: "pointer",
                             transition: "border-color 0.3s ease",
@@ -542,7 +581,7 @@ export default function RegisterForm() {
                             e.currentTarget.style.borderColor = "#d1d5db";
                           }}
                         >
-                          <div
+                          {/* <div
                             style={{
                               display: "flex",
                               flexDirection: "column",
@@ -585,13 +624,39 @@ export default function RegisterForm() {
                                 PDF, DOC, or DOCX up to 10MB
                               </div>
                             </div>
+                          </div> */}
+                          <div className="flex flex-col items-center gap-4">
+                            <div
+                              style={{
+                                width: "48px",
+                                height: "48px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                backgroundColor: "#f3f4f6",
+                                borderRadius: "50%",
+                              }}
+                            >
+                              <UploadOutlined
+                                style={{ fontSize: "24px", color: "#6b7280" }}
+                              />
+                            </div>
+
+                            <div className="text-center">
+                              <div className="  text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] weight-600 text-[#374151] margin-b1">
+                                Upload NDA Document
+                              </div>
+                              <div className="  text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] weight-600 text-[#9CA3AF] ">
+                                PDF, DOC, or DOCX up to 10MB
+                              </div>
+                            </div>
                           </div>
                         </Upload.Dragger>
                       </Form.Item>
 
                       <Form.Item name="agreement" valuePropName="checked">
                         <Checkbox>
-                          I have read, understood, and agree to the terms of the
+                          I have read and agree to the terms of the
                           Non-Disclosure Agreement (NDA) *
                         </Checkbox>
                       </Form.Item>
@@ -602,13 +667,11 @@ export default function RegisterForm() {
                           <IconBorder
                             icon={
                               <img
-                              src="assets/images/icons-images/Company-Information.svg"
-                                
+                                src="assets/images/icons-images/Company-Information.svg"
                                 alt="icon"
                                 width={100}
                                 height={100}
                               />
-                              
                             }
                           />
                         </div>
@@ -625,7 +688,7 @@ export default function RegisterForm() {
                         label={renderLabel("Email", true)}
                       >
                         <Input
-                          placeholder="enter Email"
+                          placeholder="Enter Email"
                           style={{ height: "48px" }}
                         />
                       </Form.Item>
@@ -642,6 +705,24 @@ export default function RegisterForm() {
                             {
                               min: 8,
                               message: "Password must be at least 8 characters",
+                            },
+                            {
+                              validator: (_, value) => {
+                                if (!value) return Promise.resolve();
+
+                                const passwordRegex =
+                                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+
+                                if (!passwordRegex.test(value)) {
+                                  return Promise.reject(
+                                    new Error(
+                                      "Password must include at least 1 uppercase, 1 lowercase, 1 number, and 1 special character (!@#$%^&*)"
+                                    )
+                                  );
+                                }
+
+                                return Promise.resolve();
+                              },
                             },
                           ]}
                         >
@@ -737,24 +818,33 @@ export default function RegisterForm() {
                           },
                         ]}
                       >
-                        <Checkbox>
-                          Enable Multi-Factor Authentication (MFA) for enhanced
-                          security
+                        <Checkbox
+                          className="flex items-start "
+                          style={{ alignItems: "flex-start" }}
+                        >
+                          <div className="d-flex flex-col items-start">
+                            <div class="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] weight-400 text-[#4F4F4F] mb-[5px]">
+                              Enable Multi-Factor Authentication (MFA) for
+                              enhanced security
+                            </div>
+                            <div class="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] xl:text-[20px] weight-400 text-[#979797]">
+                              Recommended for better account protection
+                            </div>
+                          </div>
                         </Checkbox>
                       </Form.Item>
 
                       {/* =================== Submit =================== */}
                       <Form.Item>
                         <div className="flex justify-center w-100">
-                          <Button
-                            icon={<CheckCircleOutlined />}
-                            width="267px"
-                            height="60px"
-                            borderRadius="10px"
-                            htmlType="submit"
-                          >
-                            Complete Registration
-                          </Button>
+                          <MainButton
+                         
+                           icon={<Image src={TickIcon} alt="tick" width={15} height={15} />}
+                           borderRadius="10px"
+                           htmlType="submit"
+                         >
+                           Complete Registration
+                         </MainButton>
                         </div>
                       </Form.Item>
                     </Form>
