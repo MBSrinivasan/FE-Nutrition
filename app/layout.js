@@ -1,4 +1,4 @@
-import { Kumbh_Sans, Nunito, Outfit,Lora } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import "/public/assets/css/plugins/bootstrap.min.css"
 import "/public/assets/css/plugins/font-awesome-pro.css"
 import "/public/assets/css/plugins/nice-select.css"
@@ -12,28 +12,10 @@ import "/public/assets/css/typography.css"
 import "/public/assets/css/master.css"
 import "/public/assets/css/plugins/responsive.css"
 
-const nunito = Nunito({
-    weight: ['300', '400', '500', '600', '700'],
+const montserrat = Montserrat({
+    weight: ['300', '400', '500', '600', '700', '800'],
     subsets: ['latin'],
-    variable: "--nunito-font-family",
-    display: 'swap',
-})
-const outfit = Outfit({
-    weight: ['400', '500', '600', '700', '800', '900'],
-    subsets: ['latin'],
-    variable: "--outfit-font-family",
-    display: 'swap',
-})
-const kumbh = Kumbh_Sans({
-    weight: ['400', '500', '600', '700', '800', '900'],
-    subsets: ['latin'],
-    variable: "--kumbh-font-family",
-    display: 'swap',
-})
-const lora = Lora({
-    weight: ['400', '500', '600', '700'],
-    subsets: ['latin'],
-    variable: "--lora-font-family",
+    variable: "--montserrat-font-family",
     display: 'swap',
 })
 
@@ -45,7 +27,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={`${nunito.variable} ${outfit.variable} ${kumbh.variable} ${lora.variable}`}>{children}</body>
+            <body className={montserrat.variable} style={{ fontFamily: 'var(--montserrat-font-family), Montserrat, sans-serif' }}>
+                {children}
+            </body>
         </html>
     )
 }
