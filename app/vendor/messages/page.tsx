@@ -638,6 +638,32 @@ export default function VendorMessagesPage() {
           box-shadow: 0 2px 8px rgba(130, 0, 219, 0.3);
         }
 
+        /* Custom basic button styled like AntD primary */
+        .custom-antlike-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 16px;
+          height: 32px;
+          border: none;
+          border-radius: 8px;
+          background-color: #9810fa;
+          color: #ffffff;
+          font-size: 14px;
+          line-height: 1;
+          cursor: pointer;
+          box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+          transition: all 0.2s ease;
+        }
+
+        .custom-antlike-btn:hover {
+          filter: brightness(0.95);
+        }
+
+        .custom-antlike-btn:active {
+          transform: translateY(1px);
+        }
+
         .badge-interactive {
           transition: all 0.2s ease;
           cursor: pointer;
@@ -795,14 +821,15 @@ export default function VendorMessagesPage() {
             </div>
 
             <div className="header-button">
-              <Button
-                type="primary"
-                icon={<PlusOutlined />}
-                className="primary-button new-message-btn"
+              <button
+                className="custom-antlike-btn new-message-btn"
                 style={{ fontSize: "14px" }}
               >
+                <span style={{ display: "inline-flex", alignItems: "center" }}>
+                  <PlusOutlined style={{ marginRight: 8 }} />
+                </span>
                 New Message
-              </Button>
+              </button>
             </div>
           </div>
 
