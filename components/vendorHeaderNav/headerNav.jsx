@@ -1180,7 +1180,7 @@ export default function VendorHeaderNav({ children }) {
           </Box>
         </Drawer>
 
-        <Box component="main" sx={{ flexGrow: 1, p: 2 }}>
+        <Box component="main" sx={{ flexGrow: 1, p: pathname === '/vendor/messages' ? 0 : 2 }}>
           <Box
             sx={{
               display: "flex",
