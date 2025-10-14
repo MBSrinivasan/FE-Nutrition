@@ -4578,3 +4578,67 @@ button.themebtn14 {
                     End
 ================+/+/+/+/+/+/+/+/+/=================
 */
+
+
+
+  
+  /* Mobile (small screens: up to 639px) */
+  @media (max-width: 639px) {
+    .welcome4-section-area {
+      padding:0px 0px 40px 0px;
+    }
+    .welcome4-section-area2 {
+        padding:0px 0px 40px 0px;
+    }
+  }
+  
+  /* Small devices (640px–767px) */
+  @media (min-width: 640px) and (max-width: 767px) {
+    .welcome4-section-area {
+      padding: 50px 0px;
+    }
+    .welcome4-section-area2 {
+        padding: 50px 0px;
+      }
+  }
+  
+  /* Medium devices (768px–1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .welcome4-section-area {
+      padding: 70px 0px;
+    }
+    .welcome4-section-area2 {
+        padding: 70px 0px;
+      }
+  }
+  
+  /* Large devices (1024px–1279px) */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .welcome4-section-area {
+      padding: 85px 0px;
+    }
+    .welcome4-section-area2 {
+        padding: 85px 0px;
+      }
+  }
+  
+  /* Extra Large (1280px–1535px) */
+  @media (min-width: 1280px) and (max-width: 1535px) {
+    .welcome4-section-area {
+      padding: 90px 0px;
+    }
+    .welcome4-section-area2 {
+        padding: 90px 0px;
+      }
+  }
+  
+  /* 2XL (1536px and above) */
+  @media (min-width: 1536px) {
+    .welcome4-section-area {
+      padding: 95px 0px;
+    }
+    .welcome4-section-area2 {
+        padding: 0px 0px;
+      }
+  }
+  
