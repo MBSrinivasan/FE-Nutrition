@@ -427,7 +427,7 @@ export default function VendorMessagesPage() {
         .metrics-grid {
           display: flex;
           align-items: center;
-          gap: 24px;
+          gap: 16px;
           background-color: rgba(236, 236, 240, 0.3);
           border-radius: 10px;
           padding: 8px 16px;
@@ -718,7 +718,7 @@ export default function VendorMessagesPage() {
           <div
             style={{
               backgroundColor: "white",
-              padding: "16px 24px",
+              padding: "16px",
               borderTop: "1px solid #e8e8e8",
             }}
             className="header-content"
@@ -726,7 +726,11 @@ export default function VendorMessagesPage() {
             <div className="header-title">
               <Title
                 level={2}
-                style={{ margin: 0, fontSize: "24px", fontWeight: "bold" }}
+                style={{
+                  margin: 0,
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                }}
               >
                 Messages
               </Title>
@@ -742,7 +746,6 @@ export default function VendorMessagesPage() {
                     style={{
                       width: "16px",
                       height: "16px",
-                      marginRight: "8px",
                     }}
                   />
                   <Text className="metric-text">
@@ -751,12 +754,11 @@ export default function VendorMessagesPage() {
                 </div>
                 <div className="metric">
                   <img
-                    src="/assets/images/icons/clock1.svg"
+                    src="/assets/images/icons/pending.svg"
                     alt="Pending"
                     style={{
                       width: "16px",
                       height: "16px",
-                      marginRight: "8px",
                     }}
                   />
                   <Text className="metric-text">
@@ -765,12 +767,11 @@ export default function VendorMessagesPage() {
                 </div>
                 <div className="metric">
                   <img
-                    src="/assets/images/icons/cmnt1.svg"
+                    src="/assets/images/icons/avgResponse.svg"
                     alt="Avg Response"
                     style={{
                       width: "16px",
                       height: "16px",
-                      marginRight: "8px",
                     }}
                   />
                   <Text className="metric-text">
@@ -779,12 +780,11 @@ export default function VendorMessagesPage() {
                 </div>
                 <div className="metric">
                   <img
-                    src="/assets/images/icons/check-circle.svg"
+                    src="/assets/images/icons/lost.svg"
                     alt="Lost Leads"
                     style={{
                       width: "16px",
                       height: "16px",
-                      marginRight: "8px",
                     }}
                   />
                   <Text className="metric-text">
